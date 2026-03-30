@@ -164,25 +164,63 @@ footer a:hover{
   </div>
 
   <nav>
-    <a href="#photos">Фото</a>
+    <a href="#about">Про нас</a>
     <a href="#price">Тарифи</a>
     <a href="#rules">Правила</a>
+    <a href="#photos">Фото</a>
     <a href="#map">Контакти</a>
   </nav>
 </header>
 
-<!-- PHOTOS -->
-<section id="photos">
-  <h2>📸 Фото залу</h2>
-  <div class="slider">
-    <button class="btn prev" onclick="move(-1)">‹</button>
-    <div class="slides" id="slides">
-      <img src="photo.jpg">
-      <img src="photo1.jpg">
-      <img src="photo3.jpg">
-      <img src="photo4.jpg">
-    </div>
-    <button class="btn next" onclick="move(1)">›</button>
+<!-- ABOUT -->
+<section id="about">
+  <h2>🏋️ Про нас</h2>
+
+  <div class="card">
+
+    <p>
+      У <b>Beast Gym</b> ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
+      Зал обладнаний усім необхідним як для початківців, так і для досвідчених спортсменів.
+    </p>
+
+    <br>
+
+    <p>
+      Команда <b>Beast Gym</b> складається з досвідчених тренерів, які допоможуть скласти індивідуальну програму,
+      навчать правильної техніки та підтримуватимуть на кожному етапі твого прогресу.
+    </p>
+
+    <br>
+
+    <p>
+      Кожен тренер має великий досвід і допоможе тобі досягти результатів у схудненні,
+      наборі м’язової маси та покращенні фізичної форми.
+    </p>
+
+    <br>
+
+    <p>
+      У нас регулярно проводяться акції та спеціальні пропозиції для клієнтів.
+    </p>
+
+    <br>
+
+    <p>
+      Зал розташований у зручному місці з легким доступом транспортом або авто.
+    </p>
+
+    <hr style="margin:15px 0; border:1px solid #333;">
+
+    <p><span class="yellow">📍 Адреса:</span><br>
+    м. Черкаси, вул. Грушевського, 110</p>
+
+    <br>
+
+    <p><span class="yellow">🕒 Графік:</span><br>
+    Пн–Пт 8:00–21:00<br>
+    Сб 9:00–16:00<br>
+    Нд вихідний</p>
+
   </div>
 </section>
 
@@ -237,17 +275,36 @@ footer a:hover{
   </div>
 </section>
 
-<!-- MAP + FOOTER -->
-<section id="map">
-  <h2>📍 Адреса</h2>
+<!-- PHOTOS -->
+<section id="photos">
+  <h2>📸 Фото залу</h2>
 
-  <div class="card">
-    вул. Михайла Грушевського, 110, Черкаси, 18000
+  <div class="slider">
+    <button class="btn prev" onclick="move(-1)">‹</button>
+
+    <div class="slides" id="slides">
+      <img src="photo.jpg">
+      <img src="photo1.jpg">
+      <img src="photo3.jpg">
+      <img src="photo4.jpg">
+    </div>
+
+    <button class="btn next" onclick="move(1)">›</button>
   </div>
 </section>
 
-<footer>
+<!-- FOOTER -->
+<footer id="map">
+
   <div class="footer-grid">
+
+    <div>
+      <h3 style="color:#39ff14;">📍 Адреса</h3>
+      <p class="small">
+        вул. Михайла Грушевського, 110<br>
+        Черкаси, 18000
+      </p>
+    </div>
 
     <div>
       <h3 style="color:#39ff14;">🕒 Графік</h3>
@@ -265,6 +322,7 @@ footer a:hover{
     </div>
 
   </div>
+
 </footer>
 
 <script>
