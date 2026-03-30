@@ -39,7 +39,6 @@ h1 {
   color: white;
 }
 
-/* MENU */
 .menu {
   display: none;
   flex-direction: column;
@@ -76,11 +75,42 @@ h1 {
   border-radius: 12px;
 }
 
-/* VIDEO */
-video {
+/* SLIDER */
+.slider {
   width: 100%;
-  border-radius: 10px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #39ff14;
+  margin-bottom: 15px;
+  position: relative;
 }
+
+.slides {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  height: 220px;
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.left-btn { left: 5px; }
+.right-btn { right: 5px; }
 
 /* INPUT */
 input {
@@ -89,7 +119,6 @@ input {
   margin: 6px 0;
 }
 
-/* BUTTON */
 button {
   padding: 10px;
   background: #39ff14;
@@ -124,15 +153,19 @@ button {
 <div id="clubs" class="tab active">
 
   <div class="card">
-    <h2>🏋️ Зал</h2>
-    <p>Сучасний фітнес-клуб у Черкасах</p>
-  </div>
+    <h2>📸 Фото залу</h2>
 
-  <div class="card">
-    <h2>🎥 Відео залу</h2>
-    <video controls>
-      <source src="./video.mp4" type="video/mp4">
-    </video>
+    <div class="slider">
+      <button class="slider-btn left-btn" onclick="move(-1)">‹</button>
+
+      <div class="slides" id="slides">
+        <img src="1.jpg">
+        <img src="2.jpg">
+        <img src="3.jpg">
+      </div>
+
+      <button class="slider-btn right-btn" onclick="move(1)">›</button>
+    </div>
   </div>
 
 </div>
@@ -149,15 +182,8 @@ button {
 <div id="about" class="tab">
   <div class="card">
     <h2>📍 Про нас</h2>
-
-    <p>У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.</p>
-
-    <p>Команда тренерів допоможе скласти програму та навчить техніки.</p>
-
-    <p>Регулярні акції для клієнтів.</p>
-
-    <p>Зручне розташування в місті Черкаси.</p>
-
+    <p>Сучасний фітнес-клуб у Черкасах</p>
+    <p>Професійні тренери та індивідуальні програми</p>
     <p>Instagram: @beastgym_ck</p>
   </div>
 </div>
@@ -165,65 +191,26 @@ button {
 <!-- PRICES -->
 <div id="prices" class="tab">
   <div class="card">
-    <h2>💰 ТАРИФИ</h2>
+    <h2>Тарифи</h2>
 
-    <p>👨‍👩‍👧 Діти + батьки — 1400 грн (на двох)</p>
-    <p>🎖 Військові — 600 грн</p>
+    <p> Сімейна (від 3 осіб)</p>
+    <p> 1 місяць — 900 грн</p>
+    <p> 3 місяці — 2500 грн</p>
+    <p> 6 місяців — 4600 грн</p>
 
-    <hr>
-
-    <h3>🏋️ Повний день</h3>
-    <p>1 місяць — 900 грн</p>
-    <p>3 місяці — 2500 грн</p>
-    <p>6 місяців — 4600 грн</p>
-
-    <hr>
-
-    <h3>🌅 Ранковий (08:00–15:00)</h3>
-    <p>1 місяць — 850 грн</p>
-    <p>3 місяці — 2350 грн</p>
-    <p>6 місяців — 4300 грн</p>
-
-    <hr>
-
-    <h3>🎓 Студент</h3>
-    <p>1 місяць — 850 грн</p>
-    <p>3 місяці — 2350 грн</p>
-    <p>6 місяців — 4300 грн</p>
-
-    <hr>
-
-    <h3>👨‍👩‍👧 Сімейна (від 3 осіб)</h3>
-    <p>1 місяць — 800 грн</p>
-    <p>3 місяці — 2200 грн</p>
-    <p>6 місяців — 4000 грн</p>
-
-    <hr>
-
-    <h3>🏆 Персональні</h3>
-    <p>1 тренування — 300 грн</p>
-    <p>6 тренувань — 1500 грн</p>
-    <p>12 тренувань — 2400 грн</p>
+    <p> Військові — 600 грн</p>
+    <p> Діти + батьки — 1400 грн</p>
   </div>
 </div>
 
 <!-- RULES -->
 <div id="rules" class="tab">
   <div class="card">
-    <h2>📋 Правила</h2>
-
-    <h3>🧼 Гігієна</h3>
-    <p>• Змінне взуття обов'язкове</p>
-    <p>• Рушник під час тренування</p>
-
-    <h3>🏋️ Абонементи</h3>
-    <p>• Скасування за 2 години</p>
-    <p>• Заморозка до 7 днів</p>
-    <p>• Ранковий — 08:00–15:00</p>
-
-    <h3>⚠️ Безпека</h3>
-    <p>• Повідомляйте про поломки</p>
-    <p>• Адміністрація не відповідає за речі</p>
+    <h2> Правила</h2>
+    <p>• Змінне взуття</p>
+    <p>• Рушник обов’язковий</p>
+    <p>• Не псувати обладнання</p>
+    <p>• Повідомляти про поломки</p>
   </div>
 </div>
 
@@ -240,10 +227,10 @@ button {
     <hr>
 
     <input id="name" placeholder="Ім'я">
-    <input id="photo" placeholder="Фото">
+    <input id="photo" placeholder="Фото URL">
     <input id="insta" placeholder="Instagram">
 
-    <button onclick="addTrainer()">Додати тренера</button>
+    <button onclick="addTrainer()">Додати</button>
 
     <p id="status"></p>
   </div>
@@ -253,6 +240,7 @@ button {
 
 let isAuth = false;
 
+/* MENU */
 function toggleMenu(){
   let m = document.getElementById("menu");
   m.style.display = m.style.display === "flex" ? "none" : "flex";
@@ -264,6 +252,42 @@ function openTab(id){
   document.getElementById("menu").style.display = "none";
 }
 
+/* SLIDER */
+let indexSlide = 0;
+
+function move(dir){
+  let slides = document.getElementById("slides");
+  let total = slides.children.length;
+
+  indexSlide += dir;
+
+  if(indexSlide < 0) indexSlide = total - 1;
+  if(indexSlide >= total) indexSlide = 0;
+
+  slides.style.transform = `translateX(-${indexSlide * 100}%)`;
+}
+
+/* AUTO SLIDE */
+setInterval(() => {
+  move(1);
+}, 4000);
+
+/* SWIPE */
+let startX = 0;
+
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  let diff = startX - e.changedTouches[0].clientX;
+
+  if(Math.abs(diff) > 50){
+    if(diff > 0) move(1);
+    else move(-1);
+  }
+});
+
 /* LOGIN */
 function login(){
   let u = document.getElementById("user").value;
@@ -271,16 +295,16 @@ function login(){
 
   if(u==="admin" && p==="123456"){
     isAuth = true;
-    document.getElementById("status").innerText = "Вхід успішний ✅";
+    document.getElementById("status").innerText = "OK ✅";
   } else {
     isAuth = false;
-    document.getElementById("status").innerText = "Помилка ❌";
+    document.getElementById("status").innerText = "❌";
   }
 }
 
 /* TRAINERS */
 function addTrainer(){
-  if(!isAuth) return alert("Увійди як адмін");
+  if(!isAuth) return alert("Увійди");
 
   let name = document.getElementById("name").value;
   let photo = document.getElementById("photo").value;
