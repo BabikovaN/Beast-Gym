@@ -1,5 +1,4 @@
 <!-- 🔥 ПРАЙС -->
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -11,30 +10,47 @@
 <body>
 
 <header>
+  <div class="logo"><img src="Logo BG.svg"></div>
   <div class="burger" onclick="toggleMenu()">☰</div>
 
-  <nav id="menu"></nav>
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Прайс</a>
+    <a href="rules.html">Правила</a>
+    <a href="photos.html">Фото</a>
+    <a href="contacts.html">Контакти</a>
+    <a href="admin.html">Адмін</a>
+  </nav>
 </header>
 
-<section>
-  <h1>Прайс</h1>
+<section class="cards">
 
-  <!-- 💰 АБОНЕМЕНТИ -->
-  <h2>Абонементи</h2>
+<div class="card">
+<h1>Прайс</h1>
 
-  <p>👉 Разове: ___ грн</p>
-  <p>👉 1 місяць: ___ грн</p>
-  <p>👉 3 місяці: ___ грн</p>
-  <p>👉 6 місяців: ___ грн</p>
+<p class="price-title">Повний абонемент</p>
+<p>250 / 900 / 2500 грн</p>
 
-  <!-- 💡 ДОДАТКОВО -->
-  <h2>Інше</h2>
+<p class="price-title">Ранковий</p>
+<p>850 / 2350 / 4300 грн</p>
 
-  <p>👉 персональні тренування</p>
-  <p>👉 сімейна карта</p>
-  <p>👉 студентські знижки</p>
+<p class="price-title">Студент</p>
+<p>850 / 2350 / 4300 грн</p>
+
+<p class="price-title">Сімейна</p>
+<p>800 / 2200 / 4000 грн</p>
+
+<p class="price-title">Військові</p>
+<p>600 грн</p>
+
+</div>
 
 </section>
+
+<footer class="footer">
+  <p>📍 Черкаси</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
