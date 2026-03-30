@@ -56,17 +56,12 @@ h1 {
   color: white;
   text-decoration: none;
   border-bottom: 1px solid #222;
+  cursor: pointer;
 }
 
-/* TABS */
-.tab {
-  display: none;
-  padding: 15px;
-}
-
+.tab { display: none; padding: 15px; }
 .active { display: block; }
 
-/* CARD */
 .card {
   background: #151515;
   border: 1px solid #39ff14;
@@ -81,7 +76,6 @@ h1 {
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid #39ff14;
-  margin-bottom: 15px;
   position: relative;
 }
 
@@ -112,7 +106,6 @@ h1 {
 .left-btn { left: 5px; }
 .right-btn { right: 5px; }
 
-/* INPUT */
 input {
   width: 100%;
   padding: 10px;
@@ -125,15 +118,20 @@ button {
   border: none;
   font-weight: bold;
 }
+iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div style="display:flex;align-items:center;gap:10px;">
-    <img src="Logo BG.svg" class="logo">
+    <img src="logo.png" class="logo">
     <h1>Beast Gym</h1>
   </div>
 
@@ -145,14 +143,13 @@ button {
     <a onclick="openTab('about')">Про нас</a>
     <a onclick="openTab('prices')">Тарифи</a>
     <a onclick="openTab('rules')">Правила</a>
+    <a onclick="openTab('map')">Адреса</a>
     <a onclick="openTab('admin')">Адмін</a>
-    <a onclick="openTab('map')">📍 Адреса</a>
   </div>
 </div>
 
 <!-- CLUB -->
 <div id="clubs" class="tab active">
-
   <div class="card">
     <h2>📸 Фото залу</h2>
 
@@ -160,15 +157,15 @@ button {
       <button class="slider-btn left-btn" onclick="move(-1)">‹</button>
 
       <div class="slides" id="slides">
-        <img src="1.jpg">
-        <img src="2.jpg">
-        <img src="3.jpg">
+        <img src="photo.jpg">
+        <img src="photo1.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
       </div>
 
       <button class="slider-btn right-btn" onclick="move(1)">›</button>
     </div>
   </div>
-
 </div>
 
 <!-- TRAINERS -->
@@ -192,48 +189,39 @@ button {
 <!-- PRICES -->
 <div id="prices" class="tab">
   <div class="card">
-    <h2>Тарифи</h2>
+    <h2>💰 Тарифи</h2>
 
-    <p> Сімейна (від 3 осіб)</p>
-    <p> 1 місяць — 900 грн</p>
-    <p> 3 місяці — 2500 грн</p>
-    <p> 6 місяців — 4600 грн</p>
+    <p>👨‍👩‍👧 Сімейна (від 3 осіб)</p>
+    <p>1 місяць — 900 грн</p>
+    <p>3 місяці — 2500 грн</p>
+    <p>6 місяців — 4600 грн</p>
 
-    <p> Військові — 600 грн</p>
-    <p> Діти + батьки — 1400 грн</p>
+    <p>🎖 Військові — 600 грн</p>
+    <p>👶 Діти + батьки — 1400 грн</p>
   </div>
 </div>
 
 <!-- RULES -->
 <div id="rules" class="tab">
-  <!-- MAP -->
-<div id="map" class="tab">
   <div class="card">
-    <h2>📍 Адреса</h2>
-
-    <p>🏢 Beast Gym</p>
-    <p>📌 вул. ТВОЯ ВУЛИЦЯ, Черкаси</p>
-
-    <div style="margin-top:10px;">
-      <iframe
-        src="https://maps.app.goo.gl/KysfjuyaKVvwTWK79"
-        width="100%"
-        height="300"
-        style="border:0; border-radius:12px;"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-  </div>
-</div>
-  
-  <div class="card">
-    <h2> Правила</h2>
+    <h2>📋 Правила</h2>
     <p>• Змінне взуття</p>
     <p>• Рушник обов’язковий</p>
     <p>• Не псувати обладнання</p>
     <p>• Повідомляти про поломки</p>
+  </div>
+</div>
+
+<!-- MAP -->
+<div id="map" class="tab">
+  <div class="card">
+    <h2>📍 Адреса</h2>
+
+    <p>вул. Михайла Грушевського, 110, Черкаси</p>
+
+    <iframe
+      src="https://www.google.com/maps?q=вул.%20Михайла%20Грушевського%20110%20Черкаси&output=embed">
+    </iframe>
   </div>
 </div>
 
@@ -261,6 +249,7 @@ button {
 
 <script>
 
+let indexSlide = 0;
 let isAuth = false;
 
 /* MENU */
@@ -276,8 +265,6 @@ function openTab(id){
 }
 
 /* SLIDER */
-let indexSlide = 0;
-
 function move(dir){
   let slides = document.getElementById("slides");
   let total = slides.children.length;
@@ -290,26 +277,7 @@ function move(dir){
   slides.style.transform = `translateX(-${indexSlide * 100}%)`;
 }
 
-/* AUTO SLIDE */
-setInterval(() => {
-  move(1);
-}, 4000);
-
-/* SWIPE */
-let startX = 0;
-
-document.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-document.addEventListener("touchend", e => {
-  let diff = startX - e.changedTouches[0].clientX;
-
-  if(Math.abs(diff) > 50){
-    if(diff > 0) move(1);
-    else move(-1);
-  }
-});
+setInterval(() => move(1), 4000);
 
 /* LOGIN */
 function login(){
@@ -318,7 +286,7 @@ function login(){
 
   if(u==="admin" && p==="123456"){
     isAuth = true;
-    document.getElementById("status").innerText = "OK ✅";
+    document.getElementById("status").innerText = "OK";
   } else {
     isAuth = false;
     document.getElementById("status").innerText = "❌";
