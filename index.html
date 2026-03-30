@@ -1,34 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-    <title>Beast Gym</title>
+<meta charset="UTF-8">
+<title>Beast Gym</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #000; /* чорний фон */
+  color: white;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #111;
+  border-bottom: 2px solid #39ff14;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 60px;
+}
+
+h1 {
+  color: yellow; /* жовті букви */
+  margin: 0;
+}
+
+/* MENU */
+.menu a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #39ff14;
+}
+
+/* BLOCKS */
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+/* TITLES */
+h2 {
+  color: yellow;
+}
+
+/* BUTTON */
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #39ff14;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
+<!-- HEADER -->
+<div class="header">
+
+  <div class="left">
+    <img src="logo.png" class="logo">
     <h1>Beast Gym</h1>
-<p>Сучасний спортивний комплекс для тренувань</p>
-  <div>
-<h2>📍 Наш зал</h2>
-
-<p>Beast Gym — спортивний комплекс</p>
-<h2>Тренування</h2>
-      </div>
-
-  <div>
-
-<video width="300" controls>
-  <source src="video.mp4" type="video/mp4">
-  Твій браузер не підтримує відео
-</video>
-      </div>
-
-      <div>
-
-<a href="https://maps.app.goo.gl/KysfjuyaKVvwTWK79"
-   target="_blank"
-   style="background:#4da3ff;color:white;padding:10px;border-radius:8px;text-decoration:none;">
-   🗺 Відкрити на карті
-</a>
   </div>
+
+  <div class="menu">
+    <a href="#">Клуби</a>
+    <a href="#">Тренери</a>
+    <a href="#">Про нас</a>
+    <a href="#">Тарифи</a>
+    <a href="#">Блог</a>
+  </div>
+
+</div>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="card">
+  <h2>💪 Сучасний спортивний комплекс</h2>
+  <p>Beast Gym — місце сили, прогресу та результату</p>
+</div>
+
+<!-- ABOUT -->
+<div class="card">
+  <h2>📍 Про нас</h2>
+  <p>
+    У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
+    Зал обладнаний для новачків і професіоналів.
+  </p>
+</div>
+
+<!-- TRAINERS (заготовка для адміна) -->
+<div class="card">
+  <h2>🏋️ Тренери</h2>
+  <p>Тут буде список тренерів (адмін може редагувати)</p>
+</div>
+
+<!-- VIDEO -->
+<div class="card">
+  <h2>🎥 Наш зал</h2>
+  <video width="300" controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- PRICES -->
+<div class="card">
+  <h2>💰 Тарифи</h2>
+
+  <p><b>Ранковий абонемент</b><br>
+  1 міс — 250 грн<br>
+  3 міс — 900 грн<br>
+  6 міс — 2500 грн</p>
+
+  <p><b>Студентська карта</b><br>
+  1 міс — 850 грн<br>
+  3 міс — 2350 грн<br>
+  6 міс — 4300 грн</p>
+
+  <p><b>Сімейна карта</b><br>
+  1 міс — 800 грн<br>
+  3 міс — 2200 грн<br>
+  6 міс — 4000 грн</p>
+</div>
+
+<!-- LOCATION -->
+<div class="card">
+  <h2>📍 Локація</h2>
+
+  <a class="button"
+     href="https://maps.app.goo.gl/KysfjuyaKVvwTWK79"
+     target="_blank">
+     🗺 Відкрити на карті
+  </a>
+</div>
+
+</div>
+
 </body>
 </html>
