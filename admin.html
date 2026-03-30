@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Admin Beast Gym</title>
 
+<style>
+body{
+  font-family:Arial;
+  background:#0b0b0b;
+  color:white;
+  padding:20px;
+}
+
+input, button{
+  padding:10px;
+  margin:5px 0;
+  width:100%;
+}
+
+button{
+  background:#39ff14;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.card{
+  border:1px solid #39ff14;
+  padding:10px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>⚙️ ADMIN PANEL</h1>
+
+<h3>➕ Додати тренера</h3>
+
+<input id="name" placeholder="Ім'я тренера">
+<input id="photo" placeholder="URL фото">
+<input id="insta" placeholder="Instagram">
+
+<button onclick="addTrainer()">Додати</button>
+
+<h3>📋 Тренери</h3>
+<div id="list"></div>
+
+<script>
+function getData(){
+  return JSON.parse(localStorage.getItem("trainers") || "[]");
+}
+
+function saveData(data){
+  localStorage.setItem("trainers", JSON.stringify(data));
+  render();
+}
+
+function addTrainer(){
+  let data = getData();
+
+  data.push({
+    name:document.getElementById("name").value,
+    photo:document.getElementById("photo").value,
+    insta:document.getElementById("insta").value
+  });
+
+  saveData(data);
+}
+
+function render(){
+  let list = document.getElementById("list");
+  let data = getData();
+
+  list.innerHTML = "";
+
+  data.forEach((t,i)=>{
+    list.innerHTML += `
+      <div class="card">
+        <p><b>${t.name}</b></p>
+        <img src="${t.photo}" width="100">
+        <p>${t.insta}</p>
+        <button onclick="del(${i})">Видалити</button>
+      </div>
+    `;
+  });
+}
+
+function del(i){
+  let data = getData();
+  data.splice(i,1);
+  saveData(data);
+}
+
+render();
+</script>
+
+</body>
+</html>
