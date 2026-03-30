@@ -1,286 +1,41 @@
+<!-- 🔥 ГОЛОВНА СТОРІНКА -->
+<!-- Тут: hero + короткий опис + кнопки -->
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
 <title>Beast Gym</title>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
-body{
-  background:#0b0b0b;
-  color:white;
-}
-
-/* HEADER */
-header{
-  position:sticky;
-  top:0;
-  background:#0f0f0f;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 20px;
-  border-bottom:2px solid #39ff14;
-  z-index:1000;
-}
-
-.logo img{
-  height:45px;
-}
-
-/* MENU */
-nav{
-  display:flex;
-  gap:15px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  padding:8px 12px;
-  border-radius:8px;
-  transition:0.3s;
-}
-
-nav a:hover{
-  background:#39ff14;
-  color:black;
-}
-
-/* HERO */
-.hero{
-  height:80vh;
-  overflow:hidden;
-}
-
-.slides{
-  display:flex;
-  height:100%;
-  transition:0.5s;
-}
-
-.slide{
-  min-width:100%;
-  height:100%;
-  position:relative;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.4);
-}
-
-/* SECTIONS */
-section{
-  padding:60px 20px;
-}
-
-h2{
-  color:#39ff14;
-  margin-bottom:20px;
-}
-
-.card{
-  background:#151515;
-  padding:20px;
-  border-radius:15px;
-  border:1px solid rgba(57,255,20,0.2);
-  box-shadow:0 0 20px rgba(57,255,20,0.1);
-}
-
-/* PRICE COLORS */
-.yellow{color:#ffd000;}
-.price{color:#ffd000; font-weight:bold;}
-
-/* FOOTER */
-footer{
-  background:#0a0a0a;
-  border-top:2px solid #39ff14;
-  padding:40px 20px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-
-footer a{
-  color:white;
-  text-decoration:none;
-}
-
-footer a:hover{
-  color:#39ff14;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
+<!-- 👉 логотип + меню -->
 <header>
-  <div class="logo">
-    <img src="Logo Beast Gym.png" alt="logo">
-  </div>
+  <div class="logo">LOGO</div>
 
-  <nav>
-    <a href="#about">Про нас</a>
-    <a href="#price">Прайс</a>
-    <a href="#rules">Правила</a>
-    <a href="#photos">Фото</a>
-    <a href="#map">Контакти</a>
+  <!-- 🔥 меню (працює через script.js) -->
+  <div class="burger" onclick="toggleMenu()">☰</div>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Прайс</a>
+    <a href="rules.html">Правила</a>
+    <a href="photos.html">Фото</a>
+    <a href="contacts.html">Контакти</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="slides" id="slides">
-    <div class="slide"><img src="photo20.jpg"><div class="overlay"></div></div>
-    <div class="slide"><img src="photo21.jpg"><div class="overlay"></div></div>
-    <div class="slide"><img src="photo22.jpg"><div class="overlay"></div></div>
-    <div class="slide"><img src="photo23.jpg"><div class="overlay"></div></div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-<h2>🏋️ Про нас</h2>
-
-<div class="card">
-<p>
-У <b>Beast Gym</b> ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
-Зал обладнаний для новачків і професіоналів.
-</p><br>
-
-<p>
-Команда тренерів допоможе скласти індивідуальну програму, навчить техніці та доведе тебе до результату.
-</p><br>
-
-<p>
-Регулярні акції та підтримка для всіх клієнтів.
-</p><br>
-
-<p>
-📍 м. Черкаси, вул. Михайла Грушевського, 110<br>
-🕒 Пн–Пт 08:00–21:00 | Сб 09:00–16:00 | Нд вихідний
-</p>
-
-<hr style="margin:15px 0; border:1px solid #333;">
-
-<h3 class="yellow">💰 ПРАЙС</h3>
-
-<p class="yellow">АБОНЕМЕНТ ПОВНОГО ДНЯ</p>
-<p>разове — <span class="price">250 грн</span></p>
-<p>1 міс — <span class="price">900 грн</span></p>
-<p>3 міс — <span class="price">2500 грн</span></p>
-<p>6 міс — <span class="price">4600 грн</span></p>
-
-<br>
-
-<p class="yellow">РАНКОВИЙ</p>
-<p>1 міс — 850 грн</p>
-<p>3 міс — 2350 грн</p>
-<p>6 міс — 4300 грн</p>
-
-<br>
-
-<p class="yellow">СТУДЕНТ</p>
-<p>1 міс — 850 грн</p>
-
-<br>
-
-<p class="yellow">СІМЕЙНА КАРТА (від 3 осіб)</p>
-<p>1 міс — 800 грн</p>
-<p>3 міс — 2200 грн</p>
-<p>6 міс — 4000 грн</p>
-
-<br>
-
-<p class="yellow">ДІТИ + БАТЬКИ</p>
-<p>1400 грн (на двох)</p>
-
-<br>
-
-<p class="yellow">ВІЙСЬКОВІ</p>
-<p>600 грн</p>
-
-<br>
-
-<p class="yellow">ПЕРСОНАЛЬНІ</p>
-<p>1 тренування — 300 грн</p>
-<p>6 — 1500 грн</p>
-<p>12 — 2400 грн</p>
-<p>програма — 1000 грн</p>
-
-</div>
+<!-- 👉 велике фото + назва залу -->
+<section class="hero">
+  <h1>BEAST GYM</h1>
+  <p>Твоя сила починається тут</p>
 </section>
 
-<!-- RULES -->
-<section id="rules">
-<h2>📜 Правила</h2>
-
-<div class="card">
-<p>• Вхід тільки у змінному взутті</p>
-<p>• Рушник обов’язковий</p>
-<p>• Прибирання після себе</p>
-<p>• Скасування за 2 години</p>
-<p>• Заморозка 7 днів (1 раз/міс)</p>
-<p>• Адміністрація не несе відповідальності за речі</p>
-</div>
-</section>
-
-<!-- PHOTOS -->
-<section id="photos">
-<h2>📸 Фото</h2>
-<div class="card">Фото залу тут</div>
-</section>
-
-<!-- FOOTER -->
-<footer id="map">
-<div class="footer-grid">
-
-<div>
-<h3 style="color:#39ff14;">📍 Адреса</h3>
-<p>м. Черкаси, вул. Михайла Грушевського, 110</p>
-</div>
-
-<div>
-<h3 style="color:#39ff14;">🕒 Графік</h3>
-<p>Пн–Пт 08:00–21:00<br>Сб 09:00–16:00<br>Нд вихідний</p>
-</div>
-
-<div>
-<h3 style="color:#39ff14;">🌐 Соцмережі</h3>
-<a href="https://www.instagram.com/">Instagram</a><br>
-<a href="https://www.tiktok.com/@beast.gym19">TikTok</a>
-</div>
-
-</div>
-</footer>
-
-<script>
-let i=0;
-setInterval(()=>{
-  let s=document.getElementById("slides");
-  i++;
-  if(i>=s.children.length) i=0;
-  s.style.transform=`translateX(-${i*100}%)`;
-},4000);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
