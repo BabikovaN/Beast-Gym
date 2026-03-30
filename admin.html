@@ -2,100 +2,45 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Admin Beast Gym</title>
-
-<style>
-body{
-  font-family:Arial;
-  background:#0b0b0b;
-  color:white;
-  padding:20px;
-}
-
-input, button{
-  padding:10px;
-  margin:5px 0;
-  width:100%;
-}
-
-button{
-  background:#39ff14;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.card{
-  border:1px solid #39ff14;
-  padding:10px;
-  margin-top:10px;
-}
-</style>
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>⚙️ ADMIN PANEL</h1>
+<h1 style="color:#ffd000; text-align:center;">ADMIN PANEL</h1>
 
-<h3>➕ Додати тренера</h3>
+<!-- МЕНЮ -->
+<div class="card">
+<h2>Редагування меню</h2>
 
-<input id="name" placeholder="Ім'я тренера">
-<input id="photo" placeholder="URL фото">
-<input id="insta" placeholder="Instagram">
+<input id="linkText" placeholder="Назва (Напр: Головна)">
+<input id="linkUrl" placeholder="URL (index.html)">
+
+<button onclick="addMenu()">Додати пункт</button>
+</div>
+
+<!-- ТРЕНЕРИ -->
+<div class="card">
+<h2>Додати тренера</h2>
+
+<input id="trainerName" placeholder="Ім'я тренера">
+<input id="trainerDesc" placeholder="Опис">
 
 <button onclick="addTrainer()">Додати</button>
+</div>
 
-<h3>📋 Тренери</h3>
-<div id="list"></div>
+<!-- ФОТО -->
+<div class="card">
+<h2>Додати фото</h2>
 
-<script>
-function getData(){
-  return JSON.parse(localStorage.getItem("trainers") || "[]");
-}
+<input id="photoUrl" placeholder="URL фото">
+<button onclick="addPhoto()">Додати фото</button>
+</div>
 
-function saveData(data){
-  localStorage.setItem("trainers", JSON.stringify(data));
-  render();
-}
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
-function addTrainer(){
-  let data = getData();
-
-  data.push({
-    name:document.getElementById("name").value,
-    photo:document.getElementById("photo").value,
-    insta:document.getElementById("insta").value
-  });
-
-  saveData(data);
-}
-
-function render(){
-  let list = document.getElementById("list");
-  let data = getData();
-
-  list.innerHTML = "";
-
-  data.forEach((t,i)=>{
-    list.innerHTML += `
-      <div class="card">
-        <p><b>${t.name}</b></p>
-        <img src="${t.photo}" width="100">
-        <p>${t.insta}</p>
-        <button onclick="del(${i})">Видалити</button>
-      </div>
-    `;
-  });
-}
-
-function del(i){
-  let data = getData();
-  data.splice(i,1);
-  saveData(data);
-}
-
-render();
-</script>
-
+<script src="admin.js"></script>
 </body>
 </html>
