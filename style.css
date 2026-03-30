@@ -9,6 +9,7 @@
 body{
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -19,11 +20,11 @@ header{
   padding:12px 16px;
 }
 
-/* LOGO 3D + NEON */
+/* LOGO 3D + NEON + ANIMATION */
 .logo img{
   height:42px;
   filter: drop-shadow(0 0 10px #39ff14);
-  animation:pulse 2s infinite;
+  animation:pulse 2s infinite, rotate3d 6s infinite linear;
 }
 
 @keyframes pulse{
@@ -32,12 +33,24 @@ header{
   100%{transform:scale(1); filter:drop-shadow(0 0 5px #39ff14);}
 }
 
-/* BURGER MENU BIGGER */
+@keyframes rotate3d{
+  0%{transform:perspective(200px) rotateY(0deg);}
+  50%{transform:perspective(200px) rotateY(15deg);}
+  100%{transform:perspective(200px) rotateY(0deg);}
+}
+
+/* BURGER */
 .burger{
-  font-size:38px;
+  font-size:42px;
   cursor:pointer;
   color:#39ff14;
   text-shadow:0 0 15px #39ff14;
+  transition:0.3s;
+}
+
+.burger:hover{
+  transform:scale(1.1);
+  text-shadow:0 0 25px #39ff14;
 }
 
 /* MENU */
@@ -52,7 +65,7 @@ nav{
   transition:0.3s;
   padding-top:80px;
   border-left:2px solid #39ff14;
-  box-shadow: -10px 0 25px rgba(57,255,20,0.3);
+  box-shadow:-10px 0 25px rgba(57,255,20,0.3);
 }
 
 nav.active{
@@ -64,8 +77,8 @@ nav a{
   padding:14px;
   color:#39ff14;
   text-decoration:none;
-  text-shadow:0 0 10px #39ff14;
   font-size:18px;
+  text-shadow:0 0 10px #39ff14;
 }
 
 /* CARDS */
@@ -105,6 +118,12 @@ nav a{
   border-radius:12px;
   border:1px solid #39ff14;
   box-shadow:0 0 10px #39ff14;
+  transition:0.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 20px #39ff14;
 }
 
 /* FOOTER */
@@ -122,7 +141,7 @@ nav a{
 /* MOBILE */
 @media(max-width:768px){
   .logo img{height:34px;}
-  .burger{font-size:42px;}
+  .burger{font-size:44px;}
   nav{width:85%;}
   .gallery img{height:150px;}
 }
