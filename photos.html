@@ -4,7 +4,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Beast Gallery</title>
+<title>Photos</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,8 +26,15 @@
 
 <h1 style="text-align:center;color:#ffd000;">BEAST GALLERY</h1>
 
-<div id="feed"></div>
+<!-- 🔥 СТАРТОВІ ФОТО (показуються ДО Firebase) -->
+<div class="gallery" id="gallery">
+  <img src="photo20.jpg">
+  <img src="photo21.jpg">
+  <img src="photo22.jpg">
+  <img src="photo23.jpg">
+</div>
 
+<!-- 🔥 FIREBASE (додає нові фото) -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
@@ -38,33 +45,19 @@ firebase.initializeApp({
 });
 
 const db = firebase.firestore();
-const feed = document.getElementById("feed");
+const gallery = document.getElementById("gallery");
 
-/* 👤 перевірка адміна */
-let isAdmin = localStorage.getItem("admin") === "true";
-
-/* 📸 показ постів */
-db.collection("posts").orderBy("time","desc").onSnapshot(snap=>{
-  feed.innerHTML = "";
-
+/* 🔥 додаткові фото з Firebase */
+db.collection("photos").onSnapshot(snap=>{
   snap.forEach(doc=>{
-    const p = doc.data();
+    const url = doc.data().url;
 
-    feed.innerHTML += `
-      <div class="post">
-        <img src="${p.image}">
-        <p>${p.text}</p>
+    const img = document.createElement("img");
+    img.src = url;
 
-        ${isAdmin ? `<button onclick="deletePost('${doc.id}')">🗑 Видалити</button>` : ""}
-      </div>
-    `;
+    gallery.appendChild(img);
   });
 });
-
-/* 🗑 delete */
-function deletePost(id){
-  db.collection("posts").doc(id).delete();
-}
 </script>
 
 <script src="script.js"></script>
