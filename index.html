@@ -2,25 +2,20 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beast Gym</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<!-- 🔥 HEADER -->
-<header>
 
-  <!-- 🔥 LOGO -->
+<!-- HEADER -->
+<header>
   <div class="logo">
-    <img src="Logo BG.svg" alt="Beast Gym logo">
+    <img src="Logo BG.svg" alt="logo">
   </div>
 
-  <!-- 🔥 BURGER -->
-  <div id="overlay" onclick="toggleMenu()">☰</div>
+  <div class="burger" onclick="toggleMenu()">☰</div>
 
-  <!-- 🔥 MENU -->
   <nav id="menu">
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
@@ -30,41 +25,50 @@
     <a href="contacts.html">Контакти</a>
     <a href="admin.html">Адмін</a>
   </nav>
-
 </header>
 
-<!-- 🔥 HERO -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>BEAST GYM</h1>
-    <p>Твоя сила починається тут</p>
-
-    <a href="price.html" class="btn">Переглянути прайс</a>
-  </div>
+  <h1>BEAST GYM</h1>
+  <p>Твоя сила починається тут</p>
 </section>
 
-<!-- 🔥 QUICK INFO -->
+<!-- INFO BLOCKS -->
 <section class="cards">
 
   <div class="card">
-    <h3>💪 Сучасні тренажери</h3>
-    <p>Новітнє обладнання для всіх груп м’язів</p>
+    <h3>Про нас</h3>
+    <p>
+      У Beast Gym ти знайдеш сучасні тренажери для силових і кардіо тренувань.
+      Команда досвідчених тренерів допоможе тобі досягти результату,
+      складе програму та навчить техніки.
+    </p>
   </div>
 
   <div class="card">
-    <h3>🔥 Професійні тренери</h3>
-    <p>Допоможуть досягти результату швидше</p>
+    <h3>Адреса</h3>
+    <p class="number">
+      м. Черкаси, вул. Михайла Грушевського, 110
+    </p>
   </div>
 
   <div class="card">
-    <h3>⚡ 24/7 доступ</h3>
-    <p>Тренуйся коли хочеш</p>
+    <h3>Графік</h3>
+    <p>
+      ПН-ПТ: 08:00 - 21:00<br>
+      СБ: 09:00 - 16:00<br>
+      НД: вихідний
+    </p>
   </div>
 
 </section>
 
-<!-- 🔥 JS -->
-<script src="script.js"></script>
+<!-- FOOTER -->
+<footer>
+  <p>Instagram: @beastgym_ck</p>
+  <p>TikTok: @beast.gym19</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
