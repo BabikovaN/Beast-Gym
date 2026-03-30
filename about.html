@@ -1,5 +1,4 @@
 <!-- 🔥 ПРО НАС -->
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -11,31 +10,62 @@
 <body>
 
 <header>
+  <div class="logo"><img src="Logo BG.svg"></div>
   <div class="burger" onclick="toggleMenu()">☰</div>
 
   <nav id="menu">
-    <!-- меню те саме -->
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Прайс</a>
+    <a href="rules.html">Правила</a>
+    <a href="photos.html">Фото</a>
+    <a href="contacts.html">Контакти</a>
+    <a href="admin.html">Адмін</a>
   </nav>
 </header>
 
-<section>
-  <h1>Про нас</h1>
+<section class="cards">
 
-<p>
-У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
-Зал обладнаний усім необхідним як для початківців, так і для досвідчених спортсменів.
-</p>
+<div class="card">
+<h1>Про нас</h1>
 
-<p>
-Команда Beast Gym складається з досвідчених тренерів, які допоможуть скласти індивідуальну програму,
-навчать правильної техніки та підтримуватимуть на кожному етапі.
-</p>
+<p>Beast Gym — сучасний спортзал у Черкасах.</p>
+<p>Тренери допомагають досягати результатів.</p>
+<p>Індивідуальні програми для кожного рівня.</p>
 
-<p>
-Регулярні акції та спеціальні пропозиції для нових і постійних клієнтів.
-</p>
+</div>
+
+<div class="card">
+<h2>Прайс</h2>
+
+<p class="price-title">Повний</p>
+<p>1 міс — 250 грн</p>
+<p>3 міс — 900 грн</p>
+<p>6 міс — 2500 грн</p>
+
+<p class="price-title">Ранковий</p>
+<p>850 / 2350 / 4300 грн</p>
+
+<p class="price-title">Студент</p>
+<p>850 / 2350 / 4300 грн</p>
+
+<p class="price-title">Сімейна (від 3 осіб)</p>
+<p>800 / 2200 / 4000 грн</p>
+<p>Діти+батьки — 1400 грн</p>
+
+<p class="price-title">Військові</p>
+<p>600 грн</p>
+
+<p class="price-title">Персональні</p>
+<p>300 / 1500 / 2400 / 1000 грн</p>
+
+</div>
 
 </section>
+
+<footer class="footer">
+  <p>📍 Черкаси, вул. Михайла Грушевського, 110</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
