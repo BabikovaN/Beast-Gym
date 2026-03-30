@@ -1,86 +1,140 @@
 /* 🔥 ГОЛОВНИЙ СТИЛЬ */
 
-/* 🔥 затемнення фону */
-#overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  opacity:0;
-  visibility:hidden;
-  transition:0.3s;
-  z-index:998;
-  backdrop-filter:blur(4px);
+/* 🔥 RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
 }
 
-#overlay.active{
-  opacity:1;
-  visibility:visible;
+/* 🔥 ОСНОВА */
+body{
+  background:#000;
+  color:white;
 }
 
-/* 🔥 МЕНЮ CYBERPUNK */
+/* =========================
+   🔥 HEADER
+========================= */
+header{
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:#000;
+  z-index:1000;
+  border-bottom:1px solid #39ff14;
+}
+
+/* 🔥 LOGO (маленьке зліва) */
+.logo img{
+  height:32px;
+  width:auto;
+}
+
+/* 🔥 BURGER (справа) */
+.burger{
+  font-size:28px;
+  color:#39ff14;
+  cursor:pointer;
+  text-shadow:0 0 10px #39ff14;
+}
+
+/* =========================
+   🔥 MENU CYBERPUNK
+========================= */
 nav{
   position:fixed;
   right:0;
   top:0;
   width:260px;
   height:100vh;
-  background:linear-gradient(180deg,#0a0a0a,#050505);
-  transform:translateX(120%) rotateY(-25deg);
-  transform-origin:right;
-  transition:0.5s ease;
+  background:#0a0a0a;
+  transform:translateX(120%);
+  transition:0.4s ease;
   z-index:999;
   padding-top:80px;
 
   border-left:2px solid #39ff14;
-  box-shadow:
-    -15px 0 40px rgba(57,255,20,0.5),
-    -30px 0 80px rgba(57,255,20,0.2);
+  box-shadow:-15px 0 40px rgba(57,255,20,0.4);
 }
 
 nav.active{
-  transform:translateX(0) rotateY(0deg);
+  transform:translateX(0);
 }
 
-/* 🔥 НЕОНОВІ ЛІНКИ */
+/* 🔥 MENU LINKS */
 nav a{
   display:block;
-  padding:15px 20px;
+  padding:14px 20px;
   color:#39ff14;
   text-decoration:none;
   font-weight:bold;
-  text-shadow:0 0 10px rgba(57,255,20,0.8);
-  transition:0.3s;
+  text-shadow:0 0 10px #39ff14;
 }
 
 nav a:hover{
-  background:rgba(57,255,20,0.08);
-  transform:translateX(-6px);
-  box-shadow:0 0 20px rgba(57,255,20,0.6);
+  background:rgba(57,255,20,0.1);
+  transform:translateX(-5px);
 }
 
-/* 🔥 BURGER + PULSE */
-.burger{
-  font-size:32px;
-  cursor:pointer;
-  color:#39ff14;
-  text-shadow:0 0 10px rgba(57,255,20,0.8);
-  animation:pulse 2s infinite;
-  transition:0.3s;
+/* =========================
+   🔥 HERO
+========================= */
+.hero{
+  padding:80px 20px;
+  text-align:center;
 }
 
-.burger:hover{
-  transform:scale(1.15);
+.hero h1{
+  color:#ffd000; /* 🔥 жовтий заголовок */
+  font-size:48px;
 }
 
-/* 🔥 PULSE ANIMATION */
-@keyframes pulse{
-  0%{
-    text-shadow:0 0 5px #39ff14;
-  }
-  50%{
-    text-shadow:0 0 25px #39ff14, 0 0 40px #39ff14;
-  }
-  100%{
-    text-shadow:0 0 5px #39ff14;
-  }
+.hero p{
+  color:white;
+}
+
+/* =========================
+   🔥 CARDS (острівки)
+========================= */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  padding:30px 20px;
+}
+
+.card{
+  background:#1a1a1a; /* темно-сірий */
+  padding:20px;
+  border-radius:12px;
+  border:1px solid #222;
+  transition:0.3s ease;
+}
+
+/* 🔥 неон при наведенні */
+.card:hover{
+  border:1px solid #39ff14;
+  box-shadow:0 0 20px rgba(57,255,20,0.4);
+  transform:translateY(-6px);
+}
+
+/* 🔥 заголовки (жовті) */
+.card h3{
+  color:#ffd000;
+}
+
+/* 🔥 текст (білий) */
+.card p{
+  color:white;
+}
+
+/* 🔥 цифри (жовті) */
+.price, .number{
+  color:#ffd000;
+  font-weight:bold;
 }
