@@ -3,9 +3,9 @@ function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-// ESC закриває меню
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
+/* ESC закриває меню */
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape"){
     document.getElementById("menu").classList.remove("active");
   }
 });
