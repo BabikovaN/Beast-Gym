@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beast Gym Pro</title>
+<title>Beast Gym</title>
 
 <style>
 body {
@@ -11,10 +11,9 @@ body {
   font-family: Arial;
   background: #0a0a0a;
   color: white;
-  overflow-x: hidden;
 }
 
-/* TOP BAR */
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
@@ -25,12 +24,6 @@ body {
   position: relative;
 }
 
-.left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .logo { width: 45px; }
 
 h1 {
@@ -39,13 +32,11 @@ h1 {
   margin: 0;
 }
 
-/* BURGER */
 .menu-btn {
   font-size: 26px;
   background: none;
   border: none;
   color: white;
-  cursor: pointer;
 }
 
 /* MENU */
@@ -63,111 +54,56 @@ h1 {
 
 .menu a {
   padding: 12px;
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   border-bottom: 1px solid #222;
 }
-.menu a:hover { color: #39ff14; }
 
-/* APP ANIMATION */
-.container {
-  padding: 15px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
+/* TABS */
 .tab {
   display: none;
-  animation: fade 0.3s ease;
+  padding: 15px;
 }
 
 .active { display: block; }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* CARDS */
+/* CARD */
 .card {
   background: #151515;
   border: 1px solid #39ff14;
   padding: 15px;
   margin: 12px 0;
-  border-radius: 15px;
-  box-shadow: 0 0 10px #39ff14;
-}
-
-/* BUTTONS */
-button {
-  padding: 10px;
-  border: none;
-  background: #39ff14;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* TRAINER */
-.trainer {
-  background: #222;
-  padding: 10px;
   border-radius: 12px;
-  margin-top: 10px;
 }
-.trainer img {
+
+/* VIDEO */
+video {
   width: 100%;
-  max-width: 200px;
   border-radius: 10px;
 }
 
-/* LOGIN SCREEN */
-.login {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-
-.login-box {
-  background: #111;
-  padding: 20px;
-  border-radius: 15px;
-  border: 1px solid #39ff14;
-  width: 280px;
-}
-
+/* INPUT */
 input {
   width: 100%;
   padding: 10px;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
-/* INSTAGRAM */
-a { color: #ff3cac; text-decoration: none; }
+/* BUTTON */
+button {
+  padding: 10px;
+  background: #39ff14;
+  border: none;
+  font-weight: bold;
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div class="login" id="login">
-  <div class="login-box">
-    <h2>🔐 Адмін вхід</h2>
-
-    <input id="user" placeholder="Логін">
-    <input id="pass" type="password" placeholder="Пароль (до 6 символів)">
-
-    <button onclick="login()">Увійти</button>
-  </div>
-</div>
-
 <!-- HEADER -->
 <div class="header">
-  <div class="left">
+  <div style="display:flex;align-items:center;gap:10px;">
     <img src="Logo BG.svg" class="logo">
     <h1>Beast Gym</h1>
   </div>
@@ -175,31 +111,30 @@ a { color: #ff3cac; text-decoration: none; }
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
   <div class="menu" id="menu">
-    <a onclick="openTab('clubs')">Клуби</a>
+    <a onclick="openTab('clubs')">Клуб</a>
     <a onclick="openTab('trainers')">Тренери</a>
     <a onclick="openTab('about')">Про нас</a>
     <a onclick="openTab('prices')">Тарифи</a>
-    <a onclick="openTab('admin')">⚙ Адмін</a>
+    <a onclick="openTab('rules')">Правила</a>
+    <a onclick="openTab('admin')">Адмін</a>
   </div>
 </div>
-<!-- відео -->
-<div class="container" id="container">
-  <div class="card">
-  <h2>🎥 Відео залу</h2>
 
-  <video controls>
-    <source src="./video.mp4" type="video/mp4">
-    Ваш браузер не підтримує відео
-  </video>
-
-</div>
-
-<!-- CLUBS -->
+<!-- CLUB -->
 <div id="clubs" class="tab active">
+
   <div class="card">
     <h2>🏋️ Зал</h2>
     <p>Сучасний фітнес-клуб у Черкасах</p>
   </div>
+
+  <div class="card">
+    <h2>🎥 Відео залу</h2>
+    <video controls>
+      <source src="./video.mp4" type="video/mp4">
+    </video>
+  </div>
+
 </div>
 
 <!-- TRAINERS -->
@@ -214,90 +149,160 @@ a { color: #ff3cac; text-decoration: none; }
 <div id="about" class="tab">
   <div class="card">
     <h2>📍 Про нас</h2>
-    <p>Beast Gym — преміум фітнес клуб</p>
+
+    <p>У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.</p>
+
+    <p>Команда тренерів допоможе скласти програму та навчить техніки.</p>
+
+    <p>Регулярні акції для клієнтів.</p>
+
+    <p>Зручне розташування в місті Черкаси.</p>
+
+    <p>Instagram: @beastgym_ck</p>
   </div>
 </div>
 
 <!-- PRICES -->
 <div id="prices" class="tab">
   <div class="card">
-    <h2>💰 Тарифи</h2>
-    <p>Абонементи доступні в клубі</p>
+    <h2>💰 ТАРИФИ</h2>
+
+    <p>👨‍👩‍👧 Діти + батьки — 1400 грн (на двох)</p>
+    <p>🎖 Військові — 600 грн</p>
+
+    <hr>
+
+    <h3>🏋️ Повний день</h3>
+    <p>1 місяць — 900 грн</p>
+    <p>3 місяці — 2500 грн</p>
+    <p>6 місяців — 4600 грн</p>
+
+    <hr>
+
+    <h3>🌅 Ранковий (08:00–15:00)</h3>
+    <p>1 місяць — 850 грн</p>
+    <p>3 місяці — 2350 грн</p>
+    <p>6 місяців — 4300 грн</p>
+
+    <hr>
+
+    <h3>🎓 Студент</h3>
+    <p>1 місяць — 850 грн</p>
+    <p>3 місяці — 2350 грн</p>
+    <p>6 місяців — 4300 грн</p>
+
+    <hr>
+
+    <h3>👨‍👩‍👧 Сімейна (від 3 осіб)</h3>
+    <p>1 місяць — 800 грн</p>
+    <p>3 місяці — 2200 грн</p>
+    <p>6 місяців — 4000 грн</p>
+
+    <hr>
+
+    <h3>🏆 Персональні</h3>
+    <p>1 тренування — 300 грн</p>
+    <p>6 тренувань — 1500 грн</p>
+    <p>12 тренувань — 2400 грн</p>
+  </div>
+</div>
+
+<!-- RULES -->
+<div id="rules" class="tab">
+  <div class="card">
+    <h2>📋 Правила</h2>
+
+    <h3>🧼 Гігієна</h3>
+    <p>• Змінне взуття обов'язкове</p>
+    <p>• Рушник під час тренування</p>
+
+    <h3>🏋️ Абонементи</h3>
+    <p>• Скасування за 2 години</p>
+    <p>• Заморозка до 7 днів</p>
+    <p>• Ранковий — 08:00–15:00</p>
+
+    <h3>⚠️ Безпека</h3>
+    <p>• Повідомляйте про поломки</p>
+    <p>• Адміністрація не відповідає за речі</p>
   </div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin" class="tab">
   <div class="card">
-    <h2>⚙ Адмін-панель</h2>
+    <h2>⚙ Адмін</h2>
+
+    <input id="user" placeholder="Логін">
+    <input id="pass" placeholder="Пароль">
+
+    <button onclick="login()">Увійти</button>
+
+    <hr>
 
     <input id="name" placeholder="Ім'я">
-    <input id="photo" placeholder="Фото URL">
+    <input id="photo" placeholder="Фото">
     <input id="insta" placeholder="Instagram">
 
-    <button onclick="addTrainer()">Додати</button>
-  </div>
-</div>
+    <button onclick="addTrainer()">Додати тренера</button>
 
+    <p id="status"></p>
+  </div>
 </div>
 
 <script>
 
 let isAuth = false;
 
-/* LOGIN */
-function login() {
-  let user = document.getElementById("user").value;
-  let pass = document.getElementById("pass").value;
-
-  if (user === "admin" && pass === "123456") {
-    document.getElementById("login").style.display = "none";
-    isAuth = true;
-    alert("Вхід успішний ✅");
-  } else {
-    alert("Невірний логін або пароль ❌");
-  }
-}
-/* MENU */
-function toggleMenu() {
+function toggleMenu(){
   let m = document.getElementById("menu");
-  m.style.display = (m.style.display === "flex") ? "none" : "flex";
+  m.style.display = m.style.display === "flex" ? "none" : "flex";
 }
 
-/* TABS */
-function openTab(id) {
+function openTab(id){
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   document.getElementById("menu").style.display = "none";
 }
 
-/* ADD TRAINER */
-function addTrainer() {
-  if (!isAuth) return alert("Треба увійти як адмін!");
+/* LOGIN */
+function login(){
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
+
+  if(u==="admin" && p==="123456"){
+    isAuth = true;
+    document.getElementById("status").innerText = "Вхід успішний ✅";
+  } else {
+    isAuth = false;
+    document.getElementById("status").innerText = "Помилка ❌";
+  }
+}
+
+/* TRAINERS */
+function addTrainer(){
+  if(!isAuth) return alert("Увійди як адмін");
 
   let name = document.getElementById("name").value;
   let photo = document.getElementById("photo").value;
   let insta = document.getElementById("insta").value;
 
-  let data = JSON.parse(localStorage.getItem("trainers")) || [];
-  data.push({ name, photo, insta });
+  let data = JSON.parse(localStorage.getItem("t")) || [];
+  data.push({name,photo,insta});
 
-  localStorage.setItem("trainers", JSON.stringify(data));
-
+  localStorage.setItem("t", JSON.stringify(data));
   render();
 }
 
-/* SHOW */
-function render() {
+function render(){
   let box = document.getElementById("trainerList");
   box.innerHTML = "";
 
-  let data = JSON.parse(localStorage.getItem("trainers")) || [];
+  let data = JSON.parse(localStorage.getItem("t")) || [];
 
-  data.forEach(t => {
+  data.forEach(t=>{
     box.innerHTML += `
-      <div class="trainer">
-        <img src="${t.photo}">
+      <div class="card">
+        <img src="${t.photo}" style="width:100%;border-radius:10px;">
         <h3>${t.name}</h3>
         <a href="${t.insta}" target="_blank">Instagram</a>
       </div>
@@ -306,30 +311,6 @@ function render() {
 }
 
 render();
-
-/* SWIPE */
-let startX = 0;
-let tabs = ["clubs","trainers","about","prices","admin"];
-let index = 0;
-
-document.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-document.addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
-  let diff = startX - endX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) index++;
-    else index--;
-
-    if (index < 0) index = 0;
-    if (index >= tabs.length) index = tabs.length - 1;
-
-    openTab(tabs[index]);
-  }
-});
 
 </script>
 
