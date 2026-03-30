@@ -1,14 +1,22 @@
 /* 🔥 ГОЛОВНИЙ СТИЛЬ */
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b0b;
+  color:white;
+}
+
 nav{
   position:fixed;
   right:0;
   top:0;
   width:220px;
-  height:100vh; /* 🔥 ВАЖЛИВО */
+  height:100vh;
   background:#111;
   transform:translateX(100%);
   transition:0.3s ease;
-  z-index:999; /* 🔥 щоб було поверх всього */
+  z-index:999;
   padding-top:60px;
 }
 
