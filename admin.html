@@ -8,39 +8,120 @@
 
 <body>
 
-<h1 style="color:#ffd000; text-align:center;">ADMIN PANEL</h1>
+<h1 style="color:#ffd000;text-align:center;">🔥 ADMIN PANEL</h1>
 
-<!-- МЕНЮ -->
-<div class="card">
-<h2>Редагування меню</h2>
-
-<input id="linkText" placeholder="Назва (Напр: Головна)">
-<input id="linkUrl" placeholder="URL (index.html)">
-
-<button onclick="addMenu()">Додати пункт</button>
+<!-- 🔐 простий захист -->
+<div id="login">
+  <input id="user" placeholder="Логін">
+  <input id="pass" type="password" placeholder="Пароль">
+  <button onclick="login()">Увійти</button>
 </div>
 
-<!-- ТРЕНЕРИ -->
-<div class="card">
-<h2>Додати тренера</h2>
+<!-- PANEL -->
+<div id="panel" style="display:none;">
 
-<input id="trainerName" placeholder="Ім'я тренера">
-<input id="trainerDesc" placeholder="Опис">
+  <!-- MENU -->
+  <div class="card">
+    <h2>📌 Меню</h2>
+    <input id="menuText" placeholder="Назва">
+    <input id="menuUrl" placeholder="URL (index.html)">
+    <button onclick="addMenu()">Додати пункт</button>
+  </div>
 
-<button onclick="addTrainer()">Додати</button>
-</div>
+  <!-- TEXT (сторінки) -->
+  <div class="card">
+    <h2>📝 Текст сторінки</h2>
+    <input id="page" placeholder="about.html / price.html">
+    <textarea id="text" placeholder="Новий текст"></textarea>
+    <button onclick="updateText()">Оновити текст</button>
+  </div>
 
-<!-- ФОТО -->
-<div class="card">
-<h2>Додати фото</h2>
+  <!-- TRAINERS -->
+  <div class="card">
+    <h2>💪 Тренери</h2>
+    <input id="tName" placeholder="Ім'я">
+    <input id="tDesc" placeholder="Опис">
+    <button onclick="addTrainer()">Додати</button>
+  </div>
 
-<input id="photoUrl" placeholder="URL фото">
-<button onclick="addPhoto()">Додати фото</button>
+  <!-- PHOTOS -->
+  <div class="card">
+    <h2>📸 Фото</h2>
+    <input id="photo" placeholder="URL фото">
+    <button onclick="addPhoto()">Додати фото</button>
+  </div>
+
+  <button onclick="logout()">Вийти</button>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
-<script src="admin.js"></script>
+<script>
+firebase.initializeApp({
+  apiKey: "YOUR_KEY",
+  projectId: "YOUR_PROJECT"
+});
+
+const db = firebase.firestore();
+
+/* 🔐 LOGIN */
+function login(){
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  if(u==="admin" && p==="1234"){
+    localStorage.setItem("admin","true");
+    document.getElementById("login").style.display="none";
+    document.getElementById("panel").style.display="block";
+  } else {
+    alert("Невірно");
+  }
+}
+
+/* 📌 MENU */
+function addMenu(){
+  db.collection("menu").add({
+    text: menuText.value,
+    url: menuUrl.value
+  });
+}
+
+/* 📝 TEXT */
+function updateText(){
+  db.collection("pages").doc(page.value).set({
+    text: text.value
+  });
+}
+
+/* 💪 TRAINER */
+function addTrainer(){
+  db.collection("trainers").add({
+    name: tName.value,
+    desc: tDesc.value
+  });
+}
+
+/* 📸 PHOTO */
+function addPhoto(){
+  db.collection("photos").add({
+    url: photo.value,
+    time: Date.now()
+  });
+}
+
+/* 🚪 LOGOUT */
+function logout(){
+  localStorage.removeItem("admin");
+  location.reload();
+}
+
+/* auto login */
+if(localStorage.getItem("admin")==="true"){
+  login.style.display="none";
+  panel.style.display="block";
+}
+</script>
+
 </body>
 </html>
