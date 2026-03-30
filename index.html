@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 12px 15px;
   background: #111;
   border-bottom: 2px solid #39ff14;
 }
@@ -29,31 +29,46 @@ body {
   gap: 10px;
 }
 
-.logo {
-  width: 60px;
-}
+.logo { width: 55px; }
 
 h1 {
   color: yellow;
+  font-size: 20px;
   margin: 0;
 }
 
-/* MENU */
+/* MENU BUTTON */
+.menu-btn {
+  background: none;
+  border: 1px solid #39ff14;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
 .menu {
-  display: flex;
-  gap: 15px;
+  display: none;
+  flex-direction: column;
+  background: #111;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  border: 1px solid #39ff14;
 }
 
 .menu a {
+  padding: 10px;
   color: white;
   text-decoration: none;
+  border-bottom: 1px solid #222;
 }
 
 .menu a:hover {
   color: #39ff14;
 }
 
-/* SECTIONS */
+/* CONTENT */
 .container {
   padding: 15px;
 }
@@ -64,39 +79,31 @@ h1 {
   margin: 15px 0;
   border-radius: 12px;
   border: 1px solid #39ff14;
-  box-shadow: 0 0 12px #39ff14;
+  box-shadow: 0 0 10px #39ff14;
 }
 
-h2 {
-  color: yellow;
-}
+h2 { color: yellow; }
 
-/* VIDEO */
+/* VIDEO FIX */
 video {
   width: 100%;
   max-width: 500px;
   border-radius: 10px;
 }
 
-/* INSTAGRAM */
+/* INSTAGRAM ICON */
 .insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #ff3cac;
   text-decoration: none;
   font-weight: bold;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
+/* TABS */
+.tab { display: none; }
+.active { display: block; }
 </style>
 </head>
 
@@ -110,75 +117,110 @@ video {
     <h1>Beast Gym</h1>
   </div>
 
-  <div class="menu">
-    <a href="#">Клуби</a>
-    <a href="#">Тренери</a>
-    <a href="#">Про нас</a>
-    <a href="#">Тарифи</a>
-    <a href="#">Блог</a>
-  </div>
+  <button class="menu-btn" onclick="toggleMenu()">☰ Меню</button>
 
+</div>
+
+<!-- MENU -->
+<div class="menu" id="menu">
+  <a onclick="openTab('clubs')">Клуби</a>
+  <a onclick="openTab('trainers')">Тренери</a>
+  <a onclick="openTab('about')">Про нас</a>
+  <a onclick="openTab('prices')">Тарифи</a>
+  <a onclick="openTab('blog')">Блог</a>
 </div>
 
 <div class="container">
 
-<!-- HERO VIDEO -->
-<div class="card">
-  <h2>💪 Beast Gym</h2>
-  <p>Сучасний спортивний комплекс у Черкасах</p>
+<!-- КЛУБИ -->
+<div id="clubs" class="tab active">
+  <div class="card">
+    <h2>🏋️ Клуб</h2>
+    <p>Сучасний зал у Черкасах</p>
+  </div>
 
-  <video controls>
-    <source src="video.mp4" type="video/mp4">
-  </video>
+  <div class="card">
+    <h2>🎥 Відео залу</h2>
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
 </div>
 
-<!-- ABOUT -->
-<div class="card">
-  <h2>📍 Про нас</h2>
-  <p>
-    У Beast Gym ти знайдеш сучасні тренажери для силових та кардіо тренувань.
-    Зал підходить для новачків і професіоналів.
-  </p>
+<!-- ТРЕНЕРИ -->
+<div id="trainers" class="tab">
+  <div class="card">
+    <h2>🏆 Тренери</h2>
+    <p>Тут будуть тренери (адмін зможе редагувати)</p>
+  </div>
 </div>
 
-<!-- PRICES -->
-<div class="card">
-  <h2>💰 Тарифи</h2>
+<!-- ПРО НАС -->
+<div id="about" class="tab">
+  <div class="card">
+    <h2>📍 Про нас</h2>
 
-  <p><b>Ранковий</b><br>
-  1 міс — 250 грн<br>
-  3 міс — 900 грн<br>
-  6 міс — 2500 грн</p>
+    <p>
+      У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
+      Зал обладнаний для новачків і профі.
+    </p>
 
-  <p><b>Студентський</b><br>
-  1 міс — 850 грн<br>
-  3 міс — 2350 грн<br>
-  6 міс — 4300 грн</p>
+    <p>
+      Команда тренерів допоможе скласти програму та досягти результатів.
+    </p>
 
-  <p><b>Сімейна карта (від 3 осіб)</b><br>
-  1 міс — 800 грн<br>
-  3 міс — 2200 грн<br>
-  6 міс — 4000 грн</p>
+    <p><b>Адреса:</b> м. Черкаси, вул. Грушевського, 110</p>
 
-  <p><b>Діти + батьки</b> — 1400 грн (на двох)</p>
-  <p><b>Військовослужбовці</b> — 600 грн</p>
+    <p><b>Графік:</b><br>
+    ПН-ПТ 8:00–21:00<br>
+    СБ 9:00–16:00<br>
+    НД вихідний</p>
+  </div>
 </div>
 
-<!-- LOCATION -->
-<div class="card">
-  <h2>📍 Локація</h2>
-  <p>м. Черкаси, вул. Грушевського, 110</p>
+<!-- ТАРИФИ -->
+<div id="prices" class="tab">
+  <div class="card">
+    <h2>💰 Тарифи</h2>
+
+    <p>Ранковий — 250 / 900 / 2500 грн</p>
+    <p>Студент — 850 / 2350 / 4300 грн</p>
+    <p>Сімейна (від 3 осіб)</p>
+
+    <p>Діти + батьки — 1400 грн (на двох)</p>
+    <p>Військові — 600 грн</p>
+  </div>
 </div>
 
-<!-- INSTAGRAM -->
-<div class="card">
-  <h2>📸 Instagram</h2>
-  <a class="insta" href="https://www.instagram.com/beastgym_ck/" target="_blank">
-    @beastgym_ck
-  </a>
+<!-- BLOG -->
+<div id="blog" class="tab">
+  <div class="card">
+    <h2>📸 Instagram</h2>
+
+    <a class="insta"
+       href="https://www.instagram.com/beastgym_ck/"
+       target="_blank">
+       📷 @beastgym_ck
+    </a>
+  </div>
 </div>
 
 </div>
+
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+function openTab(tabId) {
+  let tabs = document.querySelectorAll(".tab");
+  tabs.forEach(t => t.classList.remove("active"));
+
+  document.getElementById(tabId).classList.add("active");
+  document.getElementById("menu").style.display = "none";
+}
+</script>
 
 </body>
 </html>
