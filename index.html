@@ -1,283 +1,275 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Beast Gym</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0a0a0a;
-  color: white;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#0f0f0f;
+  color:white;
 }
 
 /* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  background: #111;
-  border-bottom: 2px solid #39ff14;
-  position: relative;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  border-bottom:2px solid #39ff14;
+  position:sticky;
+  top:0;
+  background:#0f0f0f;
+  z-index:10;
 }
 
-.logo {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-h1 {
-  font-size: 18px;
-  color: yellow;
-  margin: 0;
+.logo img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
 }
 
-.menu-btn {
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+nav a{
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
 }
 
-.menu {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  right: 10px;
-  top: 60px;
-  background: #111;
-  border: 1px solid #39ff14;
-  min-width: 180px;
-  z-index: 1000;
+nav a:hover{
+  color:#39ff14;
 }
 
-.menu a {
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  border-bottom: 1px solid #222;
-  cursor: pointer;
+/* SECTIONS */
+section{
+  padding:50px 20px;
 }
 
-/* TABS */
-.tab { display: none; padding: 15px; }
-.active { display: block; }
+h2{
+  color:#39ff14;
+  margin-bottom:20px;
+}
 
-/* CARD */
-.card {
-  background: #151515;
-  border: 1px solid #39ff14;
-  padding: 15px;
-  margin: 12px 0;
-  border-radius: 12px;
+.card{
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+.yellow{color:#ffd000;}
+
+.price{
+  color:#ffd000;
+  font-weight:bold;
 }
 
 /* SLIDER */
-.slider {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid #39ff14;
-  position: relative;
+.slider{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  border-radius:12px;
 }
 
-.slides {
-  display: flex;
-  transition: transform 0.4s ease;
+.slides{
+  display:flex;
+  transition:transform 0.5s ease;
 }
 
-.slides img {
-  width: 100%;
-  flex-shrink: 0;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+.slides img{
+  width:100%;
+  height:450px;
+  object-fit:cover;
+  flex-shrink:0;
 }
 
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  font-size: 22px;
-  padding: 5px 10px;
-  cursor: pointer;
+.btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#39ff14;
+  border:none;
+  padding:10px;
+  cursor:pointer;
 }
 
-.left-btn { left: 5px; }
-.right-btn { right: 5px; }
+.prev{left:10px;}
+.next{right:10px;}
 
-/* INPUT */
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 6px 0;
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:15px;
 }
 
-button {
-  padding: 10px;
-  background: #39ff14;
-  border: none;
-  font-weight: bold;
+.box{
+  background:#1a1a1a;
+  padding:15px;
+  border-radius:12px;
 }
 
-/* MAP */
-iframe {
-  width: 100%;
-  height: 300px;
-  border: 0;
-  border-radius: 12px;
+/* FOOTER */
+footer{
+  background:#0a0a0a;
+  border-top:2px solid #39ff14;
+  padding:40px 20px;
+  margin-top:40px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+footer a{
+  color:white;
+  text-decoration:none;
+  display:block;
+  margin:5px 0;
+}
+
+footer a:hover{
+  color:#39ff14;
+}
+
+.small{
+  opacity:0.8;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div style="display:flex;align-items:center;gap:10px;">
-    
-    <!-- 🔥 ВИПРАВЛЕНО ЛОГО -->
-    <img src="Логотип BG.svg" class="logo">
-
-    <h1>Beast Gym</h1>
+<header>
+  <div class="logo">
+    <img src="BG.svg">
+    <h2>Beast Gym</h2>
   </div>
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav>
+    <a href="#photos">Фото</a>
+    <a href="#price">Тарифи</a>
+    <a href="#rules">Правила</a>
+    <a href="#map">Контакти</a>
+  </nav>
+</header>
 
-  <div class="menu" id="menu">
-    <a onclick="openTab('clubs')">Клуб</a>
-    <a onclick="openTab('trainers')">Тренери</a>
-    <a onclick="openTab('about')">Про нас</a>
-    <a onclick="openTab('prices')">Тарифи</a>
-    <a onclick="openTab('rules')">Правила</a>
-    <a onclick="openTab('map')">Адреса</a>
-    <a onclick="openTab('admin')">Адмін</a>
-  </div>
-</div>
-
-<!-- CLUB -->
-<div id="clubs" class="tab active">
-  <div class="card">
-    <h2>📸 Фото залу</h2>
-
-    <div class="slider">
-      <button class="slider-btn left-btn" onclick="move(-1)">‹</button>
-
-      <div class="slides" id="slides">
-        <img src="photo.jpg">
-        <img src="photo1.jpg">
-        <img src="photo3.jpg">
-        <img src="photo4.jpg">
-      </div>
-
-      <button class="slider-btn right-btn" onclick="move(1)">›</button>
+<!-- PHOTOS -->
+<section id="photos">
+  <h2>📸 Фото залу</h2>
+  <div class="slider">
+    <button class="btn prev" onclick="move(-1)">‹</button>
+    <div class="slides" id="slides">
+      <img src="photo.jpg">
+      <img src="photo1.jpg">
+      <img src="photo3.jpg">
+      <img src="photo4.jpg">
     </div>
+    <button class="btn next" onclick="move(1)">›</button>
   </div>
-</div>
+</section>
 
-<!-- TRAINERS -->
-<div id="trainers" class="tab">
+<!-- PRICE -->
+<section id="price">
+  <h2>💰 PRICE LIST</h2>
+
   <div class="card">
-    <h2>🏆 Тренери</h2>
-    <div id="trainerList"></div>
+
+    <h3 class="yellow">АБОНЕМЕНТ ПОВНОГО ДНЯ</h3>
+    <p>Разове — <span class="price">250 грн</span></p>
+    <p>1 міс — <span class="price">900 грн</span></p>
+    <p>3 міс — <span class="price">2500 грн</span></p>
+    <p>6 міс — <span class="price">4600 грн</span></p>
+
+    <h3 class="yellow">РАНКОВИЙ</h3>
+    <p>1 міс — <span class="price">850 грн</span></p>
+    <p>3 міс — <span class="price">2350 грн</span></p>
+    <p>6 міс — <span class="price">4300 грн</span></p>
+
+    <h3 class="yellow">СТУДЕНТ</h3>
+    <p>1 міс — <span class="price">850 грн</span></p>
+
+    <h3 class="yellow">СІМЕЙНА КАРТА</h3>
+    <p><span class="yellow">від 3 осіб</span></p>
+    <p>1 міс — <span class="price">800 грн</span></p>
+
+    <h3 class="yellow">ДІТИ + БАТЬКИ</h3>
+    <p><span class="price">1400 грн (на двох)</span></p>
+
+    <h3 class="yellow">ВІЙСЬКОВОСЛУЖБОВЦІ</h3>
+    <p><span class="price">600 грн</span></p>
+
+    <h3 class="yellow">ПЕРСОНАЛЬНІ</h3>
+    <p>1 тренування — <span class="price">300 грн</span></p>
+    <p>6 тренувань — <span class="price">1500 грн</span></p>
+    <p>12 тренувань — <span class="price">2400 грн</span></p>
+
   </div>
-</div>
-
-<!-- ABOUT -->
-<div id="about" class="tab">
-  <div class="card">
-    <h2>📍 Про нас</h2>
-    <p>Сучасний фітнес-клуб у Черкасах</p>
-    <p>Професійні тренери та індивідуальні програми</p>
-    <p>Instagram: @beastgym_ck</p>
-  </div>
-</div>
-
-<!-- PRICES -->
-<div id="prices" class="tab">
-  <div class="card">
-    <h2>💰 Тарифи</h2>
-
-    <p>👨‍👩‍👧 Сімейна (від 3 осіб)</p>
-    <p>1 місяць — 900 грн</p>
-    <p>3 місяці — 2500 грн</p>
-    <p>6 місяців — 4600 грн</p>
-
-    <p>🎖 Військові — 600 грн</p>
-    <p>👶 Діти + батьки — 1400 грн</p>
-  </div>
-</div>
+</section>
 
 <!-- RULES -->
-<div id="rules" class="tab">
+<section id="rules">
+  <h2>📜 Правила</h2>
+
   <div class="card">
-    <h2>📋 Правила</h2>
-    <p>• Змінне взуття</p>
+    <p>• Вхід лише у змінному взутті</p>
     <p>• Рушник обов’язковий</p>
-    <p>• Не псувати обладнання</p>
+    <p>• Скасування за 2 години</p>
+    <p>• Заморозка 7 днів (1 раз/міс)</p>
+    <p>• Адміністрація не відповідає за речі</p>
   </div>
-</div>
+</section>
 
-<!-- MAP -->
-<div id="map" class="tab">
+<!-- MAP + FOOTER -->
+<section id="map">
+  <h2>📍 Адреса</h2>
+
   <div class="card">
-    <h2>📍 Адреса</h2>
-
-    <p>вул. Михайла Грушевського, 110, Черкаси</p>
-
-    <iframe
-      src="https://www.google.com/maps?q=49.4469666,32.0508936&z=16&output=embed">
-    </iframe>
+    вул. Михайла Грушевського, 110, Черкаси, 18000
   </div>
-</div>
+</section>
 
-<!-- ADMIN -->
-<div id="admin" class="tab">
-  <div class="card">
-    <h2>⚙ Адмін</h2>
+<footer>
+  <div class="footer-grid">
 
-    <input id="user" placeholder="Логін">
-    <input id="pass" placeholder="Пароль">
+    <div>
+      <h3 style="color:#39ff14;">🕒 Графік</h3>
+      <p class="small">
+        Пн–Пт: 08:00–21:00<br>
+        Сб: 09:00–16:00<br>
+        Нд: вихідний
+      </p>
+    </div>
 
-    <button onclick="login()">Увійти</button>
+    <div>
+      <h3 style="color:#39ff14;">📱 Соцмережі</h3>
+      <a href="https://www.instagram.com/">Instagram</a>
+      <a href="https://www.tiktok.com/@beast.gym19">TikTok</a>
+    </div>
 
-    <hr>
-
-    <input id="name" placeholder="Ім'я">
-    <input id="photo" placeholder="Фото URL">
-    <input id="insta" placeholder="Instagram">
-
-    <button onclick="addTrainer()">Додати</button>
-
-    <p id="status"></p>
   </div>
-</div>
+</footer>
 
 <script>
-
 let indexSlide = 0;
-let isAuth = false;
 
-/* MENU */
-function toggleMenu(){
-  let m = document.getElementById("menu");
-  m.style.display = m.style.display === "flex" ? "none" : "flex";
-}
-
-function openTab(id){
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.getElementById("menu").style.display = "none";
-}
-
-/* SLIDER */
 function move(dir){
   let slides = document.getElementById("slides");
   let total = slides.children.length;
@@ -290,8 +282,7 @@ function move(dir){
   slides.style.transform = `translateX(-${indexSlide * 100}%)`;
 }
 
-setInterval(() => move(1), 4000);
-
+setInterval(()=>move(1),4000);
 </script>
 
 </body>
