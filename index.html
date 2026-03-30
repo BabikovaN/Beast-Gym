@@ -2,23 +2,26 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beast Gym</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- 🔥 HEADER -->
 <header>
 
-  <!-- 🔥 ЛОГО -->
+  <!-- 🔥 LOGO -->
   <div class="logo">
-    <img src="Logo BG.svg" alt="logo">
+    <img src="Logo BG.svg" alt="Beast Gym logo">
   </div>
 
-  <!-- 🔥 БУРГЕР -->
+  <!-- 🔥 BURGER -->
   <div class="burger" onclick="toggleMenu()">☰</div>
 
-  <!-- 🔥 МЕНЮ -->
+  <!-- 🔥 MENU -->
   <nav id="menu">
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
@@ -26,8 +29,6 @@
     <a href="rules.html">Правила</a>
     <a href="photos.html">Фото</a>
     <a href="contacts.html">Контакти</a>
-
-    <!-- 🔥 АДМІН -->
     <a href="admin.html">Адмін</a>
   </nav>
 
@@ -35,8 +36,32 @@
 
 <!-- 🔥 HERO -->
 <section class="hero">
-  <h1>BEAST GYM</h1>
-  <p>Твоя сила починається тут</p>
+  <div class="hero-content">
+    <h1>BEAST GYM</h1>
+    <p>Твоя сила починається тут</p>
+
+    <a href="price.html" class="btn">Переглянути прайс</a>
+  </div>
+</section>
+
+<!-- 🔥 QUICK INFO -->
+<section class="cards">
+
+  <div class="card">
+    <h3>💪 Сучасні тренажери</h3>
+    <p>Новітнє обладнання для всіх груп м’язів</p>
+  </div>
+
+  <div class="card">
+    <h3>🔥 Професійні тренери</h3>
+    <p>Допоможуть досягти результату швидше</p>
+  </div>
+
+  <div class="card">
+    <h3>⚡ 24/7 доступ</h3>
+    <p>Тренуйся коли хочеш</p>
+  </div>
+
 </section>
 
 <!-- 🔥 JS -->
