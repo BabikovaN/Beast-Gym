@@ -1,140 +1,91 @@
 /* 🔥 ГОЛОВНИЙ СТИЛЬ */
 
-/* 🔥 RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial;
 }
 
-/* 🔥 ОСНОВА */
 body{
   background:#000;
-  color:white;
+  color:#fff;
 }
 
-/* =========================
-   🔥 HEADER
-========================= */
+/* HEADER */
 header{
-  position:sticky;
-  top:0;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:10px 20px;
-  background:#000;
-  z-index:1000;
-  border-bottom:1px solid #39ff14;
+  align-items:center;
 }
 
-/* 🔥 LOGO (маленьке зліва) */
 .logo img{
-  height:32px;
-  width:auto;
+  height:30px;
 }
 
-/* 🔥 BURGER (справа) */
 .burger{
-  font-size:28px;
   color:#39ff14;
+  font-size:28px;
   cursor:pointer;
   text-shadow:0 0 10px #39ff14;
 }
 
-/* =========================
-   🔥 MENU CYBERPUNK
-========================= */
+/* MENU */
 nav{
   position:fixed;
   right:0;
   top:0;
-  width:260px;
+  width:240px;
   height:100vh;
-  background:#0a0a0a;
-  transform:translateX(120%);
-  transition:0.4s ease;
-  z-index:999;
-  padding-top:80px;
-
+  background:#111;
+  transform:translateX(100%);
+  transition:0.3s;
+  padding-top:70px;
   border-left:2px solid #39ff14;
-  box-shadow:-15px 0 40px rgba(57,255,20,0.4);
 }
 
 nav.active{
   transform:translateX(0);
 }
 
-/* 🔥 MENU LINKS */
 nav a{
   display:block;
-  padding:14px 20px;
+  padding:12px;
   color:#39ff14;
   text-decoration:none;
-  font-weight:bold;
   text-shadow:0 0 10px #39ff14;
 }
 
-nav a:hover{
-  background:rgba(57,255,20,0.1);
-  transform:translateX(-5px);
-}
-
-/* =========================
-   🔥 HERO
-========================= */
-.hero{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.hero h1{
-  color:#ffd000; /* 🔥 жовтий заголовок */
-  font-size:48px;
-}
-
-.hero p{
-  color:white;
-}
-
-/* =========================
-   🔥 CARDS (острівки)
-========================= */
+/* CARDS */
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  padding:30px 20px;
+  padding:20px;
 }
 
 .card{
-  background:#1a1a1a; /* темно-сірий */
-  padding:20px;
-  border-radius:12px;
-  border:1px solid #222;
-  transition:0.3s ease;
+  background:#1a1a1a;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:10px;
 }
 
-/* 🔥 неон при наведенні */
 .card:hover{
-  border:1px solid #39ff14;
-  box-shadow:0 0 20px rgba(57,255,20,0.4);
-  transform:translateY(-6px);
+  box-shadow:0 0 15px #39ff14;
 }
 
-/* 🔥 заголовки (жовті) */
-.card h3{
-  color:#ffd000;
-}
-
-/* 🔥 текст (білий) */
-.card p{
-  color:white;
-}
-
-/* 🔥 цифри (жовті) */
-.price, .number{
+.price-title{
   color:#ffd000;
   font-weight:bold;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #39ff14;
+}
+
+.footer a{
+  color:#39ff14;
+  text-decoration:none;
 }
