@@ -1,21 +1,15 @@
 /* 🔥 ГОЛОВНИЙ СТИЛЬ */
-
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0b0b0b;
-  color:white;
-}
-
-/* меню */
 nav{
   position:fixed;
   right:0;
   top:0;
-  width:200px;
+  width:220px;
+  height:100vh; /* 🔥 ВАЖЛИВО */
   background:#111;
   transform:translateX(100%);
-  transition:0.3s;
+  transition:0.3s ease;
+  z-index:999; /* 🔥 щоб було поверх всього */
+  padding-top:60px;
 }
 
 nav.active{
@@ -27,12 +21,20 @@ nav.active{
   font-size:30px;
   cursor:pointer;
   color:#39ff14;
+  position:relative;
+  z-index:1000;
 }
 
-/* кнопки */
-a{
+/* меню лінки */
+nav a{
   color:white;
   text-decoration:none;
   display:block;
-  padding:10px;
+  padding:12px 20px;
+  transition:0.2s;
+}
+
+nav a:hover{
+  color:#39ff14;
+  background:#1a1a1a;
 }
