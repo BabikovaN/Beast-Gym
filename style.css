@@ -1,5 +1,4 @@
 /* 🔥 ГОЛОВНИЙ СТИЛЬ */
-
 *{
   margin:0;
   padding:0;
@@ -16,19 +15,29 @@ body{
 header{
   display:flex;
   justify-content:space-between;
-  padding:10px 20px;
   align-items:center;
+  padding:12px 16px;
 }
 
+/* LOGO 3D + NEON */
 .logo img{
-  height:30px;
+  height:42px;
+  filter: drop-shadow(0 0 10px #39ff14);
+  animation:pulse 2s infinite;
 }
 
+@keyframes pulse{
+  0%{transform:scale(1); filter:drop-shadow(0 0 5px #39ff14);}
+  50%{transform:scale(1.05); filter:drop-shadow(0 0 20px #39ff14);}
+  100%{transform:scale(1); filter:drop-shadow(0 0 5px #39ff14);}
+}
+
+/* BURGER MENU BIGGER */
 .burger{
-  color:#39ff14;
-  font-size:28px;
+  font-size:38px;
   cursor:pointer;
-  text-shadow:0 0 10px #39ff14;
+  color:#39ff14;
+  text-shadow:0 0 15px #39ff14;
 }
 
 /* MENU */
@@ -36,13 +45,14 @@ nav{
   position:fixed;
   right:0;
   top:0;
-  width:240px;
+  width:260px;
   height:100vh;
   background:#111;
   transform:translateX(100%);
   transition:0.3s;
-  padding-top:70px;
+  padding-top:80px;
   border-left:2px solid #39ff14;
+  box-shadow: -10px 0 25px rgba(57,255,20,0.3);
 }
 
 nav.active{
@@ -51,22 +61,24 @@ nav.active{
 
 nav a{
   display:block;
-  padding:12px;
+  padding:14px;
   color:#39ff14;
   text-decoration:none;
   text-shadow:0 0 10px #39ff14;
+  font-size:18px;
 }
 
 /* CARDS */
 .cards{
-  padding:20px;
+  padding:12px;
 }
 
 .card{
   background:#1a1a1a;
   padding:15px;
   margin-bottom:15px;
-  border-radius:10px;
+  border-radius:12px;
+  border:1px solid #222;
 }
 
 .card:hover{
@@ -76,6 +88,23 @@ nav a{
 .price-title{
   color:#ffd000;
   font-weight:bold;
+}
+
+/* INSTAGRAM GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:10px;
+}
+
+.gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid #39ff14;
+  box-shadow:0 0 10px #39ff14;
 }
 
 /* FOOTER */
@@ -88,4 +117,12 @@ nav a{
 .footer a{
   color:#39ff14;
   text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .logo img{height:34px;}
+  .burger{font-size:42px;}
+  nav{width:85%;}
+  .gallery img{height:150px;}
 }
