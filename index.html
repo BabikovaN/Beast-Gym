@@ -2,13 +2,14 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beast Gym</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
-  background: #000; /* чорний фон */
+  background: #000;
   color: white;
 }
 
@@ -17,7 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
+  padding: 15px;
   background: #111;
   border-bottom: 2px solid #39ff14;
 }
@@ -33,50 +34,68 @@ body {
 }
 
 h1 {
-  color: yellow; /* жовті букви */
+  color: yellow;
   margin: 0;
 }
 
 /* MENU */
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
 .menu a {
   color: white;
-  margin-left: 15px;
   text-decoration: none;
-  transition: 0.3s;
 }
 
 .menu a:hover {
   color: #39ff14;
 }
 
-/* BLOCKS */
+/* SECTIONS */
 .container {
-  padding: 20px;
+  padding: 15px;
 }
 
 .card {
   background: #1a1a1a;
-  padding: 20px;
+  padding: 15px;
   margin: 15px 0;
   border-radius: 12px;
   border: 1px solid #39ff14;
-  box-shadow: 0 0 15px #39ff14;
+  box-shadow: 0 0 12px #39ff14;
 }
 
-/* TITLES */
 h2 {
   color: yellow;
 }
 
-/* BUTTON */
-.button {
-  display: inline-block;
-  padding: 10px 15px;
-  background: #39ff14;
-  color: black;
-  border-radius: 8px;
+/* VIDEO */
+video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* INSTAGRAM */
+.insta {
+  color: #ff3cac;
   text-decoration: none;
   font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 </style>
 </head>
@@ -87,7 +106,7 @@ h2 {
 <div class="header">
 
   <div class="left">
-    <img src="logo.png" class="logo">
+    <img src="Logo BG.svg" class="logo">
     <h1>Beast Gym</h1>
   </div>
 
@@ -103,63 +122,59 @@ h2 {
 
 <div class="container">
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <div class="card">
-  <h2>💪 Сучасний спортивний комплекс</h2>
-  <p>Beast Gym — місце сили, прогресу та результату</p>
+  <h2>💪 Beast Gym</h2>
+  <p>Сучасний спортивний комплекс у Черкасах</p>
+
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
 </div>
 
 <!-- ABOUT -->
 <div class="card">
   <h2>📍 Про нас</h2>
   <p>
-    У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових та кардіотренувань.
-    Зал обладнаний для новачків і професіоналів.
+    У Beast Gym ти знайдеш сучасні тренажери для силових та кардіо тренувань.
+    Зал підходить для новачків і професіоналів.
   </p>
-</div>
-
-<!-- TRAINERS (заготовка для адміна) -->
-<div class="card">
-  <h2>🏋️ Тренери</h2>
-  <p>Тут буде список тренерів (адмін може редагувати)</p>
-</div>
-
-<!-- VIDEO -->
-<div class="card">
-  <h2>🎥 Наш зал</h2>
-  <video width="300" controls>
-    <source src="video.mp4" type="video/mp4">
-  </video>
 </div>
 
 <!-- PRICES -->
 <div class="card">
   <h2>💰 Тарифи</h2>
 
-  <p><b>Ранковий абонемент</b><br>
+  <p><b>Ранковий</b><br>
   1 міс — 250 грн<br>
   3 міс — 900 грн<br>
   6 міс — 2500 грн</p>
 
-  <p><b>Студентська карта</b><br>
+  <p><b>Студентський</b><br>
   1 міс — 850 грн<br>
   3 міс — 2350 грн<br>
   6 міс — 4300 грн</p>
 
-  <p><b>Сімейна карта</b><br>
+  <p><b>Сімейна карта (від 3 осіб)</b><br>
   1 міс — 800 грн<br>
   3 міс — 2200 грн<br>
   6 міс — 4000 грн</p>
+
+  <p><b>Діти + батьки</b> — 1400 грн (на двох)</p>
+  <p><b>Військовослужбовці</b> — 600 грн</p>
 </div>
 
 <!-- LOCATION -->
 <div class="card">
   <h2>📍 Локація</h2>
+  <p>м. Черкаси, вул. Грушевського, 110</p>
+</div>
 
-  <a class="button"
-     href="https://maps.app.goo.gl/KysfjuyaKVvwTWK79"
-     target="_blank">
-     🗺 Відкрити на карті
+<!-- INSTAGRAM -->
+<div class="card">
+  <h2>📸 Instagram</h2>
+  <a class="insta" href="https://www.instagram.com/beastgym_ck/" target="_blank">
+    @beastgym_ck
   </a>
 </div>
 
