@@ -1,6 +1,11 @@
 // 🔥 МЕНЮ (відкриття/закриття)
-
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
-  document.getElementById("overlay").classList.toggle("active");
 }
+
+// ESC закриває меню
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    document.getElementById("menu").classList.remove("active");
+  }
+});
