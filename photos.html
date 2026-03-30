@@ -4,7 +4,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Фото | Beast Gym</title>
+<title>Beast Gallery</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,17 +24,48 @@
   </nav>
 </header>
 
-<h1 style="text-align:center; color:#ffd000; margin:15px;">
-  BEAST GALLERY
-</h1>
+<h1 style="text-align:center;color:#ffd000;">BEAST GALLERY</h1>
 
-<!-- 🔥 ГАЛЕРЕЯ -->
-<div class="gallery" id="gallery">
-  <img src="photo20.jpg">
-  <img src="photo21.jpg">
-  <img src="photo22.jpg">
-  <img src="photo23.jpg">
-</div>
+<div id="feed"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script>
+firebase.initializeApp({
+  apiKey: "YOUR_KEY",
+  projectId: "YOUR_PROJECT"
+});
+
+const db = firebase.firestore();
+const feed = document.getElementById("feed");
+
+/* 👤 перевірка адміна */
+let isAdmin = localStorage.getItem("admin") === "true";
+
+/* 📸 показ постів */
+db.collection("posts").orderBy("time","desc").onSnapshot(snap=>{
+  feed.innerHTML = "";
+
+  snap.forEach(doc=>{
+    const p = doc.data();
+
+    feed.innerHTML += `
+      <div class="post">
+        <img src="${p.image}">
+        <p>${p.text}</p>
+
+        ${isAdmin ? `<button onclick="deletePost('${doc.id}')">🗑 Видалити</button>` : ""}
+      </div>
+    `;
+  });
+});
+
+/* 🗑 delete */
+function deletePost(id){
+  db.collection("posts").doc(id).delete();
+}
+</script>
 
 <script src="script.js"></script>
 </body>
