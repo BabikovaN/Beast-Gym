@@ -1,1 +1,38 @@
+/* 🔥 ГОЛОВНИЙ СТИЛЬ */
 
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b0b;
+  color:white;
+}
+
+/* меню */
+nav{
+  position:fixed;
+  right:0;
+  top:0;
+  width:200px;
+  background:#111;
+  transform:translateX(100%);
+  transition:0.3s;
+}
+
+nav.active{
+  transform:translateX(0);
+}
+
+/* бургер */
+.burger{
+  font-size:30px;
+  cursor:pointer;
+  color:#39ff14;
+}
+
+/* кнопки */
+a{
+  color:white;
+  text-decoration:none;
+  display:block;
+  padding:10px;
+}
