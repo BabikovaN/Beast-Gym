@@ -1,6 +1,3 @@
-<!-- 🔥 ГОЛОВНА СТОРІНКА -->
-<!-- Тут: hero + короткий опис + кнопки -->
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -11,14 +8,17 @@
 
 <body>
 
-<!-- HEADER -->
-<!-- 👉 логотип + меню -->
 <header>
-  <div class="logo">LOGO</div>
 
-  <!-- 🔥 меню (працює через script.js) -->
+  <!-- 🔥 ЛОГО -->
+  <div class="logo">
+    <img src="Logo-Beast-Gym.png" alt="logo">
+  </div>
+
+  <!-- 🔥 БУРГЕР -->
   <div class="burger" onclick="toggleMenu()">☰</div>
 
+  <!-- 🔥 МЕНЮ -->
   <nav id="menu">
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
@@ -26,16 +26,21 @@
     <a href="rules.html">Правила</a>
     <a href="photos.html">Фото</a>
     <a href="contacts.html">Контакти</a>
+
+    <!-- 🔥 АДМІН -->
+    <a href="admin.html">Адмін</a>
   </nav>
+
 </header>
 
-<!-- HERO -->
-<!-- 👉 велике фото + назва залу -->
+<!-- 🔥 HERO -->
 <section class="hero">
   <h1>BEAST GYM</h1>
   <p>Твоя сила починається тут</p>
 </section>
 
+<!-- 🔥 JS -->
 <script src="script.js"></script>
+
 </body>
 </html>
