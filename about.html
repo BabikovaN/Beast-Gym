@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Про нас | Beast Gym</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="Logo BG.svg" alt="Beast Gym">
+    </a>
+  </div>
+
+  <button class="burger" onclick="toggleMenu()" aria-label="Меню">☰</button>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Тарифи</a>
+    <a href="photos.html">Фото</a>
+    <a href="contacts.html">Контакти</a>
+  </nav>
+</header>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<main class="page">
+
+  <section class="hero-card">
+    <div class="hero-text card">
+      <h1>Про Beast Gym</h1>
+      <p>
+        Beast Gym — сучасний спортивний зал у Черкасах, де є все необхідне
+        для комфортних та результативних тренувань.
+      </p>
+    </div>
+
+    <div class="slider-card card">
+      <div class="slider">
+        <button class="slide-btn prev" onclick="prevSlide()" aria-label="Попереднє фото">‹</button>
+
+        <div class="slides">
+          <img src="photo20.jpg" class="slide active" alt="Зал Beast Gym 1">
+          <img src="photo21.jpg" class="slide" alt="Зал Beast Gym 2">
+          <img src="photo22.jpg" class="slide" alt="Зал Beast Gym 3">
+          <img src="photo23.jpg" class="slide" alt="Зал Beast Gym 4">
+        </div>
+
+        <button class="slide-btn next" onclick="nextSlide()" aria-label="Наступне фото">›</button>
+      </div>
+
+      <div class="dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-grid">
+    <div class="card">
+      <h2>Сучасний зал</h2>
+      <p>
+        У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових
+        та кардіотренувань. Зал обладнаний усім необхідним як для початківців,
+        так і для досвідчених спортсменів.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Команда тренерів</h2>
+      <p>
+        Команда Beast Gym складається з досвідчених тренерів, які допоможуть
+        скласти індивідуальну програму тренувань, навчать правильної техніки
+        та підтримуватимуть на кожному етапі твого прогресу.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Індивідуальний підхід</h2>
+      <p>
+        Кожен із тренерів має великий досвід, що допоможе тобі досягти бажаних
+        результатів у схудненні, наборі м’язової маси чи покращенні фізичної форми
+        з адаптацією під твій рівень підготовки.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Акції та пропозиції</h2>
+      <p>
+        У Beast Gym регулярно проводяться акції та спеціальні пропозиції
+        для нових і постійних клієнтів.
+      </p>
+    </div>
+  </section>
+
+  <section class="card location-card">
+    <h2>Зручне розташування</h2>
+    <p>
+      Зал розташований у зручному місці, до якого легко дістатися як громадським
+      транспортом, так і власним автомобілем.
+    </p>
+  </section>
+
+  <section class="bottom-grid">
+    <div class="card">
+      <h2>Адреса</h2>
+      <p>м. Черкаси, вул. Грушевського, 110</p>
+    </div>
+
+    <div class="card">
+      <h2>Графік роботи</h2>
+      <div class="schedule">
+        <p><strong>ПН–ПТ</strong> 8:00–21:00</p>
+        <p><strong>СБ</strong> 9:00–16:00</p>
+        <p><strong>НД</strong> Вихідний</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
+</footer>
+
+<script src="about.js"></script>
+</body>
+</html>
