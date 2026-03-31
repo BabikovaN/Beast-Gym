@@ -1,23 +1,117 @@
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+firebase.initializeApp({
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID"
+});
+
+const db = firebase.firestore();
+
+/* ================= USERS ================= */
+function loadTrainers(){
+  db.collection("users")
+  .where("role","==","trainer")
+  .onSnapshot(snap=>{
+    let html="";
+    snap.forEach(d=>{
+      let u=d.data();
+
+      html+=`
+        <div class="card">
+          👨‍🏫 ${u.name}<br>
+          💪 ${u.speciality || ""}
+        </div>
+      `;
+    });
+
+    const el=document.getElementById("trainers");
+    if(el) el.innerHTML=html;
+  });
 }
 
+/* ================= POSTS (INSTAGRAM) ================= */
+function loadPosts(){
+  db.collection("posts")
+  .orderBy("time","desc")
+  .onSnapshot(snap=>{
+    let html="";
+    snap.forEach(d=>{
+      let p=d.data();
 
-// 🔥 SAFE SLIDER
-let index = 0;
+      html+=`
+        <div class="card">
+          <b>${p.user}</b><br><br>
 
-setInterval(() => {
-  const slides = document.getElementById("slides");
+          <img src="${p.image}" style="width:100%;border-radius:10px"><br>
 
-  if (!slides) return; // якщо немає слайдера — нічого не робимо
+          ❤️ ${p.likes || 0}
+          <button onclick="likePost('${d.id}')">Like</button>
+        </div>
+      `;
+    });
 
-  const total = slides.children.length;
+    const el=document.getElementById("posts");
+    if(el) el.innerHTML=html;
+  });
+}
 
-  if (total === 0) return;
+function likePost(id){
+  db.collection("posts").doc(id).update({
+    likes: firebase.firestore.FieldValue.increment(1)
+  });
+}
 
-  index++;
+/* ================= CHAT ================= */
+function loadChat(){
+  db.collection("messages")
+  .orderBy("time")
+  .onSnapshot(snap=>{
+    let html="";
 
-  if (index >= total) index = 0;
+    snap.forEach(d=>{
+      let m=d.data();
+      html+=`<div>💬 <b>${m.from}</b>: ${m.text}</div>`;
+    });
 
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}, 3000);
+    const el=document.getElementById("chatBox");
+    if(el) el.innerHTML=html;
+  });
+}
+
+function sendMsg(){
+  const input=document.getElementById("msg");
+
+  db.collection("messages").add({
+    from:"client",
+    text:input.value,
+    time:Date.now()
+  });
+
+  input.value="";
+}
+
+/* ================= SLOTS ================= */
+function loadSlots(){
+  db.collection("slots")
+  .onSnapshot(snap=>{
+    let html="";
+
+    snap.forEach(d=>{
+      let s=d.data();
+
+      html+=`
+        <div class="card">
+          📅 ${s.date} ${s.time}<br>
+          Status: ${s.status || "free"}
+        </div>
+      `;
+    });
+
+    const el=document.getElementById("slots");
+    if(el) el.innerHTML=html;
+  });
+}
+
+/* ================= INIT ================= */
+loadTrainers();
+loadPosts();
+loadChat();
+loadSlots();
