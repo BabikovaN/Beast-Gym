@@ -1,5 +1,4 @@
 <!-- 🔥 ФОТО ЗАЛУ -->
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -13,30 +12,32 @@
 <header>
   <div class="burger" onclick="toggleMenu()">☰</div>
 
+  <!-- NAVBAR (твій стандарт) -->
   <nav id="menu">
+
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
     <a href="price.html">Прайс</a>
     <a href="rules.html">Правила</a>
     <a href="photos.html">Фото</a>
     <a href="contacts.html">Контакти</a>
-    <a href="admin.html">Адмін</a>
+
+    <a href="profile.html">Особистий кабінет</a>
+    <a href="trainer-profile.html">Кабінет тренера</a>
+
+    <a href="admin.html" id="adminLink" style="display:none;">Адмін</a>
+
   </nav>
 </header>
 
 <h1 style="text-align:center;color:#ffd000;">BEAST GALLERY</h1>
 
-<!-- 🔥 СТАРТОВІ ФОТО (показуються ДО Firebase) -->
-<div class="gallery" id="gallery">
-  <img src="photo20.jpg">
-  <img src="photo21.jpg">
-  <img src="photo22.jpg">
-  <img src="photo23.jpg">
-</div>
+<!-- 🔥 галерея -->
+<div class="gallery" id="gallery"></div>
 
-<!-- 🔥 FIREBASE (додає нові фото) -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
 firebase.initializeApp({
@@ -47,17 +48,28 @@ firebase.initializeApp({
 const db = firebase.firestore();
 const gallery = document.getElementById("gallery");
 
-/* 🔥 додаткові фото з Firebase */
-db.collection("photos").onSnapshot(snap=>{
-  snap.forEach(doc=>{
-    const url = doc.data().url;
+function loadPhotos(){
 
-    const img = document.createElement("img");
-    img.src = url;
+  gallery.innerHTML = ""; // ❗ важливо (щоб не було дублікатів)
 
-    gallery.appendChild(img);
+  db.collection("photos").onSnapshot(snapshot => {
+
+    gallery.innerHTML = ""; // очищення при оновленні
+
+    snapshot.forEach(doc => {
+      const url = doc.data().url;
+
+      const img = document.createElement("img");
+      img.src = url;
+
+      gallery.appendChild(img);
+    });
+
   });
-});
+
+}
+
+loadPhotos();
 </script>
 
 <script src="script.js"></script>
