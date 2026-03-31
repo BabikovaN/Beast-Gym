@@ -8,86 +8,85 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo">
-        <img src="Logo BG.svg" alt="Beast Gym">
-      </a>
+<header>
+  <div class="logo">
+    <img src="Logo BG.svg" alt="Beast Gym">
+  </div>
 
-      <button class="burger" id="burgerBtn" aria-label="Відкрити меню" type="button">☰</button>
+  <div class="burger" onclick="toggleMenu()">☰</div>
 
-      <nav class="side-menu" id="menu">
-        <a href="#">Головна</a>
-        <a href="#">Про нас</a>
-        <a href="#">Тарифи</a>
-        <a href="#">Фото</a>
-        <a href="#">Контакти</a>
-      </nav>
+  <nav id="menu">
+    <a href="#">Головна</a>
+    <a href="#">Про нас</a>
+    <a href="#">Тарифи</a>
+    <a href="#">Фото</a>
+    <a href="#">Контакти</a>
+  </nav>
+</header>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<main class="page">
+
+  <section class="hero-grid">
+    <div class="hero-image-wrap">
+      <img
+        class="hero-image"
+        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80"
+        alt="Beast Gym"
+      >
     </div>
-  </header>
 
-  <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="hero-side">
+      <section class="card hero-card">
+        <h1>Beast Gym</h1>
+        <p>Сучасний зал у Черкасах</p>
+        <p>Тренери • Програми • Результат</p>
+      </section>
 
-  <main class="page">
+      <section class="hero-address">
+        <p>Черкаси, вул.<br>Грушевського 110</p>
+      </section>
+    </div>
+  </section>
 
-    <section class="hero-grid">
-      <div class="hero-image-wrap">
-        <img
-          class="hero-image"
-          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80"
-          alt="Beast Gym"
-        >
-      </div>
+  <section class="content-grid">
+    <section class="card section-card">
+      <h2>Тренери</h2>
+      <div id="trainers" class="trainers-list"></div>
+    </section>
 
-      <div class="hero-side">
-        <section class="card hero-card">
-          <h1>Beast Gym</h1>
-          <p>Сучасний зал у Черкасах</p>
-          <p>Тренери • Програми • Результат</p>
-        </section>
-
-        <section class="hero-address">
-          <p>Черкаси, вул.<br>Грушевського 110</p>
-        </section>
+    <section class="card section-card">
+      <h2>Прайс (коротко)</h2>
+      <div class="price-list">
+        <p>Разове відвідування — 250 грн</p>
+        <p>1 місяць — 900 грн</p>
+        <p>3 місяці — 2500 грн</p>
       </div>
     </section>
 
-    <section class="content-grid">
-      <section class="card section-card">
-        <h2>Тренери</h2>
-        <div id="trainers" class="trainers-list"></div>
-      </section>
-
-      <section class="card section-card">
-        <h2>Прайс (коротко)</h2>
-        <div class="price-list">
-          <p>Разове відвідування — 250 грн</p>
-          <p>1 місяць — 900 грн</p>
-          <p>3 місяці — 2500 грн</p>
-        </div>
-      </section>
-
-      <section class="card section-card map-card full-width">
-        <h2>Ми на карті</h2>
-        <div class="map-wrap">
-          <iframe
-            src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </section>
+    <section class="card section-card map-card full-width">
+      <h2>Ми на карті</h2>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
     </section>
+  </section>
 
-  </main>
+</main>
 
-  <footer class="footer">
-    <p>Черкаси, вул. Грушевського 110</p>
-  </footer>
+<footer class="footer">
+  <p>Черкаси, вул. Грушевського 110</p>
+</footer>
 
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
