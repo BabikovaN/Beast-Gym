@@ -3,40 +3,55 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Мій профіль</title>
+<title>Кабінет тренера</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1 style="color:#ffd000; text-align:center;">МІЙ ПРОФІЛЬ</h1>
+<h1 style="text-align:center;color:#ffd000;">КАБІНЕТ ТРЕНЕРА</h1>
 
+<!-- 👤 ПРОФІЛЬ -->
 <div class="card">
-  <input id="name" placeholder="Твоє ім'я">
-  <input id="photo" placeholder="URL фото">
-  <button onclick="saveProfile()">Зберегти</button>
+  <input id="tname" placeholder="Ім'я тренера">
+  <input id="tphoto" placeholder="Фото URL">
+  <button onclick="saveTrainerProfile()">Зберегти профіль</button>
 </div>
 
+<!-- 📅 КАЛЕНДАР ТРЕНЕРА -->
 <div class="card">
-  <h2>📅 Мої тренування</h2>
-  <input id="date" type="date">
-  <button onclick="addTraining()">Додати</button>
-  <div id="list"></div>
+  <h2>📅 Календар клієнтів</h2>
+
+  <input type="date" id="tdate">
+  
+  <select id="muscle">
+    <option>Груди</option>
+    <option>Спина</option>
+    <option>Ноги</option>
+    <option>Руки</option>
+    <option>Кардіо</option>
+  </select>
+
+  <input id="clientName" placeholder="ID клієнта">
+
+  <button onclick="addTraining()">➕ Додати</button>
+  <button onclick="removeTraining()">❌ Скасувати</button>
+
+  <div id="calendar"></div>
 </div>
 
+<!-- 👥 КЛІЄНТИ -->
 <div class="card">
-  <h2>🧑‍🏫 Обрати тренера</h2>
-  <select id="trainer"></select>
-  <button onclick="chooseTrainer()">Обрати</button>
+  <h2>👥 Клієнти</h2>
+  <div id="clients"></div>
 </div>
 
-<!-- 🔥 Firebase (ВАЖЛИВО - compat версія) -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script src="firebase.js"></script>
-<script src="profile.js"></script>
+<script src="trainer.js"></script>
 
 </body>
 </html>
