@@ -1,3 +1,4 @@
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -5,41 +6,36 @@
   font-family:Arial;
 }
 
+/* BODY */
 body{
-  background:#000;
-  color:#fff;
+  background:#0f0f0f;
+  color:white;
   padding-top:70px;
 }
 
-/* HEADER */
+/* HEADER + MENU */
 header{
   position:fixed;
   top:0;
-  left:0;
   width:100%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:10px 15px;
   background:#000;
-  z-index:1001;
+  z-index:1000;
 }
 
-/* LOGO */
 .logo img{
   height:45px;
   filter: drop-shadow(0 0 15px #39ff14);
 }
 
-/* BURGER */
 .burger{
   font-size:36px;
   color:#39ff14;
   cursor:pointer;
-  text-shadow:0 0 15px #39ff14;
 }
 
-/* MENU */
 nav{
   position:fixed;
   right:0;
@@ -50,8 +46,6 @@ nav{
   transform:translateX(100%);
   transition:0.3s;
   padding-top:80px;
-  border-left:2px solid #39ff14;
-  z-index:1000;
 }
 
 nav.active{
@@ -62,22 +56,50 @@ nav a{
   display:block;
   padding:15px;
   color:#39ff14;
-  text-decoration:none;
 }
 
-/* CARD */
+/* CARD SYSTEM */
 .card{
-  margin:15px;
+  background:#1c1c1c;
+  margin:10px;
   padding:15px;
-  background:#1a1a1a;
-  border-radius:15px;
+  border-radius:14px;
   box-shadow:0 0 10px #39ff14;
 }
 
-/* TITLES */
-h2{
-  color:#ffd000;
-  margin-bottom:10px;
+/* BUTTON */
+button{
+  background:#39ff14;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* POSTS (INSTAGRAM STYLE) */
+.post-img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* ADMIN PANEL */
+.admin-layout{
+  display:flex;
+}
+
+.sidebar{
+  width:220px;
+  background:#111;
+  min-height:100vh;
+  padding:10px;
+}
+
+.sidebar a{
+  display:block;
+  color:#39ff14;
+  padding:10px;
 }
 
 /* SLIDER */
@@ -92,10 +114,8 @@ h2{
 
 .slides img{
   width:100%;
-  flex-shrink:0;
   height:300px;
   object-fit:cover;
-  border-radius:12px;
 }
 
 /* TRAINERS */
@@ -104,20 +124,25 @@ h2{
   gap:10px;
 }
 
-.trainer{
-  flex:1;
-  text-align:center;
-}
-
 .trainer img{
   width:100%;
   height:140px;
   object-fit:cover;
-  border-radius:10px;
-  box-shadow:0 0 10px #39ff14;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .slides img{height:250px;}
+  .admin-layout{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow:auto;
+  }
+
+  .slides img{
+    height:250px;
+  }
 }
