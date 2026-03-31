@@ -1,41 +1,84 @@
-/* 🔥 BACKGROUND */
+/* =========================
+   🔥 GLOBAL RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body{
   background:#000;
   color:white;
+  font-family:Arial, sans-serif;
+  padding-top:70px; /* header space */
 }
 
-/* 🔥 LOGO НЕОН */
+/* =========================
+   🔥 HEADER (APP STYLE)
+========================= */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 15px;
+  background:#000;
+  z-index:1000;
+  border-bottom:1px solid rgba(57,255,20,0.2);
+}
+
+/* LOGO */
 .logo img{
-  height:32px;
+  height:40px;
   object-fit:contain;
-  filter: drop-shadow(0 0 10px #39ff14) drop-shadow(0 0 20px #39ff14);
+  filter:
+    drop-shadow(0 0 8px #39ff14)
+    drop-shadow(0 0 18px #39ff14);
 }
 
-/* 🔥 BURGER */
+/* BURGER */
 .burger{
-  font-size:30px;
+  font-size:36px;
   color:#39ff14;
+  cursor:pointer;
+  text-shadow:0 0 10px #39ff14;
 }
 
-/* 🔥 MENU (СХОВАНЕ) */
+/* =========================
+   🔥 MENU (RIGHT DRAWER)
+========================= */
 nav{
   position:fixed;
   right:0;
   top:0;
-  width:260px;
+  width:280px;
   height:100vh;
   background:#0a0a0a;
   transform:translateX(100%);
-  transition:0.3s;
-  padding-top:80px;
+  transition:0.3s ease;
+  padding-top:90px;
   z-index:999;
+  border-left:1px solid rgba(57,255,20,0.2);
 }
 
 nav.active{
   transform:translateX(0);
 }
 
-/* затемнення */
+nav a{
+  display:block;
+  padding:15px 20px;
+  color:#39ff14;
+  text-decoration:none;
+  font-size:16px;
+}
+
+/* dark overlay */
 body.menu-open::after{
   content:"";
   position:fixed;
@@ -47,18 +90,22 @@ body.menu-open::after{
   z-index:998;
 }
 
-/* 🔥 ОСТРІВЦІ */
+/* =========================
+   🔥 CARDS (ISLAND UI)
+========================= */
 .card{
   background:#1a1a1a;
   margin:15px;
   padding:18px;
   border-radius:20px;
   box-shadow:
-    0 0 10px rgba(57,255,20,0.2),
-    0 0 20px rgba(57,255,20,0.1);
+    0 0 10px rgba(57,255,20,0.15),
+    0 0 20px rgba(57,255,20,0.08);
 }
 
-/* 🔥 PROFILE CENTER */
+/* =========================
+   🔥 PROFILE
+========================= */
 .profile-wrapper{
   display:flex;
   flex-direction:column;
@@ -66,7 +113,6 @@ body.menu-open::after{
   padding:20px;
 }
 
-/* 🔥 AVATAR */
 .avatar{
   width:110px;
   height:110px;
@@ -76,7 +122,9 @@ body.menu-open::after{
   box-shadow:0 0 15px #39ff14;
 }
 
-/* 🔥 POSTS GRID */
+/* =========================
+   🔥 POSTS GRID
+========================= */
 .posts-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -90,16 +138,20 @@ body.menu-open::after{
   border-radius:6px;
 }
 
-/* 🔥 ФОТО БЕЗ ОБРІЗАННЯ */
+/* =========================
+   🔥 FULL IMAGE FIX
+========================= */
 .post-img{
   width:100%;
   height:200px;
-  object-fit:contain; /* 🔥 головне */
+  object-fit:contain;
   background:#000;
   border-radius:12px;
 }
 
-/* 🔥 CHAT */
+/* =========================
+   🔥 CHAT
+========================= */
 #chatBox{
   height:300px;
   overflow-y:auto;
@@ -108,7 +160,7 @@ body.menu-open::after{
   border-radius:10px;
 }
 
-/* 🔥 INPUT */
+/* INPUT */
 input{
   width:100%;
   padding:10px;
@@ -119,11 +171,21 @@ input{
   color:white;
 }
 
-/* 🔥 MOBILE */
+/* =========================
+   🔥 MOBILE FIX
+========================= */
 @media(max-width:768px){
 
+  header{
+    height:65px;
+  }
+
   .logo img{
-    height:28px;
+    height:34px;
+  }
+
+  .burger{
+    font-size:34px;
   }
 
   .card{
@@ -135,4 +197,7 @@ input{
     height:170px;
   }
 
+  nav{
+    width:250px;
+  }
 }
