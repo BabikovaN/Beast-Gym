@@ -1,119 +1,171 @@
-<!--профіль користувача)-->
 <!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Мій профіль - Beast Gym</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0f0f0f;
+  color:white;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  background:#111;
+}
+
+.burger{
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* MENU */
+nav{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100%;
+  background:#111;
+  padding:20px;
+  transition:0.3s;
+}
+
+nav.active{
+  right:0;
+}
+
+nav a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  margin:15px 0;
+}
+
+/* PROFILE */
+.profile-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:25px;
+  text-align:center;
+}
+
+.profile-card{
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:350px;
+  box-shadow:0 0 15px rgba(57,255,20,0.3);
+}
+
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #39ff14;
+  margin-bottom:10px;
+}
+
+h2{
+  margin:10px 0 5px;
+}
+
+p{
+  margin:5px 0;
+  color:#aaa;
+}
+
+/* BUTTONS */
+.menu-btns{
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+  width:90%;
+  max-width:350px;
+}
+
+.menu-btns button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#39ff14;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.menu-btns button:hover{
+  opacity:0.8;
+}
+</style>
+
 </head>
 
 <body>
 
-<!-- 🔥 HEADER (як на головній) -->
+<!-- HEADER -->
 <header>
-  <div class="logo">
-    <img src="Logo BG.svg" alt="Beast Gym">
-  </div>
-
+  <h3>🏋️ Beast Gym</h3>
   <div class="burger" onclick="toggleMenu()">☰</div>
 
   <nav id="menu">
-
     <a href="index.html">Головна</a>
-    <a href="about.html">Про нас</a>
-    <a href="price.html">Тарифи</a>
-    <a href="rules.html">Правила</a>
-    <a href="photos.html">Фото</a>
-    <a href="contacts.html">Контакти</a>
-
-    <a href="profile.html">Мій профіль</a>
-    <a href="trainer-profile.html">Кабінет тренера</a>
-
-    <a href="admin.html" id="adminLink" style="display:none;">Адмін</a>
-
+    <a href="photos.html">Пости</a>
+    <a href="chat.html">Чати</a>
+    <a href="trainings.html">Тренування</a>
+    <a href="add-post.html">➕ Пост</a>
   </nav>
 </header>
 
-<h1 class="section-title">👤 МІЙ ПРОФІЛЬ</h1>
+<!-- PROFILE -->
+<div class="profile-wrapper">
 
-<!-- 🔥 ВИБІР РОЛІ -->
-<div class="card">
-
-  <h2>Оберіть кабінет</h2>
-
-  <select id="roleSelect">
-    <option value="">-- Вибрати --</option>
-    <option value="client">👤 Клієнт</option>
-    <option value="trainer">🏋️ Тренер</option>
-    <option value="admin">⚙️ Адмін</option>
-  </select>
-
-  <button onclick="goToPanel()">Перейти</button>
+  <div class="profile-card">
+    <img id="avatar" class="avatar">
+    <h2 id="name">Завантаження...</h2>
+    <p id="age"></p>
+    <p id="role"></p>
+  </div>
 
 </div>
-
-<!-- 🔥 ВХІД / РЕЄСТРАЦІЯ -->
-<div class="card">
-
-  <h2>Вхід / Реєстрація</h2>
-
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Пароль">
-
-  <button onclick="login()">Увійти</button>
-  <button onclick="register()">Зареєструватись</button>
-
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script src="firebase.js"></script>
 
 <script>
-function goToPanel() {
-  const role = document.getElementById("roleSelect").value;
-
-  if (role === "client") {
-    window.location.href = "profile-client.html";
-  }
-
-  if (role === "trainer") {
-    window.location.href = "trainer-profile.html";
-  }
-
-  if (role === "admin") {
-    window.location.href = "admin.html";
-  }
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
 }
 
-// 🔥 Firebase login
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+auth.onAuthStateChanged(async user => {
+  if(!user){
+    window.location = "login.html";
+    return;
+  }
 
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(() => {
-      alert("Вхід успішний");
-    })
-    .catch(err => alert(err.message));
-}
+  const doc = await db.collection("users").doc(user.uid).get();
+  const d = doc.data();
 
-// 🔥 Firebase register
-function register() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  document.getElementById("name").innerText = d.name || "Без імені";
+  document.getElementById("age").innerText = d.age ? "Вік: " + d.age : "";
+  document.getElementById("role").innerText = "Роль: " + (d.role || "client");
 
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      alert("Реєстрація успішна");
-    })
-    .catch(err => alert(err.message));
-}
+  document.getElementById("avatar").src =
+    d.photo || "https://via.placeholder.com/150";
+});
 </script>
-
-<script src="script.js"></script>
 
 </body>
 </html>
