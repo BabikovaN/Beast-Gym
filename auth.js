@@ -1,30 +1,17 @@
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-  'recaptcha',
-  {
-    size: "normal",
-    callback: function(response) {
-      console.log("reCAPTCHA OK");
+auth.onAuthStateChanged(async user => {
+
+  if (!user) {
+    if (!location.href.includes("login")) {
+      window.location = "login.html";
     }
+    return;
   }
-);
 
-function login(){
-  const phone = document.getElementById("phone").value;
+  const doc = await db.collection("users").doc(user.uid).get();
+  const role = doc.data()?.role;
 
-  const appVerifier = window.recaptchaVerifier;
+  if (role === "admin") window.location = "admin.html";
+  if (role === "trainer") window.location = "trainer-profile.html";
+  if (role === "client") window.location = "profile.html";
 
-  firebase.auth().signInWithPhoneNumber(phone, appVerifier)
-    .then(function(result){
-
-      const code = prompt("Введи SMS код:");
-
-      return result.confirm(code);
-    })
-    .then(function(userCredential){
-      console.log("Успішний логін:", userCredential.user);
-      window.location = "profile.html";
-    })
-    .catch(function(error){
-      alert(error.message);
-    });
-}
+});
