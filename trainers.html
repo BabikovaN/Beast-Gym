@@ -111,7 +111,9 @@ const db = firebase.firestore();
 let user = null;
 
 /* AUTH SAFE */
-firebase.auth().onAuthStateChanged(u=>{
+let user = null;
+
+auth.onAuthStateChanged(u=>{
   user = u;
 });
 
@@ -171,7 +173,6 @@ function bookTrainer(trainerId){
 
   alert("✅ Запис створено!");
 }
-
 /* OPEN PROFILE */
 function openProfile(id){
   window.location = "trainer-profile.html?id=" + id;
