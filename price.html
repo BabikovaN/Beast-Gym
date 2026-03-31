@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифи | Beast Gym</title>
+  <link rel="stylesheet" href="price.css">
+</head>
+<body>
 
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="Logo BG.svg" alt="Beast Gym">
+    </a>
+  </div>
+
+  <button class="burger" onclick="toggleMenu()" aria-label="Меню">☰</button>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Тарифи</a>
+    <a href="photos.html">Фото</a>
+    <a href="contacts.html">Контакти</a>
+  </nav>
+</header>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<main class="page">
+
+  <section class="hero card">
+    <h1>Тарифи Beast Gym</h1>
+    <p>
+      Обирай формат тренувань, який підходить саме тобі:
+      повний день, ранковий абонемент, студентські та сімейні пропозиції,
+      а також персональні послуги з тренером.
+    </p>
+  </section>
+
+  <section class="price-grid">
+
+    <article class="card price-card">
+      <h2>Абонемент повного дня</h2>
+      <div class="price-list">
+        <div class="price-row"><span>Разове тренування</span><strong>300 грн</strong></div>
+        <div class="price-row"><span>1 місяць</span><strong>900 грн</strong></div>
+        <div class="price-row"><span>3 місяці</span><strong>2500 грн</strong></div>
+        <div class="price-row"><span>6 місяців</span><strong>4600 грн</strong></div>
+      </div>
+    </article>
+
+    <article class="card price-card">
+      <h2>Ранковий абонемент</h2>
+      <div class="price-list">
+        <div class="price-row"><span>1 місяць</span><strong>850 грн</strong></div>
+        <div class="price-row"><span>3 місяці</span><strong>2350 грн</strong></div>
+        <div class="price-row"><span>6 місяців</span><strong>4300 грн</strong></div>
+      </div>
+    </article>
+
+    <article class="card price-card">
+      <h2>Студент карта</h2>
+      <div class="price-list">
+        <div class="price-row"><span>1 місяць</span><strong>850 грн</strong></div>
+        <div class="price-row"><span>3 місяці</span><strong>2350 грн</strong></div>
+        <div class="price-row"><span>6 місяців</span><strong>4300 грн</strong></div>
+      </div>
+    </article>
+
+    <article class="card price-card">
+      <h2>Сімейна карта</h2>
+      <p class="note">Від трьох осіб</p>
+      <div class="price-list">
+        <div class="price-row"><span>1 місяць</span><strong>800 грн</strong></div>
+        <div class="price-row"><span>3 місяці</span><strong>2200 грн</strong></div>
+        <div class="price-row"><span>6 місяців</span><strong>4000 грн</strong></div>
+      </div>
+    </article>
+
+    <article class="card price-card">
+      <h2>Спеціальні пропозиції</h2>
+      <div class="price-list">
+        <div class="price-row"><span>Діти-батьки (на двох)</span><strong>1400 грн</strong></div>
+        <div class="price-row"><span>Для військовослужбовців</span><strong>600 грн</strong></div>
+      </div>
+    </article>
+
+    <article class="card price-card">
+      <h2>Персональні послуги</h2>
+      <div class="price-list">
+        <div class="price-row"><span>1 тренування з тренером</span><strong>250 грн</strong></div>
+        <div class="price-row"><span>6 тренувань</span><strong>1500 грн</strong></div>
+        <div class="price-row"><span>12 тренувань</span><strong>2400 грн</strong></div>
+        <div class="price-row"><span>Персональна програма</span><strong>1000 грн</strong></div>
+      </div>
+      <p class="small-note">(включає 3 заняття з тренером)</p>
+    </article>
+
+    <article class="card promo-card full-width">
+      <h2>Персональні пропозиції / акції</h2>
+      <p class="promo-placeholder">
+        <!-- СЮДИ ПОТІМ ДОДАТИ АКЦІЇ ТА СПЕЦІАЛЬНІ ПРОПОЗИЦІЇ -->
+        Тут буде блок для акцій, знижок і спеціальних пропозицій.
+      </p>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
+</footer>
+
+<script src="price.js"></script>
+</body>
+</html>
