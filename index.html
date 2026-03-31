@@ -1,91 +1,93 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beast Gym</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beast Gym</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- 🔥 HEADER -->
-<header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="Logo BG.svg" alt="Beast Gym">
+      </a>
 
-  <div class="logo">
-    <img src="Logo BG.svg">
-  </div>
+      <button class="burger" id="burgerBtn" aria-label="Відкрити меню" type="button">☰</button>
 
-  <div class="burger" onclick="toggleMenu()">☰</div>
+      <nav class="side-menu" id="menu">
+        <a href="#">Головна</a>
+        <a href="#">Про нас</a>
+        <a href="#">Тарифи</a>
+        <a href="#">Фото</a>
+        <a href="#">Контакти</a>
+      </nav>
+    </div>
+  </header>
 
-  <nav id="menu">
-    <a href="#">Головна</a>
-    <a href="#">Про нас</a>
-    <a href="#">Тарифи</a>
-    <a href="#">Фото</a>
-    <a href="#">Контакти</a>
-  </nav>
+  <div class="menu-overlay" id="menuOverlay"></div>
 
-</header>
+  <main class="page">
 
-<!-- 🔥 HERO -->
-<section class="slider">
-  <div class="slides">
-    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
-  </div>
-</section>
+    <section class="hero-grid">
+      <div class="hero-image-wrap">
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80"
+          alt="Beast Gym"
+        >
+      </div>
 
-<!-- 🔥 ОСНОВНИЙ КОНТЕНТ -->
-<main class="container">
+      <div class="hero-side">
+        <section class="card hero-card">
+          <h1>Beast Gym</h1>
+          <p>Сучасний зал у Черкасах</p>
+          <p>Тренери • Програми • Результат</p>
+        </section>
 
-  <!-- ПРО ЗАЛ -->
-  <div class="card">
-    <h1>Beast Gym</h1>
-    <p>Сучасний зал у Черкасах</p>
-    <p>Тренери • Програми • Результат</p>
-  </div>
+        <section class="hero-address">
+          <p>Черкаси, вул.<br>Грушевського 110</p>
+        </section>
+      </div>
+    </section>
 
-  <!-- ТРЕНЕРИ -->
-  <div class="card">
-    <h2>Тренери</h2>
-    <div id="trainers"></div>
-  </div>
+    <section class="content-grid">
+      <section class="card section-card">
+        <h2>Тренери</h2>
+        <div id="trainers" class="trainers-list"></div>
+      </section>
 
-  <!-- ПРАЙС -->
-  <div class="card">
-    <h2>Прайс</h2>
-    <p class="price">Разове — 250 грн</p>
-    <p class="price">1 місяць — 900 грн</p>
-    <p class="price">3 місяці — 2500 грн</p>
-  </div>
+      <section class="card section-card">
+        <h2>Прайс (коротко)</h2>
+        <div class="price-list">
+          <p>Разове відвідування — 250 грн</p>
+          <p>1 місяць — 900 грн</p>
+          <p>3 місяці — 2500 грн</p>
+        </div>
+      </section>
 
-  <!-- КАРТА -->
-  <div class="card">
-    <h2>Ми на карті</h2>
+      <section class="card section-card map-card full-width">
+        <h2>Ми на карті</h2>
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </section>
 
-    <iframe 
-      src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed">
-    </iframe>
-  </div>
+  </main>
 
-</main>
+  <footer class="footer">
+    <p>Черкаси, вул. Грушевського 110</p>
+  </footer>
 
-<!-- 🔥 FOOTER -->
-<footer class="footer">
-  <p>Черкаси, вул. Грушевського 110</p>
-</footer>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase.js"></script>
-
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
-}
-</script>
-
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
