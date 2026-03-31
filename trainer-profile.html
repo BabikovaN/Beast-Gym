@@ -9,12 +9,22 @@
 <h1>👨‍🏫 Trainer Profile</h1>
 
 <div class="card">
-  <h2 id="name"></h2>
-  <p id="bio"></p>
+  <h2>Мій профіль</h2>
+
+  <input id="name" placeholder="Ім'я"><br><br>
+  <input id="photo" placeholder="Фото URL"><br><br>
+  <input id="speciality" placeholder="Спеціалізація"><br><br>
+
+  <button onclick="saveProfile()">💾 Зберегти</button>
 </div>
 
 <div class="card">
-  <h2>📸 Posts</h2>
+  <h2>📅 Мої тренування</h2>
+  <div id="myTrainings"></div>
+</div>
+
+<div class="card">
+  <h2>📸 Мої пости</h2>
   <div id="myPosts"></div>
 </div>
 
