@@ -10,7 +10,7 @@
 
 <h1 style="color:#ffd000;text-align:center;">🔥 ADMIN PANEL</h1>
 
-<!-- 🔐 простий захист -->
+<!-- 🔐 LOGIN -->
 <div id="login">
   <input id="user" placeholder="Логін">
   <input id="pass" type="password" placeholder="Пароль">
@@ -20,7 +20,6 @@
 <!-- PANEL -->
 <div id="panel" style="display:none;">
 
-  <!-- MENU -->
   <div class="card">
     <h2>📌 Меню</h2>
     <input id="menuText" placeholder="Назва">
@@ -28,7 +27,6 @@
     <button onclick="addMenu()">Додати пункт</button>
   </div>
 
-  <!-- TEXT (сторінки) -->
   <div class="card">
     <h2>📝 Текст сторінки</h2>
     <input id="page" placeholder="about.html / price.html">
@@ -36,7 +34,6 @@
     <button onclick="updateText()">Оновити текст</button>
   </div>
 
-  <!-- TRAINERS -->
   <div class="card">
     <h2>💪 Тренери</h2>
     <input id="tName" placeholder="Ім'я">
@@ -44,18 +41,18 @@
     <button onclick="addTrainer()">Додати</button>
   </div>
 
-  <!-- PHOTOS -->
   <div class="card">
     <h2>📸 Фото</h2>
     <input id="photo" placeholder="URL фото">
     <button onclick="addPhoto()">Додати фото</button>
   </div>
 
-  <button onclick="logout()">Вийти</button>
+  <button onclick="logout()">🚪 Вийти</button>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<!-- FIREBASE (правильний SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
 firebase.initializeApp({
@@ -65,47 +62,54 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-/* 🔐 LOGIN */
+/* 🔐 LOGIN (тимчасовий) */
 function login(){
   const u = document.getElementById("user").value;
   const p = document.getElementById("pass").value;
 
-  if(u==="admin" && p==="1234"){
+  if(u === "admin" && p === "1234"){
     localStorage.setItem("admin","true");
-    document.getElementById("login").style.display="none";
-    document.getElementById("panel").style.display="block";
+    showPanel();
   } else {
     alert("Невірно");
   }
 }
 
+function showPanel(){
+  document.getElementById("login").style.display="none";
+  document.getElementById("panel").style.display="block";
+}
+
 /* 📌 MENU */
 function addMenu(){
-  db.collection("menu").add({
-    text: menuText.value,
-    url: menuUrl.value
-  });
+  const text = document.getElementById("menuText").value;
+  const url = document.getElementById("menuUrl").value;
+
+  db.collection("menu").add({ text, url });
 }
 
 /* 📝 TEXT */
 function updateText(){
-  db.collection("pages").doc(page.value).set({
-    text: text.value
-  });
+  const page = document.getElementById("page").value;
+  const text = document.getElementById("text").value;
+
+  db.collection("pages").doc(page).set({ text });
 }
 
-/* 💪 TRAINER */
+/* 💪 TRAINERS */
 function addTrainer(){
-  db.collection("trainers").add({
-    name: tName.value,
-    desc: tDesc.value
-  });
+  const name = document.getElementById("tName").value;
+  const desc = document.getElementById("tDesc").value;
+
+  db.collection("trainers").add({ name, desc });
 }
 
 /* 📸 PHOTO */
 function addPhoto(){
+  const url = document.getElementById("photo").value;
+
   db.collection("photos").add({
-    url: photo.value,
+    url,
     time: Date.now()
   });
 }
@@ -116,10 +120,9 @@ function logout(){
   location.reload();
 }
 
-/* auto login */
+/* AUTO LOGIN */
 if(localStorage.getItem("admin")==="true"){
-  login.style.display="none";
-  panel.style.display="block";
+  showPanel();
 }
 </script>
 
