@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Мій профіль</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header>
+  <div class="logo">
+    <img src="Logo BG.svg">
+  </div>
+
+  <div class="burger" onclick="toggleMenu()">☰</div>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="profile.html">Мій профіль</a>
+  </nav>
+</header>
+
+<h1 style="text-align:center;color:#ffd000;">МІЙ ПРОФІЛЬ</h1>
+
+<!-- 👤 ІМ'Я -->
+<div class="card">
+  <input id="name" placeholder="Твоє ім’я">
+  <button onclick="saveName()">Зберегти</button>
+</div>
+
+<!-- 📅 КАЛЕНДАР -->
+<div class="card">
+  <h2>📅 Дні тренувань</h2>
+
+  <input type="date" id="date">
+  <button onclick="addWorkout()">Додати</button>
+
+  <div id="list"></div>
+</div>
+
+<!-- 💪 ТРЕНЕР -->
+<div class="card">
+  <h2>💪 Обери тренера</h2>
+
+  <select id="trainer">
+    <option>Іван</option>
+    <option>Олег</option>
+    <option>Марія</option>
+  </select>
+
+  <button onclick="saveTrainer()">Зберегти</button>
+</div>
+
+<!-- 💧 НАГАДУВАННЯ -->
+<div class="card">
+  <h2>💧 Вода</h2>
+  <button onclick="water()">Нагадати</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
+
+function saveName(){
+  localStorage.setItem("name", document.getElementById("name").value);
+  alert("Збережено");
+}
+
+function addWorkout(){
+  let date = document.getElementById("date").value;
+  workouts.push(date);
+  localStorage.setItem("workouts", JSON.stringify(workouts));
+  render();
+}
+
+function render(){
+  let html = "";
+  workouts.forEach(d=>{
+    html += `<p>${d}</p>`;
+  });
+  document.getElementById("list").innerHTML = html;
+}
+
+function saveTrainer(){
+  localStorage.setItem("trainer", document.getElementById("trainer").value);
+  alert("Тренер обраний");
+}
+
+function water(){
+  alert("💧 Пий воду!");
+}
+
+render();
+</script>
+
+</body>
+</html>
