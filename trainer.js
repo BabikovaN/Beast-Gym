@@ -1,18 +1,30 @@
+firebase.initializeApp({
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID"
+});
+
+const db = firebase.firestore();
+
 let user;
 
+/* ================= AUTH ================= */
 firebase.auth().onAuthStateChanged(u => {
-  if (!u) return window.location = "login.html";
+  if (!u) {
+    window.location = "login.html";
+    return;
+  }
 
   user = u;
 
-  loadMyTrainings();
   loadProfile();
+  loadMyTrainings();
+  loadPosts();
 });
 
 
-// 💾 зберегти профіль
+/* ================= PROFILE ================= */
 function saveProfile() {
-  firebase.firestore().collection("users").doc(user.uid).set({
+  db.collection("users").doc(user.uid).set({
     name: document.getElementById("name").value,
     photo: document.getElementById("photo").value,
     speciality: document.getElementById("speciality").value,
@@ -20,43 +32,73 @@ function saveProfile() {
   }, { merge: true });
 }
 
-
-// 📥 завантажити профіль
 function loadProfile() {
-  firebase.firestore().collection("users").doc(user.uid)
-    .get().then(doc => {
-      if (!doc.exists) return;
+  db.collection("users").doc(user.uid)
+  .get().then(doc => {
+    if (!doc.exists) return;
 
-      const d = doc.data();
+    const d = doc.data();
 
-      document.getElementById("name").value = d.name || "";
-      document.getElementById("photo").value = d.photo || "";
-      document.getElementById("speciality").value = d.speciality || "";
-    });
+    document.getElementById("name").value = d.name || "";
+    document.getElementById("photo").value = d.photo || "";
+    document.getElementById("speciality").value = d.speciality || "";
+  });
 }
 
 
-// 📅 мої тренування
+/* ================= TRAININGS ================= */
 function loadMyTrainings() {
-  firebase.firestore()
-    .collection("trainings")
-    .where("trainerId", "==", user.uid)
-    .onSnapshot(snap => {
+  db.collection("trainings")
+  .where("trainerId", "==", user.uid)
+  .onSnapshot(snap => {
 
-      let html = "";
+    let html = "";
 
-      snap.forEach(doc => {
-        const d = doc.data();
+    snap.forEach(doc => {
+      const d = doc.data();
 
-        html += `
-          <div class="card">
-            <p>📅 ${d.date}</p>
-            <p>👤 ${d.uid}</p>
-            <p>💪 ${d.muscle}</p>
-          </div>
-        `;
-      });
-
-      document.getElementById("myTrainings").innerHTML = html;
+      html += `
+        <div class="card">
+          📅 ${d.date}<br>
+          👤 ${d.uid}<br>
+          💪 ${d.muscle || ""}
+        </div>
+      `;
     });
+
+    document.getElementById("myTrainings").innerHTML = html;
+  });
+}
+
+
+/* ================= POSTS (INSTAGRAM) ================= */
+function loadPosts() {
+  db.collection("posts")
+  .where("userId", "==", user.uid)
+  .onSnapshot(snap => {
+
+    let html = "";
+
+    snap.forEach(d => {
+      let p = d.data();
+
+      html += `
+        <div class="card">
+          <img src="${p.image}" style="width:100%; border-radius:10px">
+
+          <div>❤️ ${p.likes || 0}</div>
+        </div>
+      `;
+    });
+
+    document.getElementById("myPosts").innerHTML = html;
+  });
+}
+
+
+/* ================= LIKE ================= */
+function likePost(id) {
+  db.collection("posts").doc(id).update({
+    likes: firebase.firestore.FieldValue.increment(1)
+  });
 }
