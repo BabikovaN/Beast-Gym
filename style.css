@@ -1,54 +1,99 @@
-/* ================= RESET ================= */
+/* =========================
+   RESET
+========================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-body{
-  background: radial-gradient(circle at top, #0a0a0a, #000);
-  color:white;
-  font-family:Arial, sans-serif;
+html{
+  scroll-behavior:smooth;
 }
 
-/* ================= HEADER ================= */
+body{
+  background:radial-gradient(circle at top, #0a0a0a, #000 60%);
+  color:#fff;
+  font-family:Arial, sans-serif;
+  overflow-x:hidden;
+}
+
+/* =========================
+   КОЛЬОРИ
+========================= */
+:root{
+  --yellow:#d6ff00;
+  --yellow-soft:#eeff6a;
+  --neon:rgba(170,255,120,0.14);
+  --neon-strong:rgba(170,255,120,0.22);
+  --card-bg:linear-gradient(145deg,#101010,#090909);
+  --border:rgba(214,255,0,0.14);
+  --text-soft:#d8d8d8;
+}
+
+/* =========================
+   HEADER
+========================= */
 header{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:65px;
+  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 20px;
-  background:rgba(0,0,0,0.75);
+  padding:0 18px;
+  background:rgba(0,0,0,0.88);
   backdrop-filter:blur(10px);
-  z-index:1000;
-  border-bottom:1px solid rgba(214,255,0,0.2);
+  z-index:1200;
+  border-bottom:1px solid rgba(214,255,0,0.12);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
 }
 
 .logo img{
   height:42px;
+  width:auto;
+  display:block;
+  object-fit:contain;
 }
 
 .burger{
-  font-size:32px;
-  color:#d6ff00;
+  border:none;
+  background:transparent;
+  color:var(--yellow);
+  font-size:38px;
+  line-height:1;
   cursor:pointer;
+  transition:0.25s ease;
 }
 
-/* ================= MENU ================= */
+.burger:hover{
+  color:var(--yellow-soft);
+  transform:scale(1.04);
+  text-shadow:0 0 10px rgba(214,255,0,0.18);
+}
+
+/* =========================
+   MENU
+========================= */
 nav{
   position:fixed;
   top:0;
-  right:-100%;
+  right:-280px;
   width:260px;
   height:100vh;
-  background:#111;
-  padding-top:80px;
-  transition:0.3s;
-  z-index:999;
+  background:rgba(12,12,12,0.97);
+  backdrop-filter:blur(12px);
+  padding-top:82px;
+  transition:0.3s ease;
+  z-index:1300;
+  border-left:1px solid rgba(214,255,0,0.12);
+  box-shadow:-12px 0 30px rgba(0,0,0,0.45);
 }
 
 nav.active{
@@ -57,94 +102,286 @@ nav.active{
 
 nav a{
   display:block;
-  padding:15px 20px;
-  color:#d6ff00;
+  padding:16px 20px;
+  color:var(--yellow);
   text-decoration:none;
+  font-size:18px;
+  font-weight:700;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:0.25s ease;
 }
 
-/* ================= HERO ================= */
-.slider{
-  margin-top:65px;
-  width:100%;
-  height:220px;
-  overflow:hidden;
+nav a:hover{
+  background:rgba(214,255,0,0.07);
+  color:#f7ffaf;
+  padding-left:26px;
 }
 
-.slider img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ================= CONTAINER ================= */
+/* =========================
+   ОСНОВНИЙ КОНТЕНТ
+========================= */
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:86px 10px 24px;
 }
 
-/* ================= CARDS ================= */
-.card{
-  background:linear-gradient(145deg,#121212,#0d0d0d);
-  padding:18px;
-  border-radius:20px;
-  margin-bottom:20px;
-
-  border:1px solid rgba(214,255,0,0.12);
-
+/* =========================
+   HERO / БАНЕР
+========================= */
+.slider{
+  width:100%;
+  margin-bottom:16px;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(214,255,0,0.10);
   box-shadow:
-    0 0 12px rgba(170,255,120,0.1),
-    10px 10px 25px rgba(0,0,0,0.6);
+    0 0 14px rgba(170,255,120,0.08),
+    0 0 24px rgba(170,255,120,0.05);
 }
 
-/* жовта лінія */
+.slider img,
+.slides img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+}
+
+/* =========================
+   CARD
+========================= */
+.card{
+  position:relative;
+  background:var(--card-bg);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:
+    0 0 12px var(--neon),
+    0 0 24px rgba(170,255,120,0.05),
+    10px 10px 24px rgba(0,0,0,0.64);
+}
+
 .card::before{
   content:"";
-  display:block;
-  height:3px;
-  margin-bottom:10px;
-  background:linear-gradient(90deg,#d6ff00,#b8ff6a);
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--yellow),#b8ff59,var(--yellow));
 }
 
-/* ================= TEXT ================= */
+/* =========================
+   ТЕКСТ
+========================= */
+h1,h2,h3{
+  color:#f7f7f7;
+}
+
 h1{
-  font-size:26px;
+  font-size:30px;
+  line-height:1.05;
+  margin-bottom:10px;
 }
 
 h2{
-  font-size:22px;
+  font-size:26px;
+  margin-bottom:12px;
 }
 
 p{
-  color:#ccc;
+  color:var(--text-soft);
+  font-size:18px;
+  line-height:1.45;
 }
 
-/* ================= MAP ================= */
+/* =========================
+   ТРЕНЕРИ
+========================= */
+#trainers{
+  display:grid;
+  gap:12px;
+}
+
+.trainer-item{
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(214,255,0,0.08);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 0 10px rgba(170,255,120,0.05);
+}
+
+.trainer-name{
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.trainer-role{
+  color:var(--yellow);
+  font-size:17px;
+}
+
+/* =========================
+   КАРТА
+========================= */
+.map,
+.map-wrap{
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(214,255,0,0.08);
+}
+
+.map iframe,
+.map-wrap iframe,
 .card iframe{
   width:100%;
-  height:250px;
-  border-radius:12px;
+  height:280px;
   border:none;
+  display:block;
+  border-radius:16px;
 }
 
-/* ================= FOOTER ================= */
+/* =========================
+   FOOTER
+========================= */
 .footer{
   text-align:center;
-  padding:20px;
-  color:#aaa;
+  padding:14px 16px 28px;
 }
 
-/* ================= GRID ПК ================= */
-@media(min-width:900px){
+.footer p{
+  color:#cfcfcf;
+  font-size:17px;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 900px){
+
+  header{
+    height:76px;
+    padding:0 26px;
+  }
+
+  .logo img{
+    height:46px;
+  }
+
+  .burger{
+    font-size:40px;
+  }
 
   .container{
+    padding:96px 24px 30px;
+  }
+
+  .slider{
+    border-radius:28px;
+    margin-bottom:22px;
+  }
+
+  .slider img,
+  .slides img{
+    height:300px;
+  }
+
+  .desktop-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
   }
 
-  .slider{
-    height:350px;
+  .card{
+    border-radius:26px;
+    padding:22px;
+    margin-bottom:20px;
   }
 
+  h1{
+    font-size:42px;
+  }
+
+  h2{
+    font-size:34px;
+  }
+
+  p{
+    font-size:22px;
+  }
+
+  .map iframe,
+  .map-wrap iframe,
+  .card iframe{
+    height:380px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px){
+
+  header{
+    height:70px;
+    padding:0 12px;
+  }
+
+  .logo img{
+    height:40px;
+  }
+
+  .burger{
+    font-size:34px;
+  }
+
+  .container{
+    padding:82px 10px 18px;
+  }
+
+  .slider{
+    border-radius:22px;
+    margin-bottom:14px;
+  }
+
+  .slider img,
+  .slides img{
+    height:180px;
+  }
+
+  .card{
+    border-radius:22px;
+    padding:16px;
+    margin-bottom:14px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:24px;
+  }
+
+  p{
+    font-size:17px;
+  }
+
+  nav{
+    width:250px;
+    right:-260px;
+  }
+
+  .map iframe,
+  .map-wrap iframe,
+  .card iframe{
+    height:250px;
+  }
 }
