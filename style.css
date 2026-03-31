@@ -1,4 +1,3 @@
-/* 🔥 ГОЛОВНИЙ СТИЛЬ */
 *{
   margin:0;
   padding:0;
@@ -9,7 +8,6 @@
 body{
   background:#000;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -17,40 +15,21 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 16px;
+  padding:10px 15px;
 }
 
-/* LOGO 3D + NEON + ANIMATION */
+/* LOGO */
 .logo img{
-  height:42px;
-  filter: drop-shadow(0 0 10px #39ff14);
-  animation:pulse 2s infinite, rotate3d 6s infinite linear;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1); filter:drop-shadow(0 0 5px #39ff14);}
-  50%{transform:scale(1.05); filter:drop-shadow(0 0 20px #39ff14);}
-  100%{transform:scale(1); filter:drop-shadow(0 0 5px #39ff14);}
-}
-
-@keyframes rotate3d{
-  0%{transform:perspective(200px) rotateY(0deg);}
-  50%{transform:perspective(200px) rotateY(15deg);}
-  100%{transform:perspective(200px) rotateY(0deg);}
+  height:45px;
+  filter: drop-shadow(0 0 15px #39ff14);
 }
 
 /* BURGER */
 .burger{
-  font-size:42px;
-  cursor:pointer;
+  font-size:36px;
   color:#39ff14;
+  cursor:pointer;
   text-shadow:0 0 15px #39ff14;
-  transition:0.3s;
-}
-
-.burger:hover{
-  transform:scale(1.1);
-  text-shadow:0 0 25px #39ff14;
 }
 
 /* MENU */
@@ -65,7 +44,6 @@ nav{
   transition:0.3s;
   padding-top:80px;
   border-left:2px solid #39ff14;
-  box-shadow:-10px 0 25px rgba(57,255,20,0.3);
 }
 
 nav.active{
@@ -74,74 +52,65 @@ nav.active{
 
 nav a{
   display:block;
-  padding:14px;
+  padding:15px;
   color:#39ff14;
   text-decoration:none;
-  font-size:18px;
-  text-shadow:0 0 10px #39ff14;
 }
 
-/* CARDS */
-.cards{
-  padding:12px;
-}
-
+/* CARD (ОСТРІВКИ) */
 .card{
-  background:#1a1a1a;
+  margin:15px;
   padding:15px;
-  margin-bottom:15px;
-  border-radius:12px;
-  border:1px solid #222;
+  background:#1a1a1a;
+  border-radius:15px;
+  box-shadow:
+    0 0 10px #39ff14,
+    0 10px 25px rgba(0,0,0,0.8);
 }
 
-.card:hover{
-  box-shadow:0 0 15px #39ff14;
-}
-
-.price-title{
+/* TITLES */
+h2{
   color:#ffd000;
-  font-weight:bold;
+  margin-bottom:10px;
 }
 
-/* INSTAGRAM GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:10px;
+/* SLIDER */
+.slider{
+  overflow:hidden;
 }
 
-.gallery img{
+.slides{
+  display:flex;
+  transition:0.5s;
+}
+
+.slides img{
   width:100%;
-  height:180px;
+  height:300px;
   object-fit:cover;
   border-radius:12px;
-  border:1px solid #39ff14;
-  box-shadow:0 0 10px #39ff14;
-  transition:0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 20px #39ff14;
+/* TRAINERS */
+.trainers{
+  display:flex;
+  gap:10px;
 }
 
-/* FOOTER */
-.footer{
+.trainer{
+  flex:1;
   text-align:center;
-  padding:20px;
-  border-top:1px solid #39ff14;
 }
 
-.footer a{
-  color:#39ff14;
-  text-decoration:none;
+.trainer img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 0 10px #39ff14;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .logo img{height:34px;}
-  .burger{font-size:44px;}
-  nav{width:85%;}
-  .gallery img{height:150px;}
+  .slides img{height:250px;}
 }
