@@ -1,5 +1,5 @@
 /* =========================
-   🔥 GLOBAL RESET
+   🔥 RESET
 ========================= */
 *{
   margin:0;
@@ -11,21 +11,21 @@ body{
   background:#000;
   color:white;
   font-family:Arial, sans-serif;
-  padding-top:70px; /* header space */
+  padding-top:65px;
 }
 
 /* =========================
-   🔥 HEADER (APP STYLE)
+   🔥 HEADER
 ========================= */
 header{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:70px;
+  height:65px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   padding:0 15px;
   background:#000;
   z-index:1000;
@@ -34,7 +34,8 @@ header{
 
 /* LOGO */
 .logo img{
-  height:40px;
+  height:38px;
+  display:block;
   object-fit:contain;
   filter:
     drop-shadow(0 0 8px #39ff14)
@@ -43,10 +44,10 @@ header{
 
 /* BURGER */
 .burger{
-  font-size:36px;
+  font-size:34px;
   color:#39ff14;
   cursor:pointer;
-  text-shadow:0 0 10px #39ff14;
+  user-select:none;
 }
 
 /* =========================
@@ -54,14 +55,14 @@ header{
 ========================= */
 nav{
   position:fixed;
-  right:0;
   top:0;
-  width:280px;
+  right:0;
+  width:260px;
   height:100vh;
   background:#0a0a0a;
   transform:translateX(100%);
   transition:0.3s ease;
-  padding-top:90px;
+  padding-top:80px;
   z-index:999;
   border-left:1px solid rgba(57,255,20,0.2);
 }
@@ -78,7 +79,7 @@ nav a{
   font-size:16px;
 }
 
-/* dark overlay */
+/* затемнення */
 body.menu-open::after{
   content:"";
   position:fixed;
@@ -91,94 +92,31 @@ body.menu-open::after{
 }
 
 /* =========================
-   🔥 CARDS (ISLAND UI)
+   🔥 SLIDER (ЗМЕНШЕНИЙ)
+========================= */
+.slider{
+  width:100%;
+  height:120px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.slides img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  display:block;
+}
+
+/* =========================
+   🔥 CARDS
 ========================= */
 .card{
   background:#1a1a1a;
   margin:15px;
   padding:18px;
-  border-radius:20px;
-  box-shadow:
-    0 0 10px rgba(57,255,20,0.15),
-    0 0 20px rgba(57,255,20,0.08);
-}
-
-/* =========================
-   🔥 PROFILE
-========================= */
-.profile-wrapper{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:20px;
-}
-
-.avatar{
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid #39ff14;
-  box-shadow:0 0 15px #39ff14;
-}
-
-/* =========================
-   🔥 POSTS GRID
-========================= */
-.posts-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:5px;
-}
-
-.posts-grid img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:6px;
-}
-
-/* =========================
-   🔥 FULL IMAGE FIX
-========================= */
-.post-img{
-  width:100%;
-  height:200px;
-  object-fit:contain;
-  background:#000;
-  border-radius:12px;
-}
-
-/* =========================
-   🔥 CHAT
-========================= */
-#chatBox{
-  height:300px;
-  overflow-y:auto;
-  background:#111;
-  padding:10px;
-  border-radius:10px;
-}
-
-/* INPUT */
-input{
-  width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  margin-top:5px;
-  background:#222;
-  color:white;
-}
-
-.slides img{
-  width:100%;
-  max-width:100%;
-  max-height:200px;   /* 🔥 ОБМЕЖЕННЯ ВИСОТИ */
-  object-fit:cover;
-  display:block;
-  margin:0 auto;
-  border-radius:12px;
+  border-radius:18px;
+  box-shadow:0 0 10px rgba(57,255,20,0.1);
 }
 
 /* =========================
@@ -186,28 +124,32 @@ input{
 ========================= */
 @media(max-width:768px){
 
+  body{
+    padding-top:60px;
+  }
+
   header{
-    height:65px;
+    height:60px;
   }
 
   .logo img{
-    height:34px;
+    height:32px;
   }
 
   .burger{
-    font-size:34px;
+    font-size:32px;
   }
 
   .card{
     margin:10px;
-    padding:15px;
+    padding:14px;
   }
 
-  .post-img{
-    height:170px;
+  .slider{
+    height:100px;
   }
 
-  nav{
-    width:250px;
+  .slides img{
+    height:100px;
   }
 }
