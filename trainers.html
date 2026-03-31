@@ -35,14 +35,14 @@ body{
   transform:translateY(-5px);
 }
 
-/* 4:5 IMAGE */
+/* IMAGE */
 .trainer-card img{
   width:100%;
-  aspect-ratio:4/5;   /* 🔥 ОЦЕ 4:5 */
+  aspect-ratio:4/5;
   object-fit:cover;
 }
 
-/* CONTENT */
+/* BODY */
 .card-body{
   padding:12px;
   text-align:center;
@@ -72,7 +72,6 @@ p{
   border-radius:10px;
   font-weight:bold;
   cursor:pointer;
-  transition:0.2s;
 }
 
 .btn-book{
@@ -111,10 +110,12 @@ p{
 const db = firebase.firestore();
 let user = null;
 
+/* AUTH SAFE */
 firebase.auth().onAuthStateChanged(u=>{
   user = u;
 });
 
+/* LOAD TRAINERS */
 db.collection("users")
 .where("role","==","trainer")
 .onSnapshot(snap=>{
@@ -123,7 +124,6 @@ db.collection("users")
 
   snap.forEach(doc=>{
     const t = doc.data();
-
     const stars = "⭐".repeat(t.rating || 0);
 
     html += `
@@ -154,6 +154,7 @@ db.collection("users")
   document.getElementById("trainers").innerHTML = html;
 });
 
+/* BOOK */
 function bookTrainer(trainerId){
 
   if(!user){
@@ -171,8 +172,9 @@ function bookTrainer(trainerId){
   alert("✅ Запис створено!");
 }
 
+/* OPEN PROFILE */
 function openProfile(id){
-  window.location = "trainer-view.html?id=" + id;
+  window.location = "trainer-profile.html?id=" + id;
 }
 </script>
 
