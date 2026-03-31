@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Тренери</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -53,30 +54,34 @@ button:hover{
 
 <section id="trainers"></section>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
+<!-- твоя конфігурація -->
 <script src="firebase.js"></script>
 
 <script>
 const db = firebase.firestore();
-let user;
+let user = null;
 
+// USER AUTH
 firebase.auth().onAuthStateChanged(u=>{
   user = u;
 });
 
+// LOAD TRAINERS
 db.collection("users")
 .where("role","==","trainer")
 .onSnapshot(snap=>{
 
-  let html="";
+  let html = "";
 
   snap.forEach(doc=>{
     const t = doc.data();
 
-    const stars = "⭐".repeat(t.rating || 5);
+    const stars = "⭐".repeat(t.rating || 0);
 
     html += `
       <div class="trainer-card">
@@ -104,6 +109,7 @@ db.collection("users")
   document.getElementById("trainers").innerHTML = html;
 });
 
+// BOOK TRAINER
 function bookTrainer(trainerId){
 
   if(!user){
@@ -114,12 +120,14 @@ function bookTrainer(trainerId){
   db.collection("trainings").add({
     uid: user.uid,
     trainerId: trainerId,
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
+    status: "pending"
   });
 
-  alert("✅ Ви записані до тренера!");
+  alert("✅ Запис створено! Очікуйте підтвердження тренера.");
 }
 
+// OPEN PROFILE
 function openProfile(id){
   window.location = "trainer-view.html?id=" + id;
 }
