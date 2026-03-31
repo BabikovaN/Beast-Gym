@@ -5,16 +5,20 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-let user;
+let user = null;
 
-/* ================= AUTH ================= */
-firebase.auth().onAuthStateChanged(u => {
+auth.onAuthStateChanged(u => {
   if (!u) {
     window.location = "login.html";
     return;
   }
 
   user = u;
+
+  loadProfile();
+  loadMyTrainings();
+  loadPosts();
+});
 
   loadProfile();
   loadMyTrainings();
