@@ -10,7 +10,9 @@
 
 <body>
 
-<!-- 🔥 HEADER -->
+<div class="app">
+
+<!-- HEADER -->
 <header>
 
   <div class="logo">
@@ -20,71 +22,65 @@
   <div class="burger" onclick="toggleMenu()">☰</div>
 
   <nav id="menu">
-
-    <a href="index.html">Головна</a>
-    <a href="about.html">Про нас</a>
-    <a href="price.html">Тарифи</a>
-    <a href="photos.html">Фото</a>
-    <a href="contacts.html">Контакти</a>
-
-    <a href="profile.html">Профіль</a>
-
+    <a href="#">Головна</a>
+    <a href="#">Про нас</a>
+    <a href="#">Тарифи</a>
+    <a href="#">Фото</a>
+    <a href="#">Контакти</a>
   </nav>
 
 </header>
 
-<!-- 🔥 HERO (ФОТО ЗАЛУ) -->
-<section class="slider">
-  <div class="slides">
-    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
-  </div>
-</section>
+<div class="space"></div>
 
-<!-- 🔥 ПРО ЗАЛ -->
+<!-- БАНЕР -->
+<div class="slider">
+  <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
+</div>
+
+<!-- ПРО ЗАЛ -->
 <div class="card">
-  <h2> Beast Gym</h2>
+  <h1>Beast Gym</h1>
   <p>Сучасний зал у Черкасах</p>
   <p>Тренери • Програми • Результат</p>
 </div>
 
-<!-- 🔥 ТРЕНЕРИ -->
+<!-- ТРЕНЕРИ -->
 <div class="card">
   <h2>Тренери</h2>
   <div id="trainers"></div>
 </div>
 
-<!-- 🔥 ПРАЙС -->
+<!-- ПРАЙС -->
 <div class="card">
   <h2>Прайс (коротко)</h2>
-  <p>Разове відвідування— 250 грн</p>
-  <p>1 місяць— 900 грн</p>
+  <p>Разове — 250 грн</p>
+  <p>1 місяць — 900 грн</p>
   <p>3 місяці — 2500 грн</p>
 </div>
 
-
-<!-- 🔥 ЛОКАЦІЯ -->
+<!-- КАРТА -->
 <div class="card">
-  <h2> Ми на карті</h2>
+  <h2>Ми на карті</h2>
 
-  <iframe 
-    src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed"
-    width="100%" 
-    height="250" 
-    style="border-radius:10px;">
-  </iframe>
+  <div class="map">
+    <iframe 
+    src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed">
+    </iframe>
+  </div>
 </div>
 
-<!-- 🔥 FOOTER -->
 <footer class="footer">
-  <p> Черкаси, вул. Грушевського 110</p>
+  <p>Черкаси, вул. Грушевського 110</p>
 </footer>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</div>
 
-<script src="firebase.js"></script>
-<script src="script.js"></script>
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
