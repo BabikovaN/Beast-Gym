@@ -33,6 +33,14 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
+});
+
 /* ================= SLIDER ================= */
 
 const slides = document.querySelectorAll(".slide");
