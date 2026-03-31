@@ -1,17 +1,23 @@
-// меню
-function toggleMenu(){
+function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
 }
 
-// slider
+
+// 🔥 SAFE SLIDER
 let index = 0;
 
-setInterval(()=>{
+setInterval(() => {
   const slides = document.getElementById("slides");
+
+  if (!slides) return; // якщо немає слайдера — нічого не робимо
+
   const total = slides.children.length;
 
+  if (total === 0) return;
+
   index++;
-  if(index >= total) index = 0;
+
+  if (index >= total) index = 0;
 
   slides.style.transform = `translateX(-${index * 100}%)`;
-},3000);
+}, 3000);
