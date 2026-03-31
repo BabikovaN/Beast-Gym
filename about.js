@@ -48,7 +48,6 @@ const dots = document.querySelectorAll(".dot");
 
 let currentSlide = 0;
 
-// 👉 якщо слайдів нема — не запускаємо
 if (slides.length > 0) {
 
   function showSlide(index){
@@ -56,33 +55,35 @@ if (slides.length > 0) {
       slide.classList.toggle("active", i === index);
     });
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
+    if (dots.length > 0) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
 
     currentSlide = index;
   }
 
   function nextSlide(){
     let next = currentSlide + 1;
-    if(next >= slides.length) next = 0;
+    if (next >= slides.length) next = 0;
     showSlide(next);
   }
 
   function prevSlide(){
     let prev = currentSlide - 1;
-    if(prev < 0) prev = slides.length - 1;
+    if (prev < 0) prev = slides.length - 1;
     showSlide(prev);
   }
 
   function goToSlide(index){
-    showSlide(index);
+    if (index >= 0 && index < slides.length) {
+      showSlide(index);
+    }
   }
 
-  // автопрокрутка
   setInterval(nextSlide, 4000);
 
-  // робимо функції глобальними (щоб onclick працював)
   window.nextSlide = nextSlide;
   window.prevSlide = prevSlide;
   window.goToSlide = goToSlide;
