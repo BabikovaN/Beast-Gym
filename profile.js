@@ -1,39 +1,67 @@
 <!--логін користуача-->
 let user;
+let unsubscribeTrainings = null;
 
-auth.onAuthStateChanged(u=>{
-  if(!u) window.location="login.html";
+auth.onAuthStateChanged((u) => {
+  if (!u) {
+    window.location = "login.html";
+    return;
+  }
+
   user = u;
   load();
 });
 
-function save(){
+
+// 💾 ЗБЕРЕГТИ ІМ'Я
+function save() {
+  const nameInput = document.getElementById("name");
+
   db.collection("users").doc(user.uid).set({
-    name: name.value
-  }, {merge:true});
+    name: nameInput.value
+  }, { merge: true });
 }
 
-function add(){
+
+// ➕ ДОДАТИ ТРЕНУВАННЯ
+function add() {
+  const dateInput = document.getElementById("date");
+
   db.collection("trainings").add({
     uid: user.uid,
-    date: date.value
+    date: dateInput.value,
+    createdAt: Date.now()
   });
 }
 
-function load(){
-  db.collection("trainings")
-  .where("uid","==",user.uid)
-  .onSnapshot(snap=>{
-    let html="";
-    snap.forEach(d=>{
-      html += `<p>${d.data().date}</p>`;
+
+// 📥 ЗАВАНТАЖЕННЯ ТРЕНУВАНЬ
+function load() {
+  const list = document.getElementById("list");
+
+  if (unsubscribeTrainings) {
+    unsubscribeTrainings();
+  }
+
+  unsubscribeTrainings = db.collection("trainings")
+    .where("uid", "==", user.uid)
+    .onSnapshot((snap) => {
+      let html = "";
+
+      snap.forEach((d) => {
+        html += `<p>📅 ${d.data().date}</p>`;
+      });
+
+      list.innerHTML = html;
     });
-    list.innerHTML = html;
-  });
 }
 
-function setTrainer(){
-  db.collection("users").doc(user.uid).update({
-    trainer: trainer.value
-  });
+
+// 🧑‍🏫 ВИБІР ТРЕНЕРА
+function setTrainer() {
+  const trainerInput = document.getElementById("trainer");
+
+  db.collection("users").doc(user.uid).set({
+    trainer: trainerInput.value
+  }, { merge: true });
 }
