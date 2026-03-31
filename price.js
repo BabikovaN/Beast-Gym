@@ -32,3 +32,11 @@ document.addEventListener("keydown", function(event) {
     closeMenu();
   }
 });
+
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
+});
