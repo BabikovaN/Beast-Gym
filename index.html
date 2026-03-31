@@ -10,8 +10,6 @@
 
 <body>
 
-<div class="app">
-
 <!-- 🔥 HEADER -->
 <header>
 
@@ -31,77 +29,63 @@
 
 </header>
 
-<div class="space"></div>
-
 <!-- 🔥 HERO -->
 <section class="slider">
-  <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
+  <div class="slides">
+    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
+  </div>
 </section>
 
-<!-- 🔥 ПРО ЗАЛ -->
-<div class="card">
-  <h1>Beast Gym</h1>
-  <p>Сучасний зал у Черкасах</p>
-  <p>Тренери • Програми • Результат</p>
-</div>
+<!-- 🔥 ОСНОВНИЙ КОНТЕНТ -->
+<main class="container">
 
-<!-- 🔥 ТРЕНЕРИ -->
-<div class="card">
-  <h2>Тренери</h2>
-  <div id="trainers"></div>
-</div>
+  <!-- ПРО ЗАЛ -->
+  <div class="card">
+    <h1>Beast Gym</h1>
+    <p>Сучасний зал у Черкасах</p>
+    <p>Тренери • Програми • Результат</p>
+  </div>
 
-<!-- 🔥 ПОСТИ -->
-<div class="card">
-  <h2>Пости</h2>
-  <div id="posts"></div>
-</div>
+  <!-- ТРЕНЕРИ -->
+  <div class="card">
+    <h2>Тренери</h2>
+    <div id="trainers"></div>
+  </div>
 
-<!-- 🔥 ЧАТ -->
-<div class="card">
-  <h2>Чат</h2>
-  <div id="chatBox"></div>
+  <!-- ПРАЙС -->
+  <div class="card">
+    <h2>Прайс</h2>
+    <p class="price">Разове — 250 грн</p>
+    <p class="price">1 місяць — 900 грн</p>
+    <p class="price">3 місяці — 2500 грн</p>
+  </div>
 
-  <input id="msg" placeholder="Написати повідомлення...">
-  <button onclick="sendMsg()">Відправити</button>
-</div>
+  <!-- КАРТА -->
+  <div class="card">
+    <h2>Ми на карті</h2>
 
-<!-- 🔥 СЛОТИ -->
-<div class="card">
-  <h2>Запис</h2>
-  <div id="slots"></div>
-</div>
+    <iframe 
+      src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed">
+    </iframe>
+  </div>
 
-<!-- 🔥 ПРАЙС -->
-<div class="card">
-  <h2>Прайс</h2>
-  <p class="price">Разове — 250 грн</p>
-  <p class="price">1 місяць — 900 грн</p>
-  <p class="price">3 місяці — 2500 грн</p>
-</div>
-
-<!-- 🔥 КАРТА -->
-<div class="card">
-  <h2>Ми на карті</h2>
-
-  <iframe 
-    src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed">
-  </iframe>
-</div>
+</main>
 
 <!-- 🔥 FOOTER -->
 <footer class="footer">
   <p>Черкаси, вул. Грушевського 110</p>
 </footer>
 
-</div>
-
-<!-- 🔥 Firebase бібліотеки -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
-<!-- 🔥 ТВОЇ ФАЙЛИ -->
 <script src="firebase.js"></script>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
