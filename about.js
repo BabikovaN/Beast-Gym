@@ -1,22 +1,24 @@
+// =========================
+// MENU
+// =========================
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 
 function openMenu() {
-  if (!menu) return;
-  menu.classList.add("active");
+  if (menu) menu.classList.add("active");
   if (menuOverlay) menuOverlay.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeMenu() {
-  if (!menu) return;
-  menu.classList.remove("active");
+  if (menu) menu.classList.remove("active");
   if (menuOverlay) menuOverlay.classList.remove("active");
   document.body.style.overflow = "";
 }
 
 function toggleMenu() {
   if (!menu) return;
+
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -34,51 +36,108 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-document.querySelectorAll("#menu a").forEach(link => {
-  link.addEventListener("click", closeMenu);
+const menuLinks = document.querySelectorAll("#menu a");
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
 });
 
-/* ================= SLIDER ================= */
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
-let currentSlide = 0;
+// робимо глобальною для onclick
+window.toggleMenu = toggleMenu;
 
-if (slides.length > 0) {
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-    });
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
+// =========================
+// FIREBASE
+// =========================
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID"
+};
 
-    currentSlide = index;
-  }
+let db = null;
 
-  function nextSlide() {
-    let next = currentSlide + 1;
-    if (next >= slides.length) next = 0;
-    showSlide(next);
-  }
-
-  function prevSlide() {
-    let prev = currentSlide - 1;
-    if (prev < 0) prev = slides.length - 1;
-    showSlide(prev);
-  }
-
-  function goToSlide(index) {
-    if (index >= 0 && index < slides.length) {
-      showSlide(index);
+function initFirebase() {
+  try {
+    if (typeof firebase === "undefined") {
+      console.warn("Firebase library ще не підключена.");
+      return null;
     }
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    return firebase.firestore();
+  } catch (error) {
+    console.error("Firebase init error:", error);
+    return null;
   }
-
-  setInterval(nextSlide, 4000);
-
-  window.nextSlide = nextSlide;
-  window.prevSlide = prevSlide;
-  window.goToSlide = goToSlide;
 }
 
-window.toggleMenu = toggleMenu;
+db = initFirebase();
+
+
+// =========================
+// TRAINERS
+// =========================
+function renderTrainerCard(user) {
+  const name = user.name || "Тренер";
+  const speciality = user.speciality || "Персональні тренування";
+
+  return `
+    <div class="trainer-item">
+      <div class="trainer-name">${name}</div>
+      <div class="trainer-role">${speciality}</div>
+    </div>
+  `;
+}
+
+function loadTrainers() {
+  const trainersEl = document.getElementById("trainers");
+  if (!trainersEl) return;
+
+  if (!db) {
+    trainersEl.innerHTML = `
+      <div class="trainer-item">
+        <div class="trainer-name">Тренери скоро з'являться</div>
+        <div class="trainer-role">Firebase буде підключено пізніше</div>
+      </div>
+    `;
+    return;
+  }
+
+  db.collection("users")
+    .where("role", "==", "trainer")
+    .onSnapshot(
+      (snap) => {
+        if (snap.empty) {
+          trainersEl.innerHTML = `
+            <div class="trainer-item">
+              <div class="trainer-name">Поки немає тренерів</div>
+              <div class="trainer-role">Додай тренерів у Firebase</div>
+            </div>
+          `;
+          return;
+        }
+
+        let html = "";
+        snap.forEach((doc) => {
+          html += renderTrainerCard(doc.data());
+        });
+
+        trainersEl.innerHTML = html;
+      },
+      (error) => {
+        console.error("Помилка завантаження тренерів:", error);
+        trainersEl.innerHTML = `
+          <div class="trainer-item">
+            <div class="trainer-name">Не вдалося завантажити тренерів</div>
+            <div class="trainer-role">Перевір Firebase config і Firestore rules</div>
+          </div>
+        `;
+      }
+    );
+}
+
+loadTrainers();
