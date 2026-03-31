@@ -12,12 +12,14 @@
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <img src="Logo BG.svg">
+    <img src="Logo BG.svg" alt="Beast Gym">
   </div>
 
   <div class="burger" onclick="toggleMenu()">☰</div>
 
+  <!-- NAVIGATION (твоя система) -->
   <nav id="menu">
+
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
     <a href="price.html">Прайс</a>
@@ -25,7 +27,12 @@
     <a href="photos.html">Фото</a>
     <a href="trainers.html">Тренери</a>
     <a href="contacts.html">Контакти</a>
-    <a href="admin.html">Адмін</a>
+
+    <a href="profile.html">Особистий кабінет</a>
+    <a href="trainer-profile.html">Кабінет тренера</a>
+
+    <a href="admin.html" id="adminLink" style="display:none;">Адмін</a>
+
   </nav>
 </header>
 
@@ -61,24 +68,31 @@
   <p>НД — вихідний</p>
 </section>
 
-<!-- 👤 ТРЕНЕРИ -->
+<!-- 👤 ТРЕНЕРИ (готово під Firebase) -->
 <section class="card">
   <h2>💪 Тренери</h2>
-
-  <div class="trainers">
-    <div class="trainer">
-      <img src="photo20.jpg">
-      <p>Ім’я тренера</p>
-    </div>
-
-    <div class="trainer">
-      <img src="photo21.jpg">
-      <p>Ім’я тренера</p>
-    </div>
-  </div>
-
+  <div id="trainersContainer"></div>
 </section>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© Beast Gym — всі права захищені</p>
+</footer>
+
 <script src="script.js"></script>
+
+<!-- 🔥 slider fix -->
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+
+setInterval(() => {
+  index++;
+  slides.style.transform = "translateX(" + (-index * 100) + "%)";
+
+  if(index >= 3) index = -1;
+}, 3000);
+</script>
+
 </body>
 </html>
