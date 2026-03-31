@@ -2,127 +2,62 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Admin Panel</title>
-<link rel="stylesheet" href="style.css">
+<title>Gym CRM Admin</title>
+
+<link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
-<h1 style="color:#ffd000;text-align:center;">🔥 ADMIN PANEL</h1>
+<h1>🔥 GYM CRM ADMIN</h1>
 
-<!-- 🔐 LOGIN -->
+<!-- LOGIN -->
 <div id="login">
   <input id="user" placeholder="Логін">
   <input id="pass" type="password" placeholder="Пароль">
   <button onclick="login()">Увійти</button>
 </div>
 
-<!-- PANEL -->
-<div id="panel" style="display:none;">
+<!-- DASHBOARD -->
+<div class="admin-layout" id="adminPanel">
 
-  <div class="card">
-    <h2>📌 Меню</h2>
-    <input id="menuText" placeholder="Назва">
-    <input id="menuUrl" placeholder="URL (index.html)">
-    <button onclick="addMenu()">Додати пункт</button>
+  <div class="sidebar">
+    <a onclick="show('users')">👤 Users</a>
+    <a onclick="show('trainers')">💪 Trainers</a>
+    <a onclick="show('trainings')">📅 Trainings</a>
   </div>
 
-  <div class="card">
-    <h2>📝 Текст сторінки</h2>
-    <input id="page" placeholder="about.html / price.html">
-    <textarea id="text" placeholder="Новий текст"></textarea>
-    <button onclick="updateText()">Оновити текст</button>
+  <div class="content">
+    <div id="panel"></div>
   </div>
 
-  <div class="card">
-    <h2>💪 Тренери</h2>
-    <input id="tName" placeholder="Ім'я">
-    <input id="tDesc" placeholder="Опис">
-    <button onclick="addTrainer()">Додати</button>
-  </div>
-
-  <div class="card">
-    <h2>📸 Фото</h2>
-    <input id="photo" placeholder="URL фото">
-    <button onclick="addPhoto()">Додати фото</button>
-  </div>
-
-  <button onclick="logout()">🚪 Вийти</button>
 </div>
 
-<!-- FIREBASE (правильний SDK) -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
 firebase.initializeApp({
-  apiKey: "YOUR_KEY",
-  projectId: "YOUR_PROJECT"
+  apiKey: "YOUR_API_KEY",
+  projectId: "YOUR_PROJECT_ID"
 });
+</script>
 
-const db = firebase.firestore();
+<script src="admin.js"></script>
 
-/* 🔐 LOGIN (тимчасовий) */
+<script>
 function login(){
-  const u = document.getElementById("user").value;
-  const p = document.getElementById("pass").value;
+  const u = user.value;
+  const p = pass.value;
 
-  if(u === "admin" && p === "1234"){
-    localStorage.setItem("admin","true");
-    showPanel();
+  if(u==="admin" && p==="1234"){
+    login.style.display="none";
+    adminPanel.style.display="flex";
+    show("users");
   } else {
-    alert("Невірно");
+    alert("❌ Невірний логін");
   }
-}
-
-function showPanel(){
-  document.getElementById("login").style.display="none";
-  document.getElementById("panel").style.display="block";
-}
-
-/* 📌 MENU */
-function addMenu(){
-  const text = document.getElementById("menuText").value;
-  const url = document.getElementById("menuUrl").value;
-
-  db.collection("menu").add({ text, url });
-}
-
-/* 📝 TEXT */
-function updateText(){
-  const page = document.getElementById("page").value;
-  const text = document.getElementById("text").value;
-
-  db.collection("pages").doc(page).set({ text });
-}
-
-/* 💪 TRAINERS */
-function addTrainer(){
-  const name = document.getElementById("tName").value;
-  const desc = document.getElementById("tDesc").value;
-
-  db.collection("trainers").add({ name, desc });
-}
-
-/* 📸 PHOTO */
-function addPhoto(){
-  const url = document.getElementById("photo").value;
-
-  db.collection("photos").add({
-    url,
-    time: Date.now()
-  });
-}
-
-/* 🚪 LOGOUT */
-function logout(){
-  localStorage.removeItem("admin");
-  location.reload();
-}
-
-/* AUTO LOGIN */
-if(localStorage.getItem("admin")==="true"){
-  showPanel();
 }
 </script>
 
