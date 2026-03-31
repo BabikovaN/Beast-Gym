@@ -34,40 +34,48 @@ document.addEventListener("keydown", function(event) {
 });
 
 /* ================= SLIDER ================= */
+
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
+
 let currentSlide = 0;
 
-function showSlide(index){
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
+// 👉 якщо слайдів нема — не запускаємо
+if (slides.length > 0) {
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
+  function showSlide(index){
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
 
-  currentSlide = index;
-}
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
 
-function nextSlide(){
-  let next = currentSlide + 1;
-  if(next >= slides.length) next = 0;
-  showSlide(next);
-}
-
-function prevSlide(){
-  let prev = currentSlide - 1;
-  if(prev < 0) prev = slides.length - 1;
-  showSlide(prev);
-}
-
-function goToSlide(index){
-  showSlide(index);
-}
-
-setInterval(() => {
-  if(slides.length > 0){
-    nextSlide();
+    currentSlide = index;
   }
-}, 4000);
+
+  function nextSlide(){
+    let next = currentSlide + 1;
+    if(next >= slides.length) next = 0;
+    showSlide(next);
+  }
+
+  function prevSlide(){
+    let prev = currentSlide - 1;
+    if(prev < 0) prev = slides.length - 1;
+    showSlide(prev);
+  }
+
+  function goToSlide(index){
+    showSlide(index);
+  }
+
+  // автопрокрутка
+  setInterval(nextSlide, 4000);
+
+  // робимо функції глобальними (щоб onclick працював)
+  window.nextSlide = nextSlide;
+  window.prevSlide = prevSlide;
+  window.goToSlide = goToSlide;
+}
