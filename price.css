@@ -43,6 +43,11 @@ header{
   border-bottom:1px solid var(--border);
 }
 
+.logo{
+  display:flex;
+  align-items:center;
+}
+
 .logo img{
   height:40px;
   display:block;
@@ -54,16 +59,27 @@ header{
   color:var(--yellow);
   font-size:34px;
   cursor:pointer;
+  line-height:1;
+  transition:0.25s ease;
 }
 
+.burger:hover{
+  color:var(--yellow-soft);
+  transform:scale(1.04);
+  text-shadow:0 0 10px rgba(214,255,0,0.18);
+}
+
+/* МЕНЮ */
 nav{
   position:fixed;
   top:0;
-  right:-100%;
+  right:0;
   width:260px;
   height:100vh;
-  background:#111;
+  background:rgba(12,12,12,0.97);
+  backdrop-filter:blur(12px);
   padding-top:80px;
+  transform:translateX(100%);
   transition:0.3s ease;
   z-index:1100;
   border-left:1px solid var(--border);
@@ -71,7 +87,7 @@ nav{
 }
 
 nav.active{
-  right:0;
+  transform:translateX(0);
 }
 
 nav a{
@@ -82,6 +98,13 @@ nav a{
   font-size:18px;
   font-weight:700;
   border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:0.25s ease;
+}
+
+nav a:hover{
+  background:rgba(214,255,0,0.07);
+  color:var(--yellow-soft);
+  padding-left:26px;
 }
 
 .menu-overlay{
@@ -90,6 +113,7 @@ nav a{
   background:rgba(0,0,0,0.58);
   opacity:0;
   visibility:hidden;
+  pointer-events:none;
   transition:0.3s ease;
   z-index:1050;
 }
@@ -97,6 +121,7 @@ nav a{
 .menu-overlay.active{
   opacity:1;
   visibility:visible;
+  pointer-events:auto;
 }
 
 .page{
