@@ -110,6 +110,10 @@ function loadSlots(){
   });
 }
 
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
 /* ================= INIT ================= */
 loadTrainers();
 loadPosts();
