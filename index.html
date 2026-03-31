@@ -4,26 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beast Gym</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Beast Gym</h1>
+<h1>🏋️ Beast Gym</h1>
 
+<!-- 📍 ЛОКАЦІЯ -->
 <div class="card">
-  <h2>📅 Запис</h2>
+  <h2>📍 Локація залу</h2>
 
-  <select id="trainerSelect"></select>
-  <input type="date" id="date">
-  <input type="time" id="time">
-
-  <button onclick="book()">Записатися</button>
+  <a target="_blank"
+     href="https://www.google.com.ua/maps/place/%D1%83%D0%BB.+%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%B0+%D0%93%D1%80%D1%83%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE,+110,+%D0%A7%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%81%D1%8B,+%D0%A7%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+18000">
+    📌 Відкрити Google Maps
+  </a>
 </div>
 
+<!-- 👨‍🏫 TRAINERS -->
 <div class="card">
-  <h2>👤 Мої записи</h2>
-  <div id="myBookings"></div>
+  <h2>👨‍🏫 Тренери</h2>
+  <div id="trainers"></div>
+</div>
+
+<!-- 📸 POSTS -->
+<div class="card">
+  <h2>📸 Пости</h2>
+  <div id="posts"></div>
+</div>
+
+<!-- 💬 CHAT -->
+<div class="card">
+  <h2>💬 Чат</h2>
+
+  <select id="chatWith"></select>
+
+  <div id="chatBox" style="height:200px;overflow:auto;"></div>
+
+  <input id="msg" placeholder="Написати...">
+  <button onclick="sendMsg()">Send</button>
+</div>
+
+<!-- 📅 SLOTS -->
+<div class="card">
+  <h2>📅 Вільні слоти</h2>
+  <div id="slots"></div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -37,48 +61,108 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-/* LOAD TRAINERS */
-db.collection("users").where("role","==","trainer")
-.onSnapshot(snap=>{
-  let html = "";
-  snap.forEach(d=>{
-    html += `<option value="${d.id}">${d.data().name}</option>`;
-  });
-  trainerSelect.innerHTML = html;
-});
-
-/* BOOK */
-function book(){
-  db.collection("bookings").add({
-    userId: "USER_1",
-    trainerId: trainerSelect.value,
-    date: date.value,
-    time: time.value,
-    status: "pending"
-  });
-
-  alert("⏳ Очікує підтвердження");
-}
-
-/* MY BOOKINGS */
-db.collection("bookings")
-.where("userId","==","USER_1")
+/* =======================
+   TRAINERS
+======================= */
+db.collection("users")
+.where("role","==","trainer")
 .onSnapshot(snap=>{
   let html = "";
 
   snap.forEach(d=>{
-    let b = d.data();
+    let t = d.data();
 
     html += `
       <div class="card">
-        💪 ${b.trainerId}<br>
-        📅 ${b.date} ${b.time}<br>
-        Status: ${b.status}
+        👨‍🏫 ${t.name || "Trainer"}<br>
+        💪 ${t.speciality || ""}
       </div>
     `;
   });
 
-  myBookings.innerHTML = html;
+  trainers.innerHTML = html;
+});
+
+/* =======================
+   POSTS (Instagram)
+======================= */
+db.collection("posts")
+.onSnapshot(snap=>{
+  let html = "";
+
+  snap.forEach(d=>{
+    let p = d.data();
+
+    html += `
+      <div class="card">
+        <b>${p.user || "trainer"}</b><br><br>
+
+        <img src="${p.image}"
+             style="width:100%;border-radius:10px"><br>
+
+        ❤️ ${p.likes || 0}
+
+        <button onclick="likePost('${d.id}')">Like</button>
+      </div>
+    `;
+  });
+
+  posts.innerHTML = html;
+});
+
+function likePost(id){
+  db.collection("posts").doc(id).update({
+    likes: firebase.firestore.FieldValue.increment(1)
+  });
+}
+
+/* =======================
+   CHAT (real-time)
+======================= */
+db.collection("messages")
+.orderBy("time")
+.onSnapshot(snap=>{
+  let html = "";
+
+  snap.forEach(d=>{
+    let m = d.data();
+    html += `<div>💬 <b>${m.from}</b>: ${m.text}</div>`;
+  });
+
+  chatBox.innerHTML = html;
+});
+
+function sendMsg(){
+  if(msg.value.trim()=="") return;
+
+  db.collection("messages").add({
+    from:"client",
+    text: msg.value,
+    time: Date.now()
+  });
+
+  msg.value="";
+}
+
+/* =======================
+   SLOTS (only view)
+======================= */
+db.collection("slots")
+.onSnapshot(snap=>{
+  let html = "";
+
+  snap.forEach(d=>{
+    let s = d.data();
+
+    html += `
+      <div class="card">
+        📅 ${s.date} ${s.time}<br>
+        Статус: ${s.status || "free"}
+      </div>
+    `;
+  });
+
+  slots.innerHTML = html;
 });
 </script>
 
