@@ -1,32 +1,29 @@
 // =========================
 // MENU
 // =========================
-const burgerBtn = document.getElementById("burgerBtn");
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 
 function openMenu() {
-  menu.classList.add("active");
-  menuOverlay.classList.add("active");
+  if (menu) menu.classList.add("active");
+  if (menuOverlay) menuOverlay.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeMenu() {
-  menu.classList.remove("active");
-  menuOverlay.classList.remove("active");
+  if (menu) menu.classList.remove("active");
+  if (menuOverlay) menuOverlay.classList.remove("active");
   document.body.style.overflow = "";
 }
 
 function toggleMenu() {
+  if (!menu) return;
+
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
     openMenu();
   }
-}
-
-if (burgerBtn) {
-  burgerBtn.addEventListener("click", toggleMenu);
 }
 
 if (menuOverlay) {
@@ -37,6 +34,14 @@ document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
     closeMenu();
   }
+});
+
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
 });
 
 // =========================
