@@ -1,4 +1,3 @@
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -6,13 +5,12 @@
 }
 
 body{
-  background: radial-gradient(circle at top, #0a0a0a, #000);
+  background:radial-gradient(circle at top, #0a0a0a, #000);
   color:white;
   font-family:Arial, sans-serif;
   overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
 header{
   position:fixed;
   top:0;
@@ -43,7 +41,6 @@ header{
   line-height:1;
 }
 
-/* ================= MENU ================= */
 nav{
   position:fixed;
   top:0;
@@ -87,7 +84,6 @@ nav a:hover{
   background:rgba(214,255,0,0.08);
 }
 
-/* ================= OVERLAY ================= */
 .menu-overlay{
   position:fixed;
   inset:0;
@@ -105,14 +101,12 @@ nav a:hover{
   pointer-events:auto;
 }
 
-/* ================= PAGE ================= */
 .page{
   padding-top:80px;
   max-width:1100px;
   margin:auto;
 }
 
-/* ================= HERO ================= */
 .hero-grid{
   display:grid;
   gap:12px;
@@ -131,7 +125,6 @@ nav a:hover{
   display:block;
 }
 
-/* ================= CARDS ================= */
 .card{
   margin:10px;
   padding:16px;
@@ -151,7 +144,6 @@ nav a:hover{
   background:linear-gradient(90deg,#d6ff00,#bfff00);
 }
 
-/* ================= TEXT ================= */
 h1{
   font-size:22px;
   margin-bottom:10px;
@@ -167,13 +159,11 @@ p{
   line-height:1.5;
 }
 
-/* ================= ADDRESS ================= */
 .hero-address{
   text-align:right;
   padding:0 12px;
 }
 
-/* ================= TRAINERS ================= */
 .trainers-list{
   display:grid;
   gap:10px;
@@ -185,7 +175,16 @@ p{
   background:#111;
 }
 
-/* ================= MAP ================= */
+.trainer-name{
+  color:#fff;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.trainer-role{
+  color:#d6ff00;
+}
+
 .map-wrap iframe{
   width:100%;
   height:220px;
@@ -194,14 +193,12 @@ p{
   display:block;
 }
 
-/* ================= FOOTER ================= */
 .footer{
   text-align:center;
   padding:20px;
   color:#aaa;
 }
 
-/* ================= ПК ================= */
 @media(min-width:768px){
   .hero-grid{
     grid-template-columns:1fr 1fr;
