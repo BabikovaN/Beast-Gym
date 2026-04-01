@@ -1,6 +1,3 @@
-// =========================
-// MENU
-// =========================
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 
@@ -18,7 +15,6 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
-
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -38,13 +34,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-document.querySelectorAll("#menu a").forEach(link => {
-  link.addEventListener("click", closeMenu);
-});
-
-// =========================
-// FIREBASE
-// =========================
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   projectId: "YOUR_PROJECT_ID"
@@ -55,7 +44,6 @@ let db = null;
 function initFirebase() {
   try {
     if (typeof firebase === "undefined") {
-      console.warn("Firebase library ще не підключена.");
       return null;
     }
 
@@ -72,9 +60,6 @@ function initFirebase() {
 
 db = initFirebase();
 
-// =========================
-// TRAINERS
-// =========================
 function renderTrainerCard(user) {
   const name = user.name || "Тренер";
   const speciality = user.speciality || "Персональні тренування";
