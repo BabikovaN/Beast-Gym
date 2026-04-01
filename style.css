@@ -187,3 +187,28 @@ p{color:#ccc;}
   .map-wrap iframe{
     height:300px;
   }
+  /*=======адмін=====*/
+  .admin-entry{
+  position:fixed;
+  right:14px;
+  bottom:14px;
+
+  z-index:2000;
+
+  font-size:12px;
+  letter-spacing:1px;
+
+  color:#777;                 /* виглядає як текст */
+  text-decoration:none;       /* без підкреслення */
+
+  opacity:0.5;                /* напівпрозорий */
+  cursor:default;             /* ніби не кнопка */
+
+  transition:0.2s;
+}
+
+.admin-entry:hover{
+  opacity:1;
+  color:#d6ff00;              /* тільки при наведенні видно */
+  cursor:pointer;
+}
