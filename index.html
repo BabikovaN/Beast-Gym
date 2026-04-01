@@ -10,25 +10,24 @@
 
 <header>
   <div class="logo">
-    <a href="/Beast-Gym/index.html">
-      <img src="Logo BG.svg" alt="Beast Gym">
-    </a>
+    <img src="Logo BG.svg" alt="Beast Gym">
   </div>
 
-  <button class="burger" onclick="toggleMenu()" aria-label="Меню" type="button">☰</button>
-</header>
+  <div class="burger" onclick="toggleMenu()">☰</div>
 
 <nav id="menu">
-  <a href="/Beast-Gym/index.html">Головна</a>
-  <a href="/Beast-Gym/about.html">Про нас</a>
-  <a href="/Beast-Gym/price.html">Тарифи</a>
-  <a href="/Beast-Gym/photos.html">Фото</a>
-  <a href="/Beast-Gym/admin.html" class="admin-link">Адміністратор</a>
+  <a href="index.html">Головна</a>
+  <a href="about.html">Про нас</a>
+  <a href="price.html">Тарифи</a>
+  <a href="photos.html">Фото</a>
+  <a href="contacts.html">Контакти</a>
 </nav>
+</header>
 
 <div id="menuOverlay" class="menu-overlay"></div>
 
 <main class="page">
+
   <section class="hero-grid">
     <div class="hero-image-wrap">
       <img
@@ -58,7 +57,7 @@
     </section>
 
     <section class="card section-card">
-      <h2>Прайс</h2>
+      <h2>Прайс (коротко)</h2>
       <div class="price-list">
         <p>Разове відвідування — 250 грн</p>
         <p>1 місяць — 900 грн</p>
@@ -78,12 +77,16 @@
       </div>
     </section>
   </section>
+
 </main>
 
 <footer class="footer">
-  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
+  <p>Черкаси, вул. Грушевського 110</p>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
