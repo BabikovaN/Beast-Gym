@@ -10,18 +10,29 @@
   
 <header>
   <div class="logo">
-    <img src="Logo BG.svg" alt="Beast Gym">
+    <a href="index.html">
+      <img src="Logo BG.svg" alt="Beast Gym">
+    </a>
   </div>
 
-  <div class="burger" onclick="toggleMenu()">☰</div>
+  <button class="burger" onclick="toggleMenu()" aria-label="Меню" type="button">☰</button>
 
-<nav id="menu">
-  <a href="index.html">Головна</a>
-  <a href="about.html">Про нас</a>
-  <a href="price.html">Тарифи</a>
-  <a href="photos.html">Фото</a>
-  <a href="contacts.html">Контакти</a>
-</nav>
+  <nav id="menu">
+    <div class="menu-top">
+      <a href="index.html">Головна</a>
+      <a href="about.html">Про нас</a>
+      <a href="price.html">Тарифи</a>
+      <a href="photos.html">Фото</a>
+      <a href="products.html">Продукція</a>
+      <a href="vacancies.html">Вакансії</a>
+      <a href="rules.html">Правила</a>
+      <a href="contacts.html">Контакти</a>
+    </div>
+
+    <div class="menu-bottom">
+      <a href="admin.html" class="admin-link">Адміністратор</a>
+    </div>
+  </nav>
 </header>
 
 <div id="menuOverlay" class="menu-overlay"></div>
