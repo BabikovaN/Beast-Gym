@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фото | Beast Gym</title>
+  <link rel="stylesheet" href="photos.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="Logo BG.svg" alt="Beast Gym">
+  </div>
+
+  <div class="burger" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+  <a href="index.html">Головна</a>
+  <a href="about.html">Про нас</a>
+  <a href="price.html">Тарифи</a>
+  <a href="photos.html">Фото</a>
+  <a href="contacts.html">Контакти</a>
+</nav>
+</header>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<main class="page">
+
+  <section class="hero card">
+    <h1>Фото Beast Gym</h1>
+    <p>
+      Галерея нашого простору, команди та атмосфери.
+      Додавай фото вручну по категоріях — зал, тренери, ви.
+    </p>
+  </section>
+
+  <section class="tabs card">
+    <button class="tab-btn active" data-tab="gym">Зал</button>
+    <button class="tab-btn" data-tab="trainers">Тренери</button>
+    <button class="tab-btn" data-tab="you">Ви</button>
+  </section>
+
+  <section class="gallery-section active" id="gymSection">
+    <div class="section-head">
+      <h2>Зал</h2>
+      <p>Фото тренажерної зали, обладнання та атмосфери.</p>
+    </div>
+    <div class="gallery-grid" id="gymGallery"></div>
+  </section>
+
+  <section class="gallery-section" id="trainersSection">
+    <div class="section-head">
+      <h2>Тренери</h2>
+      <p>Фото команди Beast Gym.</p>
+    </div>
+    <div class="gallery-grid" id="trainersGallery"></div>
+  </section>
+
+  <section class="gallery-section" id="youSection">
+    <div class="section-head">
+      <h2>Ви</h2>
+      <p>Фото клієнтів, результатів та моментів із тренувань.</p>
+    </div>
+    <div class="gallery-grid" id="youGallery"></div>
+  </section>
+
+  <section class="card note-card">
+    <h2>Як додавати фото вручну</h2>
+    <p>У файлі <strong>photos.js</strong> є окремі масиви для кожної категорії.</p>
+    <p>Просто додай назву свого файла, наприклад: <strong>"zal1.jpg"</strong> або <strong>"trainer1.jpg"</strong>.</p>
+    <p>Фото мають лежати в тій самій папці, що й сторінка, або в папці images, якщо захочеш зробити так пізніше.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
+</footer>
+
+  
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="photos.js"></script>
+</body>
+</html>
