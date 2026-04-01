@@ -1,3 +1,6 @@
+// =========================
+// MENU
+// =========================
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 
@@ -15,6 +18,7 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
+
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -22,18 +26,27 @@ function toggleMenu() {
   }
 }
 
-window.toggleMenu = toggleMenu;
-
 if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
     closeMenu();
   }
 });
 
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
+});
+
+// =========================
+// FIREBASE
+// =========================
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   projectId: "YOUR_PROJECT_ID"
@@ -41,25 +54,18 @@ const firebaseConfig = {
 
 let db = null;
 
-function initFirebase() {
-  try {
-    if (typeof firebase === "undefined") {
-      return null;
-    }
-
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-
-    return firebase.firestore();
-  } catch (error) {
-    console.error("Firebase init error:", error);
-    return null;
+try {
+  if (typeof firebase !== "undefined") {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
   }
+} catch (error) {
+  console.error("Firebase init error:", error);
 }
 
-db = initFirebase();
-
+// =========================
+// TRAINERS
+// =========================
 function renderTrainerCard(user) {
   const name = user.name || "Тренер";
   const speciality = user.speciality || "Персональні тренування";
@@ -79,8 +85,8 @@ function loadTrainers() {
   if (!db) {
     trainersEl.innerHTML = `
       <div class="trainer-item">
-        <div class="trainer-name">Тренери скоро з’являться</div>
-        <div class="trainer-role">Firebase буде підключено пізніше</div>
+        <div class="trainer-name">Тренери скоро з'являться</div>
+        <div class="trainer-role">Підключи свої дані Firebase</div>
       </div>
     `;
     return;
