@@ -140,6 +140,3 @@ loadTrainers();
 }
 
 
-function goToAdmin(){
-  window.location.href = "admin.html";
-}
