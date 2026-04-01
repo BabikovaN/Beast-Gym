@@ -136,5 +136,3 @@ loadTrainers();
           </div>
         `;
       }
-    );
-}
