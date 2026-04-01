@@ -26,22 +26,20 @@ function toggleMenu() {
   }
 }
 
+window.toggleMenu = toggleMenu;
+
 if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeMenu();
   }
 });
 
-const menuLinks = document.querySelectorAll("#menu a");
-
-menuLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    closeMenu();
-  });
+document.querySelectorAll("#menu a").forEach(link => {
+  link.addEventListener("click", closeMenu);
 });
 
 // =========================
@@ -54,14 +52,25 @@ const firebaseConfig = {
 
 let db = null;
 
-try {
-  if (typeof firebase !== "undefined") {
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
+function initFirebase() {
+  try {
+    if (typeof firebase === "undefined") {
+      console.warn("Firebase library ще не підключена.");
+      return null;
+    }
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    return firebase.firestore();
+  } catch (error) {
+    console.error("Firebase init error:", error);
+    return null;
   }
-} catch (error) {
-  console.error("Firebase init error:", error);
 }
+
+db = initFirebase();
 
 // =========================
 // TRAINERS
@@ -85,8 +94,8 @@ function loadTrainers() {
   if (!db) {
     trainersEl.innerHTML = `
       <div class="trainer-item">
-        <div class="trainer-name">Тренери скоро з'являться</div>
-        <div class="trainer-role">Підключи свої дані Firebase</div>
+        <div class="trainer-name">Тренери скоро з’являться</div>
+        <div class="trainer-role">Firebase буде підключено пізніше</div>
       </div>
     `;
     return;
