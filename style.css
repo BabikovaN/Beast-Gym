@@ -197,21 +197,24 @@ p{color:#ccc;}
 
   font-size:12px;
   letter-spacing:1px;
-
-  color:#0a0a0a;
-  text-decoration:none;
-
   opacity:0.3;
+
+  color:#0a0a0a !important;
+  -webkit-text-fill-color:#0a0a0a !important;
+  text-decoration:none !important;
 }
 
-.admin-entry,
+.admin-entry:link,
 .admin-entry:visited,
-.admin-entry:active{
+.admin-entry:active,
+.admin-entry:focus{
   color:#0a0a0a !important;
-  text-decoration:none;
+  -webkit-text-fill-color:#0a0a0a !important;
+  text-decoration:none !important;
 }
 
 .admin-entry:hover{
   opacity:1;
   color:#d6ff00 !important;
+  -webkit-text-fill-color:#d6ff00 !important;
 }
