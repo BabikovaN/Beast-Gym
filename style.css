@@ -190,24 +190,28 @@ p{color:#ccc;}
   /*=======адмін=====*/
 .admin-entry{
   position:fixed;
-  top:20px;                /* 🔥 зверху */
-  left:50%;                /* центр */
-
+  top:20px;
+  left:50%;
   transform:translateX(-50%);
-
   z-index:2000;
 
   font-size:12px;
   letter-spacing:1px;
 
-  color:#0a0a0a;           /* майже чорний */
+  color:#0a0a0a;
   text-decoration:none;
 
   opacity:0.3;
-  transition:0.2s;
+}
+
+.admin-entry,
+.admin-entry:visited,
+.admin-entry:active{
+  color:#0a0a0a !important;
+  text-decoration:none;
 }
 
 .admin-entry:hover{
   opacity:1;
-  color:#d6ff00;
+  color:#d6ff00 !important;
 }
