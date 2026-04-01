@@ -6,7 +6,7 @@
 }
 
 body{
-  background:radial-gradient(circle at top, #0a0a0a, #000);
+  background: radial-gradient(circle at top, #0a0a0a, #000);
   color:white;
   font-family:Arial, sans-serif;
   overflow-x:hidden;
@@ -211,13 +211,8 @@ p{
     aspect-ratio:16/7;
   }
 
-  h1{
-    font-size:32px;
-  }
-
-  h2{
-    font-size:26px;
-  }
+  h1{font-size:32px;}
+  h2{font-size:26px;}
 
   .map-wrap iframe{
     height:300px;
