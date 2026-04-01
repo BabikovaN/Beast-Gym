@@ -189,7 +189,7 @@ p{color:#ccc;}
   }
   /*=======адмін=====*/
   
-  .admin-entry{
+.admin-entry{
   position:fixed;
   right:14px;
   bottom:14px;
@@ -199,17 +199,17 @@ p{color:#ccc;}
   font-size:12px;
   letter-spacing:1px;
 
-  color:#777;                 /* виглядає як текст */
-  text-decoration:none;       /* без підкреслення */
+  color:#111;              /* 🔥 майже чорний */
+  text-decoration:none;
 
-  opacity:0.5;                /* напівпрозорий */
-  cursor:default;             /* ніби не кнопка */
+  opacity:0.4;             /* ледве видно */
+  cursor:default;
 
   transition:0.2s;
 }
 
 .admin-entry:hover{
   opacity:1;
-  color:#d6ff00;              /* тільки при наведенні видно */
+  color:#d6ff00;           /* при наведенні світиться */
   cursor:pointer;
 }
