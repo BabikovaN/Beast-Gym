@@ -15,6 +15,7 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
+
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -22,18 +23,23 @@ function toggleMenu() {
   }
 }
 
-window.toggleMenu = toggleMenu;
-
 if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") closeMenu();
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
-document.querySelectorAll("#menu a").forEach(link => {
-  link.addEventListener("click", closeMenu);
+
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
 });
 
 /* slider */
