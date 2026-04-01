@@ -5,8 +5,6 @@
 }
 
 :root{
-  --bg:#000;
-  --card:#0c0c0c;
   --card2:#101010;
   --yellow:#d6ff00;
   --yellow-soft:#eeff6a;
@@ -66,7 +64,6 @@ header{
 .burger:hover{
   color:var(--yellow-soft);
   transform:scale(1.04);
-  text-shadow:0 0 10px rgba(214,255,0,0.18);
 }
 
 nav{
@@ -79,7 +76,7 @@ nav{
   backdrop-filter:blur(12px);
   padding-top:80px;
   transform:translateX(100%);
-  transition:0.3s ease;
+  transition:transform 0.3s ease;
   z-index:1100;
   border-left:1px solid var(--border);
   box-shadow:-12px 0 30px rgba(0,0,0,0.45);
@@ -223,13 +220,8 @@ p{
   z-index:2;
 }
 
-.slide-btn.prev{
-  left:10px;
-}
-
-.slide-btn.next{
-  right:10px;
-}
+.slide-btn.prev{ left:10px; }
+.slide-btn.next{ right:10px; }
 
 .dots{
   display:flex;
@@ -330,15 +322,7 @@ p{
     gap:20px;
   }
 
-  h1{
-    font-size:40px;
-  }
-
-  h2{
-    font-size:30px;
-  }
-
-  p{
-    font-size:19px;
-  }
+  h1{ font-size:40px; }
+  h2{ font-size:30px; }
+  p{ font-size:19px; }
 }
