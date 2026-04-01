@@ -1,6 +1,3 @@
-// =========================
-// MENU
-// =========================
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 
@@ -18,7 +15,6 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
-
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -40,39 +36,12 @@ document.querySelectorAll("#menu a").forEach(link => {
   link.addEventListener("click", closeMenu);
 });
 
-
-// =========================
-// FIREBASE (безпечний)
-// =========================
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  projectId: "YOUR_PROJECT_ID"
-};
-
-let db = null;
-
-try {
-  if (typeof firebase !== "undefined") {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    db = firebase.firestore();
-  }
-} catch (e) {
-  console.log("Firebase поки не активний");
-}
-
-
-// =========================
-// SLIDER
-// =========================
+/* slider */
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
-
 let currentSlide = 0;
 
 if (slides.length > 0) {
-
   function showSlide(index){
     slides.forEach((s,i)=>s.classList.toggle("active", i===index));
     dots.forEach((d,i)=>d.classList.toggle("active", i===index));
