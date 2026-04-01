@@ -126,3 +126,9 @@ function loadTrainers() {
 }
 
 loadTrainers();
+
+function goToAdmin(){
+  window.location.href = "admin.html";
+}
+
+window.goToAdmin = goToAdmin;
