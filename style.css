@@ -60,14 +60,15 @@ header{
   line-height:1;
   transition:0.25s ease;
 }
-
-.burger:hover{
-  color:var(--yellow-soft);
-  transform:scale(1.04);
-  text-shadow:0 0 10px rgba(214,255,0,0.18);
+.burger{
+  border:none;
+  background:transparent;
+  color:#d6ff00;
+  font-size:34px;
+  cursor:pointer;
+  line-height:1;
 }
 
-/* MENU */
 nav{
   position:fixed;
   top:0;
@@ -80,8 +81,7 @@ nav{
   transform:translateX(100%);
   transition:0.3s ease;
   z-index:1100;
-  border-left:1px solid var(--border);
-  box-shadow:-12px 0 30px rgba(0,0,0,0.45);
+  border-left:1px solid rgba(214,255,0,0.16);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -95,19 +95,11 @@ nav.active{
 .menu-bottom a{
   display:block;
   padding:16px 20px;
-  color:var(--yellow);
+  color:#d6ff00;
   text-decoration:none;
   font-size:18px;
   font-weight:700;
   border-bottom:1px solid rgba(255,255,255,0.04);
-  transition:0.25s ease;
-}
-
-.menu-top a:hover,
-.menu-bottom a:hover{
-  background:rgba(214,255,0,0.07);
-  color:var(--yellow-soft);
-  padding-left:26px;
 }
 
 .menu-bottom{
@@ -120,6 +112,22 @@ nav.active{
   background:rgba(214,255,0,0.08);
 }
 
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.58);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:0.3s ease;
+  z-index:1050;
+}
+
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
 /* OVERLAY */
 .menu-overlay{
   position:fixed;
