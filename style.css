@@ -191,7 +191,7 @@ p{color:#ccc;}
 .admin-entry{
   position:fixed;
   top:20px;                /* 🔥 зверху */
-  left:20%;                /* центр */
+  left:50%;                /* центр */
 
   transform:translateX(-50%);
 
