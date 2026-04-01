@@ -32,7 +32,7 @@ if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
     closeMenu();
   }
