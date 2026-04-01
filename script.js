@@ -127,8 +127,19 @@ function loadTrainers() {
 
 loadTrainers();
 
+      (error) => {
+        console.error("Помилка завантаження тренерів:", error);
+        trainersEl.innerHTML = `
+          <div class="trainer-item">
+            <div class="trainer-name">Не вдалося завантажити тренерів</div>
+            <div class="trainer-role">Перевір Firebase config і Firestore rules</div>
+          </div>
+        `;
+      }
+    );
+}
+
+
 function goToAdmin(){
   window.location.href = "admin.html";
 }
-
-window.goToAdmin = goToAdmin;
