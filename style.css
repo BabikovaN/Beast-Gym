@@ -188,28 +188,26 @@ p{color:#ccc;}
     height:300px;
   }
   /*=======адмін=====*/
-  
 .admin-entry{
   position:fixed;
-  right:14px;
+  left:50%;                 /* центр по горизонталі */
   bottom:14px;
+
+  transform:translateX(-50%);  /* вирівнювання по центру */
 
   z-index:2000;
 
   font-size:12px;
   letter-spacing:1px;
 
-  color:#111;              /* 🔥 майже чорний */
+  color:#0a0a0a;
   text-decoration:none;
 
-  opacity:0.4;             /* ледве видно */
-  cursor:default;
-
+  opacity:0.3;
   transition:0.2s;
 }
 
 .admin-entry:hover{
-  opacity:1;
-  color:#d6ff00;           /* при наведенні світиться */
-  cursor:pointer;
+  opacity:0.9;
+  color:#d6ff00;
 }
