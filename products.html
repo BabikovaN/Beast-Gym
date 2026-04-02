@@ -1,356 +1,217 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Продукція | Beast Gym</title>
-  <link rel="stylesheet" href="products.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Продукція | Beast Gym</title>
+<link rel="stylesheet" href="products.css">
 </head>
+
 <body>
 
 <header>
   <div class="logo">
-    <img src="Logo BG.svg" alt="Beast Gym">
+    <img src="Logo BG.svg">
   </div>
 
-    <div><a href="admin.html" class="admin-entry">© Beast Gym</a></div>
-  
+  <div><a href="admin.html" class="admin-entry">© Beast Gym</a></div>
+
   <div class="burger" onclick="toggleMenu()">☰</div>
-<nav id="menu">
-      <a href="index.html">Головна</a>
-      <a href="about.html">Про нас</a>
-      <a href="price.html">Тарифи</a>
-      <a href="photos.html">Фото</a>
-      <a href="products.html">Продукція</a>
-      <a href="vacancies.html">Вакансії</a>
-      <a href="rules.html">Правила</a>
-      <a href="contacts.html">Контакти</a>
-</nav>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="products.html">Продукція</a>
+  </nav>
 </header>
 
 <div id="menuOverlay" class="menu-overlay"></div>
 
 <main class="page">
 
-  <section class="hero card">
-    <h1>Продукція Beast Gym</h1>
-    <p>
-      Батончики, шоти та потрібні дрібниці для тренувань і комфорту.
-    </p>
-  </section>
+<!-- ================= HERO ================= -->
 
-  <section class="catalog-section">
-    <div class="section-title">
-      <h2>Батончики</h2>
-      <p>Ціна: 80 грн</p>
-    </div>
+<section class="hero card">
+  <h1>Продукція Beast Gym</h1>
+</section>
 
-    <div class="brand-block card">
-      <h3 class="brand-title">Space Bite</h3>
+<!-- ================= БАТОНЧИКИ ================= -->
 
-      <div class="products-grid">
+<section class="catalog-section">
 
-        <div class="product-card">
-          <img src="images/spacebite_hazelnut_date.jpg" alt="Space Bite Hazelnut and Date">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Space Bite Hazelnut &amp; Date</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик без доданого цукру з горіхово-фініковим смаком.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
+  <div class="section-title">
+    <h2>Батончики</h2>
+    <p>80 грн</p>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <img src="spacebite_hazelnut_date.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Space Bite Hazelnut</div>
+          <div class="product-price">80 грн</div>
         </div>
-
-        <div class="product-card">
-          <img src="images/spacebite_almond_cranberry.jpg" alt="Space Bite Almond and Cranberry">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Space Bite Almond &amp; Cranberry</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Горіховий батончик з мигдалем і журавлиною.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Горіхово-фініковий батончик
       </div>
     </div>
 
-    <div class="brand-block card">
-      <h3 class="brand-title">Monsters High Protein Bar</h3>
-
-      <div class="products-grid">
-
-        <div class="product-card">
-          <img src="images/monsters_blueberry.jpg" alt="Monsters Blueberry">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Monsters Blueberry</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик зі смаком чорниці.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
+    <div class="product-card">
+      <img src="monsters_blueberry.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Monsters Blueberry</div>
+          <div class="product-price">80 грн</div>
         </div>
-
-        <div class="product-card">
-          <img src="images/monsters_strawberry.jpg" alt="Monsters Strawberry">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Monsters Strawberry</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик зі смаком полуниці.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/monsters_cocoa.jpg" alt="Monsters Cocoa">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Monsters Cocoa</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик зі смаком какао.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/monsters_dried_apricots.jpg" alt="Monsters Dried Apricots">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Monsters Dried Apricots</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик зі смаком кураги.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Чорниця
       </div>
     </div>
 
-    <div class="brand-block card">
-      <h3 class="brand-title">Інші батончики</h3>
-
-      <div class="products-grid">
-
-        <div class="product-card">
-          <img src="images/fitwin_crunch_red.jpg" alt="Fit Win Crunch Red">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Fit Win Crunch Red</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Хрусткий протеїновий батончик.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
+    <div class="product-card">
+      <img src="powerpro_nuts.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Power Pro Nuts</div>
+          <div class="product-price">80 грн</div>
         </div>
-
-        <div class="product-card">
-          <img src="images/fitwin_crunch_green.jpg" alt="Fit Win Crunch Green">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Fit Win Crunch Green</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик Crunch.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/trigger_low_sugar.jpg" alt="Trigger Low Sugar">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Trigger Low Sugar</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Батончик зі зниженим вмістом цукру.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/powerpro_nuts.jpg" alt="Power Pro Nuts">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Power Pro Nuts</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Протеїновий батончик Power Pro з горіховим смаком.</p>
-            <p><strong>Склад:</strong> Додай точний склад із упаковки пізніше.</p>
-          </div>
-        </div>
-
+        <button onclick="toggleDetails(this)">▼</button>
       </div>
-    </div>
-  </section>
-
-  <section class="catalog-section">
-    <div class="section-title">
-      <h2>Шоти</h2>
-      <p>Ціна: 80 грн</p>
-    </div>
-
-    <div class="brand-block card">
-      <h3 class="brand-title">Kevin Levrone Anabolic On Stage Pump Shot</h3>
-
-      <div class="products-grid">
-
-        <div class="product-card">
-          <img src="images/pump_kiwi_strawberry.jpg" alt="Pump Kiwi Strawberry">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Pump Shot Kiwi-Strawberry</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Передтренувальний шот для пампу та кращого тренувального тонусу.</p>
-            <p><strong>Склад:</strong> Glycerol, L-Arginine AKG. Додай повний склад із етикетки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/pump_cherry_passionfruit.jpg" alt="Pump Cherry Passionfruit">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Pump Shot Cherry-Passionfruit</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Передтренувальний шот зі смаком вишні та маракуї.</p>
-            <p><strong>Склад:</strong> Glycerol, L-Arginine AKG. Додай повний склад із етикетки пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/pump_apple_pear.jpg" alt="Pump Apple Pear">
-          <div class="product-head">
-            <div>
-              <div class="product-name">Pump Shot Apple-Pear</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> Передтренувальний шот зі смаком яблука і груші.</p>
-            <p><strong>Склад:</strong> Glycerol, L-Arginine AKG. Додай повний склад із етикетки пізніше.</p>
-          </div>
-        </div>
-
+      <div class="product-details">
+        Горіховий батончик
       </div>
     </div>
 
-    <div class="brand-block card">
-      <h3 class="brand-title">AMIX BCAA Shot 3000</h3>
+  </div>
 
-      <div class="products-grid">
+</section>
 
-        <div class="product-card">
-          <img src="images/bcaa_melon.jpg" alt="BCAA Melon">
-          <div class="product-head">
-            <div>
-              <div class="product-name">BCAA Shot Melon</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> BCAA-шот для відновлення та підтримки м'язів.</p>
-            <p><strong>Склад:</strong> L-Leucine, L-Isoleucine, L-Valine 2:1:1. Додай повний склад пізніше.</p>
-          </div>
+<!-- ================= ШОТИ ================= -->
+
+<section class="catalog-section">
+
+  <div class="section-title">
+    <h2>Шоти</h2>
+    <p>80 грн</p>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <img src="pump_kiwi_strawberry.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Pump Kiwi</div>
+          <div class="product-price">80 грн</div>
         </div>
-
-        <div class="product-card">
-          <img src="images/bcaa_forest.jpg" alt="BCAA Forest Fruit">
-          <div class="product-head">
-            <div>
-              <div class="product-name">BCAA Shot Forest Fruit</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> BCAA-шот зі смаком лісових ягід.</p>
-            <p><strong>Склад:</strong> L-Leucine, L-Isoleucine, L-Valine 2:1:1. Додай повний склад пізніше.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="images/bcaa_cola.jpg" alt="BCAA Cola">
-          <div class="product-head">
-            <div>
-              <div class="product-name">BCAA Shot Cola</div>
-              <div class="product-price">80 грн</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleDetails(this)" type="button">▼</button>
-          </div>
-          <div class="product-details">
-            <p><strong>Опис:</strong> BCAA-шот зі смаком коли.</p>
-            <p><strong>Склад:</strong> L-Leucine, L-Isoleucine, L-Valine 2:1:1. Додай повний склад пізніше.</p>
-          </div>
-        </div>
-
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Передтренувальний
       </div>
     </div>
-  </section>
 
-  <section class="catalog-section">
-    <div class="section-title">
-      <h2>Додатково</h2>
-      <p>Послуги та корисні дрібниці</p>
+    <div class="product-card">
+      <img src="pump_cherry_passionfruit.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Pump Cherry</div>
+          <div class="product-price">80 грн</div>
+        </div>
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Шот для пампу
+      </div>
     </div>
 
-    <div class="extras-list card">
-      <div class="extra-row"><span>Резинки для волосся</span><strong>15 грн</strong></div>
-      <div class="extra-row"><span>Шкарпетки</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Шапочка для душу</span><strong>15 грн</strong></div>
-      <div class="extra-row"><span>Міні шампунь</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Міні гель для душу</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Оренда рушника</span><strong>50 грн</strong></div>
+    <div class="product-card">
+      <img src="pump_apple_pear.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">Pump Apple</div>
+          <div class="product-price">80 грн</div>
+        </div>
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Витривалість
+      </div>
     </div>
-  </section>
+
+    <div class="product-card">
+      <img src="bcaa_melon.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">BCAA Melon</div>
+          <div class="product-price">80 грн</div>
+        </div>
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Відновлення
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="bcaa_forest.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">BCAA Forest</div>
+          <div class="product-price">80 грн</div>
+        </div>
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Лісові ягоди
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="bcaa_cola.jpg">
+      <div class="product-head">
+        <div>
+          <div class="product-name">BCAA Cola</div>
+          <div class="product-price">80 грн</div>
+        </div>
+        <button onclick="toggleDetails(this)">▼</button>
+      </div>
+      <div class="product-details">
+        Кола
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= ДОДАТКОВО ================= -->
+
+<section class="catalog-section">
+
+  <div class="section-title">
+    <h2>Додатково</h2>
+  </div>
+
+  <div class="card">
+    <p>Резинки — 15 грн</p>
+    <p>Шкарпетки — 30 грн</p>
+    <p>Шапочка — 15 грн</p>
+    <p>Шампунь — 30 грн</p>
+    <p>Гель — 30 грн</p>
+    <p>Рушник — 50 грн</p>
+  </div>
+
+</section>
 
 </main>
 
 <script src="products.js"></script>
+
 </body>
 </html>
