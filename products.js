@@ -1,9 +1,42 @@
-function toggle(el){
-  const desc = el.parentElement.nextElementSibling;
+const menu = document.getElementById("menu");
+const menuOverlay = document.getElementById("menuOverlay");
 
-  if(desc.classList.contains("active")){
-    desc.classList.remove("active");
-  }else{
-    desc.classList.add("active");
+function openMenu() {
+  if (menu) menu.classList.add("active");
+  if (menuOverlay) menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  if (menu) menu.classList.remove("active");
+  if (menuOverlay) menuOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function toggleMenu() {
+  if (!menu) return;
+
+  if (menu.classList.contains("active")) {
+    closeMenu();
+  } else {
+    openMenu();
   }
+}
+
+window.toggleMenu = toggleMenu;
+
+if (menuOverlay) {
+  menuOverlay.addEventListener("click", closeMenu);
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
+
+function toggleDetails(button){
+  const details = button.parentElement.nextElementSibling;
+  details.classList.toggle("open");
+  button.classList.toggle("active");
 }
