@@ -218,3 +218,6 @@ p{color:#ccc;}
   color:#d6ff00 !important;
   -webkit-text-fill-color:#d6ff00 !important;
 }
+  .info-grid p {
+  margin-bottom: 15px;
+}
