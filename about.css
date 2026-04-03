@@ -311,3 +311,7 @@ p{
   h2{ font-size:30px; }
   p{ font-size:19px; }
 }
+.info-grid p {
+  margin: 12px 0;
+  line-height: 1.6;
+}
