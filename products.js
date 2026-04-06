@@ -1,3 +1,13 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
 // =========================
 // MENU
 // =========================
@@ -37,55 +47,32 @@ document.addEventListener("keydown", function(event) {
 
 const menuLinks = document.querySelectorAll("#menu a");
 menuLinks.forEach(link => {
-  link.addEventListener("click", closeMenu);
+  link.addEventListener("click", () => closeMenu());
 });
 
 // =========================
-// PRODUCT DETAILS
+// TABS
 // =========================
-function toggleDetails(button) {
-  const details = button.parentElement.nextElementSibling;
-  if (!details) return;
-  details.classList.toggle("open");
-  button.classList.toggle("active");
-}
+const tabs = document.querySelectorAll(".category-tab");
+const blocks = document.querySelectorAll(".catalog-block");
 
-// =========================
-// PRODUCT TABS
-// =========================
-const productTabs = document.querySelectorAll(".product-tab");
-const catalogPanels = document.querySelectorAll(".catalog-panel");
-
-productTabs.forEach(tab => {
+tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     const target = tab.dataset.tab;
 
-    productTabs.forEach(btn => btn.classList.remove("active"));
-    catalogPanels.forEach(panel => panel.classList.remove("active"));
+    tabs.forEach(btn => btn.classList.remove("active"));
+    blocks.forEach(block => block.classList.remove("active"));
 
     tab.classList.add("active");
-
-    const activePanel = document.getElementById(target);
-    if (activePanel) {
-      activePanel.classList.add("active");
-    }
+    const currentBlock = document.getElementById(target);
+    if (currentBlock) currentBlock.classList.add("active");
   });
 });
 
 // =========================
 // FIREBASE
 // =========================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-
-// ВСТАВ ТУТ СВІЙ CONFIG ІЗ FIREBASE
+// ВСТАВ СВІЙ CONFIG СЮДИ
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
@@ -99,7 +86,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // =========================
-// ТОВАРИ З КОДУ
+// БАЗОВІ ТОВАРИ
 // =========================
 const defaultProducts = {
   shot: [
@@ -122,6 +109,12 @@ const defaultProducts = {
       price: "40 грн",
       image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
       description: "Легкий перекус для швидкого підкріплення після заняття."
+    },
+    {
+      name: "Злаковий батончик",
+      price: "55 грн",
+      image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80",
+      description: "Поживний компактний перекус, який зручно взяти із собою."
     }
   ],
   water: [
@@ -154,52 +147,29 @@ const defaultProducts = {
   ]
 };
 
-function createProductCard(product) {
+// =========================
+// RENDER
+// =========================
+function createCard(product) {
   return `
     <div class="product-card">
-      <img src="${product.image}" alt="${product.name}">
-      <div class="product-head">
-        <div>
-          <div class="product-name">${product.name}</div>
-          <div class="product-price">${product.price}</div>
-        </div>
-        <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
-      </div>
-      <div class="product-details">
-        <p>${product.description || ""}</p>
+      <img src="${product.image || 'https://via.placeholder.com/600x700/111111/d6ff00?text=Beast+Gym'}" alt="${product.name}">
+      <div class="product-content">
+        <div class="product-name">${product.name}</div>
+        <div class="product-price">${product.price}</div>
+        <div class="product-desc">${product.description || ""}</div>
       </div>
     </div>
   `;
 }
 
-function createExtraRow(product) {
+function createExtraRow(item) {
   return `
     <div class="extra-row">
-      <span>${product.name}</span>
-      <strong>${product.price}</strong>
+      <span>${item.name}</span>
+      <strong>${item.price}</strong>
     </div>
   `;
-}
-
-function renderProducts(allProducts) {
-  const shotGrid = document.querySelector("#shot .products-grid");
-  const snacksGrid = document.querySelector("#snacks .products-grid");
-  const waterGrid = document.querySelector("#water .products-grid");
-  const extraList = document.querySelector("#extra .extras-list");
-
-  if (shotGrid) shotGrid.innerHTML = allProducts.shot.map(createProductCard).join("");
-  if (snacksGrid) snacksGrid.innerHTML = allProducts.snacks.map(createProductCard).join("");
-  if (waterGrid) waterGrid.innerHTML = allProducts.water.map(createProductCard).join("");
-  if (extraList) extraList.innerHTML = allProducts.extra.map(createExtraRow).join("");
-}
-
-function mergeProducts(defaultData, firebaseData) {
-  return {
-    shot: [...(defaultData.shot || []), ...(firebaseData.shot || [])],
-    snacks: [...(defaultData.snacks || []), ...(firebaseData.snacks || [])],
-    water: [...(defaultData.water || []), ...(firebaseData.water || [])],
-    extra: [...(defaultData.extra || []) , ...(firebaseData.extra || [])]
-  };
 }
 
 function groupFirebaseProducts(items) {
@@ -211,8 +181,29 @@ function groupFirebaseProducts(items) {
   };
 }
 
+function mergeProducts(defaultData, firebaseData) {
+  return {
+    shot: [...(defaultData.shot || []), ...(firebaseData.shot || [])],
+    snacks: [...(defaultData.snacks || []), ...(firebaseData.snacks || [])],
+    water: [...(defaultData.water || []), ...(firebaseData.water || [])],
+    extra: [...(defaultData.extra || []), ...(firebaseData.extra || [])]
+  };
+}
+
+function renderProducts(allProducts) {
+  const shotGrid = document.querySelector("#shot .products-grid");
+  const snacksGrid = document.querySelector("#snacks .products-grid");
+  const waterGrid = document.querySelector("#water .products-grid");
+  const extraList = document.querySelector("#extra .extras-list");
+
+  if (shotGrid) shotGrid.innerHTML = allProducts.shot.map(createCard).join("");
+  if (snacksGrid) snacksGrid.innerHTML = allProducts.snacks.map(createCard).join("");
+  if (waterGrid) waterGrid.innerHTML = allProducts.water.map(createCard).join("");
+  if (extraList) extraList.innerHTML = allProducts.extra.map(createExtraRow).join("");
+}
+
 // =========================
-// REALTIME З FIREBASE
+// FIREBASE REALTIME
 // =========================
 const productsRef = collection(db, "products");
 const productsQuery = query(productsRef, orderBy("createdAt", "asc"));
@@ -227,11 +218,12 @@ onSnapshot(productsQuery, (snapshot) => {
   const grouped = groupFirebaseProducts(firebaseProducts);
   const merged = mergeProducts(defaultProducts, grouped);
   renderProducts(merged);
+}, () => {
+  renderProducts(defaultProducts);
 });
 
 // =========================
-// ДОДАВАННЯ ТОВАРУ
-// МОЖНА ВИКЛИКАТИ З АДМІНКИ
+// ADD PRODUCT
 // =========================
 async function addProduct(category, product) {
   try {
@@ -246,7 +238,5 @@ async function addProduct(category, product) {
   }
 }
 
-// робимо доступною в консолі
-window.addProduct = addProduct;
 window.toggleMenu = toggleMenu;
-window.toggleDetails = toggleDetails;
+window.addProduct = addProduct;
