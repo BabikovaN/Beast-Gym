@@ -131,6 +131,8 @@ nav a{
 
 .section-title p{
   color:#d6ff00;
+  text-align:left;
+  text-indent:0;
 }
 
 .brand-block{
@@ -212,6 +214,8 @@ nav a{
   color:#ccc;
   line-height:1.5;
   margin-bottom:8px;
+  text-align:justify;
+  text-indent:20px;
 }
 
 .extras-list{
@@ -239,6 +243,17 @@ nav a{
   white-space:nowrap;
 }
 
+.footer{
+  text-align:center;
+  padding:16px 10px 30px;
+}
+
+.footer p{
+  color:#ccc;
+  text-align:center;
+  text-indent:0;
+}
+
 @media(min-width:768px){
   .products-grid{
     grid-template-columns:1fr 1fr;
@@ -258,6 +273,7 @@ nav a{
     grid-template-columns:1fr 1fr 1fr;
   }
 }
+
 /* 🔥 ЖУРНАЛЬНИЙ СТИЛЬ ТІЛЬКИ ДЛЯ ТЕКСТУ */
 .info-grid p,
 .card p {
@@ -265,4 +281,15 @@ nav a{
   text-indent: 25px;
   line-height: 1.7;
   margin-bottom: 12px;
+}
+
+/* ЩОБ НЕ ЛАМАЛИСЬ КОРОТКІ РЯДКИ */
+.section-title p,
+.footer p,
+.extra-row span,
+.extra-row strong,
+.product-price{
+  text-align:left;
+  text-indent:0;
+  margin-bottom:0;
 }
