@@ -1,19 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-
-// =========================
-// MENU
-// =========================
 const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
+const burgerBtn = document.getElementById("burgerBtn");
 
+/* MENU */
 function openMenu() {
   if (menu) menu.classList.add("active");
   if (menuOverlay) menuOverlay.classList.add("active");
@@ -35,6 +24,10 @@ function toggleMenu() {
   }
 }
 
+if (burgerBtn) {
+  burgerBtn.addEventListener("click", toggleMenu);
+}
+
 if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
@@ -47,12 +40,12 @@ document.addEventListener("keydown", function(event) {
 
 const menuLinks = document.querySelectorAll("#menu a");
 menuLinks.forEach(link => {
-  link.addEventListener("click", () => closeMenu());
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
 });
 
-// =========================
-// TABS
-// =========================
+/* TABS */
 const tabs = document.querySelectorAll(".category-tab");
 const blocks = document.querySelectorAll(".catalog-block");
 
@@ -64,30 +57,15 @@ tabs.forEach(tab => {
     blocks.forEach(block => block.classList.remove("active"));
 
     tab.classList.add("active");
+
     const currentBlock = document.getElementById(target);
-    if (currentBlock) currentBlock.classList.add("active");
+    if (currentBlock) {
+      currentBlock.classList.add("active");
+    }
   });
 });
 
-// =========================
-// FIREBASE
-// =========================
-// ВСТАВ СВІЙ CONFIG СЮДИ
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// =========================
-// БАЗОВІ ТОВАРИ
-// =========================
+/* PRODUCTS */
 const defaultProducts = {
   shot: [
     {
@@ -147,17 +125,14 @@ const defaultProducts = {
   ]
 };
 
-// =========================
-// RENDER
-// =========================
-function createCard(product) {
+function createProductCard(product) {
   return `
     <div class="product-card">
-      <img src="${product.image || 'https://via.placeholder.com/600x700/111111/d6ff00?text=Beast+Gym'}" alt="${product.name}">
+      <img src="${product.image}" alt="${product.name}">
       <div class="product-content">
         <div class="product-name">${product.name}</div>
         <div class="product-price">${product.price}</div>
-        <div class="product-desc">${product.description || ""}</div>
+        <div class="product-desc">${product.description}</div>
       </div>
     </div>
   `;
@@ -172,71 +147,27 @@ function createExtraRow(item) {
   `;
 }
 
-function groupFirebaseProducts(items) {
-  return {
-    shot: items.filter(item => item.category === "shot"),
-    snacks: items.filter(item => item.category === "snacks"),
-    water: items.filter(item => item.category === "water"),
-    extra: items.filter(item => item.category === "extra")
-  };
-}
+function renderProducts() {
+  const shotGrid = document.getElementById("shotGrid");
+  const snacksGrid = document.getElementById("snacksGrid");
+  const waterGrid = document.getElementById("waterGrid");
+  const extrasList = document.getElementById("extrasList");
 
-function mergeProducts(defaultData, firebaseData) {
-  return {
-    shot: [...(defaultData.shot || []), ...(firebaseData.shot || [])],
-    snacks: [...(defaultData.snacks || []), ...(firebaseData.snacks || [])],
-    water: [...(defaultData.water || []), ...(firebaseData.water || [])],
-    extra: [...(defaultData.extra || []), ...(firebaseData.extra || [])]
-  };
-}
+  if (shotGrid) {
+    shotGrid.innerHTML = defaultProducts.shot.map(createProductCard).join("");
+  }
 
-function renderProducts(allProducts) {
-  const shotGrid = document.querySelector("#shot .products-grid");
-  const snacksGrid = document.querySelector("#snacks .products-grid");
-  const waterGrid = document.querySelector("#water .products-grid");
-  const extraList = document.querySelector("#extra .extras-list");
+  if (snacksGrid) {
+    snacksGrid.innerHTML = defaultProducts.snacks.map(createProductCard).join("");
+  }
 
-  if (shotGrid) shotGrid.innerHTML = allProducts.shot.map(createCard).join("");
-  if (snacksGrid) snacksGrid.innerHTML = allProducts.snacks.map(createCard).join("");
-  if (waterGrid) waterGrid.innerHTML = allProducts.water.map(createCard).join("");
-  if (extraList) extraList.innerHTML = allProducts.extra.map(createExtraRow).join("");
-}
+  if (waterGrid) {
+    waterGrid.innerHTML = defaultProducts.water.map(createProductCard).join("");
+  }
 
-// =========================
-// FIREBASE REALTIME
-// =========================
-const productsRef = collection(db, "products");
-const productsQuery = query(productsRef, orderBy("createdAt", "asc"));
-
-onSnapshot(productsQuery, (snapshot) => {
-  const firebaseProducts = [];
-
-  snapshot.forEach((doc) => {
-    firebaseProducts.push(doc.data());
-  });
-
-  const grouped = groupFirebaseProducts(firebaseProducts);
-  const merged = mergeProducts(defaultProducts, grouped);
-  renderProducts(merged);
-}, () => {
-  renderProducts(defaultProducts);
-});
-
-// =========================
-// ADD PRODUCT
-// =========================
-async function addProduct(category, product) {
-  try {
-    await addDoc(collection(db, "products"), {
-      category,
-      ...product,
-      createdAt: Date.now()
-    });
-    console.log("Товар додано");
-  } catch (error) {
-    console.error("Помилка додавання товару:", error);
+  if (extrasList) {
+    extrasList.innerHTML = defaultProducts.extra.map(createExtraRow).join("");
   }
 }
 
-window.toggleMenu = toggleMenu;
-window.addProduct = addProduct;
+renderProducts();
