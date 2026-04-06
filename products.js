@@ -68,23 +68,23 @@ tabs.forEach(tab => {
 /* PRODUCTS */
 const defaultProducts = {
   shot: [
-{
-  name: "AMIX BCAA Shot 3000 (Forest)",
-  price: "80 грн",
-  image: "bcaa_forest.jpg",
-  description: "BCAA-шот 60 мл зі смаком forest для витривалості та відновлення."
-},
-{
-  name: "AMIX BCAA Shot 3000 (Cola)",
-  price: "80 грн",
-  image: "bcaa_cola.jpg",
-  description: "BCAA-шот 60 мл зі смаком cola для енергії та концентрації."
-},
-{
-  name: "AMIX BCAA Shot 3000 (Classic)",
-  price: "80 грн",
-  image: "bcaa_classic.jpg",
-  description: "Класичний BCAA-шот 60 мл для підтримки сили та активності."
+    {
+      name: "AMIX BCAA Shot 3000 (Classic)",
+      price: "80 грн",
+      image: "bcaa_classic.jpg",
+      description: "BCAA-шот 60 мл для підтримки відновлення та активності під час тренувань."
+    },
+    {
+      name: "AMIX BCAA Shot 3000 (Cola)",
+      price: "80 грн",
+      image: "bcaa_cola.jpg",
+      description: "BCAA-шот 60 мл зі смаком cola для енергії та концентрації."
+    },
+    {
+      name: "AMIX BCAA Shot 3000 (Forest)",
+      price: "80 грн",
+      image: "bcaa_forest.jpg",
+      description: "BCAA-шот 60 мл зі смаком forest для витривалості та відновлення."
     },
     {
       name: "Pump Apple Pear",
@@ -110,55 +110,55 @@ const defaultProducts = {
     {
       name: "Monsters Praline Nut",
       price: "80 грн",
-      image: "monsters_praline_nut.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Monsters зі смаком praline nut."
     },
     {
       name: "Monsters Strawberry",
       price: "80 грн",
-      image: "monsters_strawberry.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Monsters зі смаком strawberry."
     },
     {
       name: "Monsters Cocoa",
       price: "80 грн",
-      image: "monsters_cocoa.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Monsters зі смаком cocoa."
     },
     {
       name: "Monsters Dried Apricots",
       price: "80 грн",
-      image: "monsters_dried_apricots.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Monsters зі смаком dried apricots."
     },
     {
       name: "Space Bite Hazelnut & Date",
       price: "80 грн",
-      image: "space_bite_hazelnut_date.jpg",
+      image: "promo.jpg",
       description: "Protein bar Space Bite зі смаком hazelnut & date."
     },
     {
       name: "Space Bite Almond & Cranberry",
       price: "80 грн",
-      image: "space_bite_almond_cranberry.jpg",
+      image: "promo.jpg",
       description: "Nut bar Space Bite зі смаком almond & cranberry."
     },
     {
       name: "Crunch",
       price: "80 грн",
-      image: "crunch_bar.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Crunch."
     },
     {
       name: "Power Pro",
       price: "80 грн",
-      image: "power_pro_bar.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Power Pro."
     },
     {
       name: "Tigger",
       price: "80 грн",
-      image: "tigger_bar.jpg",
+      image: "promo.jpg",
       description: "Протеїновий батончик Tigger."
     }
   ],
@@ -167,19 +167,19 @@ const defaultProducts = {
     {
       name: "Моршинська 1.5 л",
       price: "35 грн",
-      image: "morshynska_15.jpg",
+      image: "promo.jpg",
       description: "Питна вода у великому форматі для тренування та щоденного балансу."
     },
     {
       name: "Sport 0.75",
       price: "30 грн",
-      image: "sport_075.jpg",
+      image: "promo.jpg",
       description: "Зручна спортивна пляшка для занять у залі."
     },
     {
       name: "4MOVE Isotonic Drink 750 мл",
       price: "45 грн",
-      image: "4move.jpg",
+      image: "promo.jpg",
       description: "Ізотонічний напій для підтримки водного балансу під час навантажень."
     }
   ],
