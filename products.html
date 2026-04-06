@@ -13,7 +13,7 @@
     <img src="Logo BG.svg" alt="Beast Gym">
   </div>
 
-  <button type="button" class="burger" onclick="toggleMenu()" aria-label="Відкрити меню">☰</button>
+  <button type="button" class="burger" id="burgerBtn" aria-label="Відкрити меню">☰</button>
 
   <nav id="menu">
     <a href="index.html">Головна</a>
@@ -50,7 +50,7 @@
       <h2>Шот</h2>
       <p>Енергія перед тренуванням</p>
     </div>
-    <div class="products-grid"></div>
+    <div class="products-grid" id="shotGrid"></div>
   </section>
 
   <section class="catalog-block" id="snacks">
@@ -58,7 +58,7 @@
       <h2>Перекуси</h2>
       <p>Печиво, батончики та інші смаколики</p>
     </div>
-    <div class="products-grid"></div>
+    <div class="products-grid" id="snacksGrid"></div>
   </section>
 
   <section class="catalog-block" id="water">
@@ -66,7 +66,7 @@
       <h2>Вода</h2>
       <p>Вода та спортивні напої</p>
     </div>
-    <div class="products-grid"></div>
+    <div class="products-grid" id="waterGrid"></div>
   </section>
 
   <section class="catalog-block" id="extra">
@@ -75,7 +75,7 @@
       <p>Корисні речі для комфорту</p>
     </div>
     <div class="card extras-card">
-      <div class="extras-list"></div>
+      <div class="extras-list" id="extrasList"></div>
     </div>
   </section>
 
@@ -85,6 +85,6 @@
   <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
 </footer>
 
-<script type="module" src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
