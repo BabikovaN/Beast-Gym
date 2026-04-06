@@ -179,3 +179,34 @@ if (promoPopup && promoClose && promoReminder) {
     openPromo();
   });
 }
+/* =========================
+   SECRET ADMIN
+========================= */
+let clickCount = 0;
+let clickTimer;
+
+const logo = document.getElementById("logoAdmin");
+
+if (logo) {
+  logo.addEventListener("click", () => {
+    clickCount++;
+
+    clearTimeout(clickTimer);
+
+    clickTimer = setTimeout(() => {
+      clickCount = 0;
+    }, 800);
+
+    if (clickCount === 3) {
+      const password = prompt("Введи пароль адміністратора");
+
+      if (password === "babikova1306") {
+        window.location.href = "admin.html";
+      } else {
+        alert("Невірний пароль ❌");
+      }
+
+      clickCount = 0;
+    }
+  });
+}
