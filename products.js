@@ -23,8 +23,6 @@ function toggleMenu() {
   }
 }
 
-window.toggleMenu = toggleMenu;
-
 if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
@@ -35,8 +33,18 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-function toggleDetails(button){
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    closeMenu();
+  });
+});
+
+function toggleDetails(button) {
   const details = button.parentElement.nextElementSibling;
+  if (!details) return;
+
   details.classList.toggle("open");
   button.classList.toggle("active");
 }
