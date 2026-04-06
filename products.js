@@ -68,11 +68,24 @@ tabs.forEach(tab => {
 /* PRODUCTS */
 const defaultProducts = {
   shot: [
-    {
-      name: "AMIX BCAA Shot 3000",
-      price: "80 грн",
-      image: "",
-      description: "BCAA-шот 60 мл для підтримки відновлення та активності під час тренувань."
+{
+  name: "AMIX BCAA Shot 3000 (Forest)",
+  price: "80 грн",
+  image: "bcaa_forest.jpg",
+  description: "BCAA-шот 60 мл зі смаком forest для витривалості та відновлення."
+},
+{
+  name: "AMIX BCAA Shot 3000 (Cola)",
+  price: "80 грн",
+  image: "bcaa_cola.jpg",
+  description: "BCAA-шот 60 мл зі смаком cola для енергії та концентрації."
+},
+{
+  name: "AMIX BCAA Shot 3000 (Classic)",
+  price: "80 грн",
+  image: "bcaa_classic.jpg",
+  description: "Класичний BCAA-шот 60 мл для підтримки сили та активності."
+}
     },
     {
       name: "Pump Apple Pear",
