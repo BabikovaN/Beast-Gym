@@ -69,59 +69,116 @@ tabs.forEach(tab => {
 const defaultProducts = {
   shot: [
     {
-      name: "Енергетичний шот",
+      name: "AMIX BCAA Shot 3000",
       price: "80 грн",
-      image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80",
-      description: "Швидкий заряд енергії перед тренуванням для концентрації та активності."
+      image: "promo.jpg",
+      description: "BCAA-шот 60 мл для підтримки відновлення та активності під час тренувань."
+    },
+    {
+      name: "Pump Apple Pear",
+      price: "80 грн",
+      image: "pump_apple_pear.jpg",
+      description: "Передтренувальний шот 60 мл зі смаком apple pear."
+    },
+    {
+      name: "Pump Cherry Passionfruit",
+      price: "80 грн",
+      image: "pump_cherry_passionfruit.jpg",
+      description: "Передтренувальний шот 60 мл зі смаком cherry passionfruit."
+    },
+    {
+      name: "Pump Kiwi Strawberry",
+      price: "80 грн",
+      image: "pump_kiwi_strawberry.jpg",
+      description: "Передтренувальний шот 60 мл зі смаком kiwi strawberry."
     }
   ],
+
   snacks: [
     {
-      name: "Протеїновий батончик",
-      price: "65 грн",
-      image: "https://images.unsplash.com/photo-1589985270958-b3f576c2d6ee?auto=format&fit=crop&w=900&q=80",
-      description: "Зручний перекус до або після тренування для підтримки енергії."
+      name: "Monsters Praline Nut",
+      price: "80 грн",
+      image: "monsters_praline_nut.jpg",
+      description: "Протеїновий батончик Monsters зі смаком praline nut."
     },
     {
-      name: "Печиво",
-      price: "40 грн",
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
-      description: "Легкий перекус для швидкого підкріплення після заняття."
+      name: "Monsters Strawberry",
+      price: "80 грн",
+      image: "monsters_strawberry.jpg",
+      description: "Протеїновий батончик Monsters зі смаком strawberry."
     },
     {
-      name: "Злаковий батончик",
-      price: "55 грн",
-      image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80",
-      description: "Поживний компактний перекус, який зручно взяти із собою."
+      name: "Monsters Cocoa",
+      price: "80 грн",
+      image: "monsters_cocoa.jpg",
+      description: "Протеїновий батончик Monsters зі смаком cocoa."
+    },
+    {
+      name: "Monsters Dried Apricots",
+      price: "80 грн",
+      image: "monsters_dried_apricots.jpg",
+      description: "Протеїновий батончик Monsters зі смаком dried apricots."
+    },
+    {
+      name: "Space Bite Hazelnut & Date",
+      price: "80 грн",
+      image: "space_bite_hazelnut_date.jpg",
+      description: "Protein bar Space Bite зі смаком hazelnut & date."
+    },
+    {
+      name: "Space Bite Almond & Cranberry",
+      price: "80 грн",
+      image: "space_bite_almond_cranberry.jpg",
+      description: "Nut bar Space Bite зі смаком almond & cranberry."
+    },
+    {
+      name: "Crunch",
+      price: "80 грн",
+      image: "crunch_bar.jpg",
+      description: "Протеїновий батончик Crunch."
+    },
+    {
+      name: "Power Pro",
+      price: "80 грн",
+      image: "power_pro_bar.jpg",
+      description: "Протеїновий батончик Power Pro."
+    },
+    {
+      name: "Tigger",
+      price: "80 грн",
+      image: "tigger_bar.jpg",
+      description: "Протеїновий батончик Tigger."
     }
   ],
+
   water: [
     {
-      name: "Моршинська 1.5",
+      name: "Моршинська 1.5 л",
       price: "35 грн",
-      image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?auto=format&fit=crop&w=900&q=80",
-      description: "Великий формат питної води для тренування і щоденного балансу."
+      image: "morshynska_15.jpg",
+      description: "Питна вода у великому форматі для тренування та щоденного балансу."
     },
     {
       name: "Sport 0.75",
       price: "30 грн",
-      image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80",
-      description: "Зручна пляшка для занять у залі та активного дня."
+      image: "sport_075.jpg",
+      description: "Зручна спортивна пляшка для занять у залі."
     },
     {
-      name: "4MOVE Isotonic Drink, 750 мл",
+      name: "4MOVE Isotonic Drink 750 мл",
       price: "45 грн",
-      image: "https://images.unsplash.com/photo-1622484212850-eb596d769edc?auto=format&fit=crop&w=900&q=80",
-      description: "Ізотонік для підтримки водно-сольового балансу під час навантажень."
+      image: "4move.jpg",
+      description: "Ізотонічний напій для підтримки водного балансу під час навантажень."
     }
   ],
+
   extra: [
-    { name: "Резинки", price: "15 грн" },
+    { name: "Резинки для волосся", price: "15 грн" },
     { name: "Шкарпетки", price: "30 грн" },
-    { name: "Шапочка", price: "15 грн" },
-    { name: "Шампунь", price: "30 грн" },
-    { name: "Гель", price: "30 грн" },
-    { name: "Рушник", price: "50 грн" }
+    { name: "Шапочка для душу", price: "15 грн" },
+    { name: "Міні шампунь", price: "30 грн" },
+    { name: "Міні гель для душу", price: "30 грн" },
+    { name: "Оренда рушника", price: "50 грн" }
   ]
 };
 
