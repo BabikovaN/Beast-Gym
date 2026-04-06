@@ -78,11 +78,17 @@
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
   <script src="script.js"></script>
   
-  <div id="promoPopup" class="popup-overlay">
-  <div class="popup-box">
-    <span class="close-btn">&times;</span>
-    <img src="promo.jpg" alt="Акція Beast Gym">
+<!-- PROMO POPUP -->
+<div id="promoPopup" class="promo-popup-overlay">
+  <div class="promo-popup-box">
+    <button id="promoClose" class="promo-close-btn" aria-label="Закрити акцію">×</button>
+    <img src="promo.jpg" alt="Акція Beast Gym" class="promo-popup-image">
   </div>
 </div>
+
+<!-- SMALL REMINDER -->
+<a href="javascript:void(0)" id="promoReminder" class="promo-reminder" aria-label="Показати акцію ще раз">
+  <img src="promo.jpg" alt="Акція Beast Gym">
+</a>
 </body>
 </html>
