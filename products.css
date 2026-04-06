@@ -37,7 +37,7 @@ header{
   align-items:center;
   justify-content:space-between;
   padding:0 16px;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.92);
   backdrop-filter:blur(10px);
   z-index:1000;
   border-bottom:1px solid var(--border);
@@ -101,10 +101,10 @@ nav a{
 /* PAGE */
 .page{
   padding-top:85px;
-  max-width:1200px;
+  max-width:1400px;
   margin:auto;
-  padding-left:10px;
-  padding-right:10px;
+  padding-left:14px;
+  padding-right:14px;
   padding-bottom:30px;
 }
 
