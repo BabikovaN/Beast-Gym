@@ -1,221 +1,135 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Продукція | Beast Gym</title>
-<link rel="stylesheet" href="products.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продукція | Beast Gym</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 
 <header>
   <div class="logo">
     <img src="Logo BG.svg" alt="Beast Gym">
   </div>
 
-  <div class="burger" onclick="toggleMenu()">☰</div>
-<nav id="menu">
-      <a href="index.html">Головна</a>
-      <a href="about.html">Про нас</a>
-      <a href="price.html">Тарифи</a>
-      <a href="photos.html">Фото</a>
-      <a href="products.html">Продукція</a>
-      <a href="vacancies.html">Вакансії</a>
-      <a href="rules.html">Правила</a>
-      <a href="contacts.html">Контакти</a>
-</nav>
+  <button class="burger" onclick="toggleMenu()">☰</button>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Тарифи</a>
+    <a href="photos.html">Фото</a>
+    <a href="products.html">Продукція</a>
+    <a href="vacancies.html">Вакансії</a>
+    <a href="rules.html">Правила</a>
+    <a href="contacts.html">Контакти</a>
+  </nav>
 </header>
 
 <div id="menuOverlay" class="menu-overlay"></div>
 
 <main class="page">
 
-<!-- ================= HERO ================= -->
+  <!-- КАТЕГОРІЇ -->
+  <section class="card product-tabs-card">
+    <div class="product-tabs">
+      <button class="product-tab active" data-tab="shot">Шот</button>
+      <button class="product-tab" data-tab="snacks">Перекуси</button>
+      <button class="product-tab" data-tab="water">Вода</button>
+      <button class="product-tab" data-tab="extra">Додатково</button>
+    </div>
+  </section>
 
-<section class="hero card">
-  <h1>Продукція Beast Gym</h1>
-</section>
+  <!-- ШОТ -->
+  <section class="product-panel active" id="shot">
+    <h2>Шот</h2>
 
-<!-- ================= БАТОНЧИКИ ================= -->
-
-<section class="catalog-section">
-
-  <div class="section-title">
-    <h2>Батончики</h2>
-    <p>80 грн</p>
-  </div>
-
-  <div class="products-grid">
-
-    <div class="product-card">
-      <img src="spacebite_hazelnut_date.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Space Bite Hazelnut</div>
-          <div class="product-price">80 грн</div>
+    <div class="product-grid">
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd" alt="">
+        <div class="product-info">
+          <h3>Енергетичний шот</h3>
+          <span class="product-price">80 грн</span>
         </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Горіхово-фініковий батончик
       </div>
     </div>
+  </section>
 
-    <div class="product-card">
-      <img src="monsters_blueberry.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Monsters Blueberry</div>
-          <div class="product-price">80 грн</div>
+  <!-- ПЕРЕКУСИ -->
+  <section class="product-panel" id="snacks">
+    <h2>Перекуси</h2>
+
+    <div class="product-grid">
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1589985270958-b3f576c2d6ee" alt="">
+        <div class="product-info">
+          <h3>Протеїновий батончик</h3>
+          <span class="product-price">65 грн</span>
         </div>
-        <button onclick="toggleDetails(this)">▼</button>
       </div>
-      <div class="product-details">
-        Чорниця
+
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="">
+        <div class="product-info">
+          <h3>Печиво</h3>
+          <span class="product-price">40 грн</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="product-card">
-      <img src="powerpro_nuts.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Power Pro Nuts</div>
-          <div class="product-price">80 грн</div>
+  <!-- ВОДА -->
+  <section class="product-panel" id="water">
+    <h2>Вода</h2>
+
+    <div class="product-grid">
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca" alt="">
+        <div class="product-info">
+          <h3>Моршинська 1.5</h3>
+          <span class="product-price">35 грн</span>
         </div>
-        <button onclick="toggleDetails(this)">▼</button>
       </div>
-      <div class="product-details">
-        Горіховий батончик
+
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba" alt="">
+        <div class="product-info">
+          <h3>Sport 0.75</h3>
+          <span class="product-price">30 грн</span>
+        </div>
+      </div>
+
+      <div class="product-item card">
+        <img src="https://images.unsplash.com/photo-1622484212850-eb596d769edc" alt="">
+        <div class="product-info">
+          <h3>4MOVE 750 мл</h3>
+          <span class="product-price">45 грн</span>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-<!-- ================= ШОТИ ================= -->
-
-<section class="catalog-section">
-
-  <div class="section-title">
-    <h2>Шоти</h2>
-    <p>80 грн</p>
-  </div>
-
-  <div class="products-grid">
-
-    <div class="product-card">
-      <img src="pump_kiwi_strawberry.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Pump Kiwi</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Передтренувальний
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="pump_cherry_passionfruit.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Pump Cherry</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Шот для пампу
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="pump_apple_pear.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">Pump Apple</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Витривалість
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="bcaa_melon.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">BCAA Melon</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Відновлення
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="bcaa_forest.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">BCAA Forest</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Лісові ягоди
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="bcaa_cola.jpg">
-      <div class="product-head">
-        <div>
-          <div class="product-name">BCAA Cola</div>
-          <div class="product-price">80 грн</div>
-        </div>
-        <button onclick="toggleDetails(this)">▼</button>
-      </div>
-      <div class="product-details">
-        Кола
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= ДОДАТКОВО ================= -->
-
-<section class="catalog-section">
-
-  <div class="section-title">
+  <!-- ДОДАТКОВО -->
+  <section class="product-panel" id="extra">
     <h2>Додатково</h2>
-  </div>
 
-  <div class="card">
-    <p>Резинки — 15 грн</p>
-    <p>Шкарпетки — 30 грн</p>
-    <p>Шапочка — 15 грн</p>
-    <p>Шампунь — 30 грн</p>
-    <p>Гель — 30 грн</p>
-    <p>Рушник — 50 грн</p>
-  </div>
-
-</section>
+    <div class="card extra-card">
+      <div class="extra-row"><span>Резинки</span><strong>15 грн</strong></div>
+      <div class="extra-row"><span>Шкарпетки</span><strong>30 грн</strong></div>
+      <div class="extra-row"><span>Шапочка</span><strong>15 грн</strong></div>
+      <div class="extra-row"><span>Шампунь</span><strong>30 грн</strong></div>
+      <div class="extra-row"><span>Гель</span><strong>30 грн</strong></div>
+      <div class="extra-row"><span>Рушник</span><strong>50 грн</strong></div>
+    </div>
+  </section>
 
 </main>
 
-<script src="products.js"></script>
+<footer class="footer">
+  <p>Beast Gym • Черкаси</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
