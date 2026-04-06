@@ -31,103 +31,178 @@
 
 <main class="page">
 
-  <!-- КАТЕГОРІЇ -->
-  <section class="card product-tabs-card">
-    <div class="product-tabs">
-      <button class="product-tab active" data-tab="shot">Шот</button>
-      <button class="product-tab" data-tab="snacks">Перекуси</button>
-      <button class="product-tab" data-tab="water">Вода</button>
-      <button class="product-tab" data-tab="extra">Додатково</button>
-    </div>
+  <section class="card hero">
+    <h1>Продукція Beast Gym</h1>
+    <p>Обирай усе необхідне для тренування: шоти, воду, перекуси та додаткові товари для комфорту в залі.</p>
   </section>
 
-  <!-- ШОТ -->
-  <section class="product-panel active" id="shot">
-    <h2>Шот</h2>
-
-    <div class="product-grid">
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd" alt="">
-        <div class="product-info">
-          <h3>Енергетичний шот</h3>
-          <span class="product-price">80 грн</span>
-        </div>
-      </div>
+  <section class="catalog-section">
+    <div class="section-title">
+      <h2>Шот</h2>
+      <p>Енергія перед тренуванням</p>
     </div>
-  </section>
 
-  <!-- ПЕРЕКУСИ -->
-  <section class="product-panel" id="snacks">
-    <h2>Перекуси</h2>
+    <div class="brand-block">
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80" alt="Енергетичний шот">
 
-    <div class="product-grid">
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1589985270958-b3f576c2d6ee" alt="">
-        <div class="product-info">
-          <h3>Протеїновий батончик</h3>
-          <span class="product-price">65 грн</span>
-        </div>
-      </div>
+          <div class="product-head">
+            <div>
+              <div class="product-name">Енергетичний шот</div>
+              <div class="product-price">80 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
 
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="">
-        <div class="product-info">
-          <h3>Печиво</h3>
-          <span class="product-price">40 грн</span>
+          <div class="product-details">
+            <p>Швидкий заряд енергії перед тренуванням для концентрації, витривалості та активності.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ВОДА -->
-  <section class="product-panel" id="water">
-    <h2>Вода</h2>
+  <section class="catalog-section">
+    <div class="section-title">
+      <h2>Перекуси</h2>
+      <p>Батончики, печиво та зручна їжа</p>
+    </div>
 
-    <div class="product-grid">
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca" alt="">
-        <div class="product-info">
-          <h3>Моршинська 1.5</h3>
-          <span class="product-price">35 грн</span>
+    <div class="brand-block">
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1589985270958-b3f576c2d6ee?auto=format&fit=crop&w=900&q=80" alt="Протеїновий батончик">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">Протеїновий батончик</div>
+              <div class="product-price">65 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Зручний перекус для енергії та білкової підтримки до або після тренування.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba" alt="">
-        <div class="product-info">
-          <h3>Sport 0.75</h3>
-          <span class="product-price">30 грн</span>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Печиво">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">Печиво</div>
+              <div class="product-price">40 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Легкий перекус для відновлення сил після заняття або швидкого підкріплення.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="product-item card">
-        <img src="https://images.unsplash.com/photo-1622484212850-eb596d769edc" alt="">
-        <div class="product-info">
-          <h3>4MOVE 750 мл</h3>
-          <span class="product-price">45 грн</span>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=80" alt="Злаковий батончик">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">Злаковий батончик</div>
+              <div class="product-price">55 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Поживний перекус у компактному форматі, який зручно взяти із собою.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ДОДАТКОВО -->
-  <section class="product-panel" id="extra">
-    <h2>Додатково</h2>
+  <section class="catalog-section">
+    <div class="section-title">
+      <h2>Вода</h2>
+      <p>Вода та напої для тренування</p>
+    </div>
 
-    <div class="card extra-card">
-      <div class="extra-row"><span>Резинки</span><strong>15 грн</strong></div>
-      <div class="extra-row"><span>Шкарпетки</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Шапочка</span><strong>15 грн</strong></div>
-      <div class="extra-row"><span>Шампунь</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Гель</span><strong>30 грн</strong></div>
-      <div class="extra-row"><span>Рушник</span><strong>50 грн</strong></div>
+    <div class="brand-block">
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?auto=format&fit=crop&w=900&q=80" alt="Моршинська 1.5">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">Моршинська 1.5</div>
+              <div class="product-price">35 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Питна вода у великому форматі для занять у залі та щоденного балансу.</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80" alt="Sport 0.75">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">Sport 0.75</div>
+              <div class="product-price">30 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Зручна пляшка для тренування, яку легко брати із собою в зал.</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1622484212850-eb596d769edc?auto=format&fit=crop&w=900&q=80" alt="4MOVE Isotonic Drink 750 мл">
+
+          <div class="product-head">
+            <div>
+              <div class="product-name">4MOVE Isotonic Drink, 750 мл</div>
+              <div class="product-price">45 грн</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">⌄</button>
+          </div>
+
+          <div class="product-details">
+            <p>Ізотонік для підтримки водно-сольового балансу під час навантажень.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <div class="section-title">
+      <h2>Додатково</h2>
+      <p>Корисні речі для комфорту</p>
+    </div>
+
+    <div class="card">
+      <div class="extras-list">
+        <div class="extra-row"><span>Резинки</span><strong>15 грн</strong></div>
+        <div class="extra-row"><span>Шкарпетки</span><strong>30 грн</strong></div>
+        <div class="extra-row"><span>Шапочка</span><strong>15 грн</strong></div>
+        <div class="extra-row"><span>Шампунь</span><strong>30 грн</strong></div>
+        <div class="extra-row"><span>Гель</span><strong>30 грн</strong></div>
+        <div class="extra-row"><span>Рушник</span><strong>50 грн</strong></div>
+      </div>
     </div>
   </section>
 
 </main>
 
 <footer class="footer">
-  <p>Beast Gym • Черкаси</p>
+  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
 </footer>
 
 <script src="script.js"></script>
