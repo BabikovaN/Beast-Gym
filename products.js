@@ -2,7 +2,9 @@ const menu = document.getElementById("menu");
 const menuOverlay = document.getElementById("menuOverlay");
 const burgerBtn = document.getElementById("burgerBtn");
 
-/* MENU */
+/* =========================
+   MENU
+========================= */
 function openMenu() {
   if (menu) menu.classList.add("active");
   if (menuOverlay) menuOverlay.classList.add("active");
@@ -17,6 +19,7 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
+
   if (menu.classList.contains("active")) {
     closeMenu();
   } else {
@@ -32,7 +35,7 @@ if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeMenu();
   }
@@ -45,7 +48,9 @@ menuLinks.forEach(link => {
   });
 });
 
-/* TABS */
+/* =========================
+   TABS
+========================= */
 const tabs = document.querySelectorAll(".category-tab");
 const blocks = document.querySelectorAll(".catalog-block");
 
@@ -65,8 +70,10 @@ tabs.forEach(tab => {
   });
 });
 
-/* PRODUCTS */
-const defaultProducts = {
+/* =========================
+   PRODUCTS
+========================= */
+const products = {
   shot: [
     {
       name: "AMIX BCAA Shot 3000 (Classic)",
@@ -110,55 +117,55 @@ const defaultProducts = {
     {
       name: "Monsters Praline Nut",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "monsters_praline_nut.jpg",
       description: "Протеїновий батончик Monsters зі смаком praline nut."
     },
     {
       name: "Monsters Strawberry",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "monsters_strawberry.jpg",
       description: "Протеїновий батончик Monsters зі смаком strawberry."
     },
     {
       name: "Monsters Cocoa",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "monsters_cocoa.jpg",
       description: "Протеїновий батончик Monsters зі смаком cocoa."
     },
     {
       name: "Monsters Dried Apricots",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "monsters_dried_apricots.jpg",
       description: "Протеїновий батончик Monsters зі смаком dried apricots."
     },
     {
       name: "Space Bite Hazelnut & Date",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "space_bite_hazelnut_date.jpg",
       description: "Protein bar Space Bite зі смаком hazelnut & date."
     },
     {
       name: "Space Bite Almond & Cranberry",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "space_bite_almond_cranberry.jpg",
       description: "Nut bar Space Bite зі смаком almond & cranberry."
     },
     {
       name: "Crunch",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "crunch_bar.jpg",
       description: "Протеїновий батончик Crunch."
     },
     {
       name: "Power Pro",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "power_pro_bar.jpg",
       description: "Протеїновий батончик Power Pro."
     },
     {
       name: "Tigger",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "tigger_bar.jpg",
       description: "Протеїновий батончик Tigger."
     }
   ],
@@ -167,19 +174,19 @@ const defaultProducts = {
     {
       name: "Моршинська 1.5 л",
       price: "35 грн",
-      image: "promo.jpg",
+      image: "morshynska_15.jpg",
       description: "Питна вода у великому форматі для тренування та щоденного балансу."
     },
     {
       name: "Sport 0.75",
       price: "30 грн",
-      image: "promo.jpg",
+      image: "sport_075.jpg",
       description: "Зручна спортивна пляшка для занять у залі."
     },
     {
       name: "4MOVE Isotonic Drink 750 мл",
       price: "45 грн",
-      image: "promo.jpg",
+      image: "4move.jpg",
       description: "Ізотонічний напій для підтримки водного балансу під час навантажень."
     }
   ],
@@ -194,6 +201,9 @@ const defaultProducts = {
   ]
 };
 
+/* =========================
+   RENDER
+========================= */
 function createProductCard(product) {
   return `
     <div class="product-card">
@@ -223,19 +233,19 @@ function renderProducts() {
   const extrasList = document.getElementById("extrasList");
 
   if (shotGrid) {
-    shotGrid.innerHTML = defaultProducts.shot.map(createProductCard).join("");
+    shotGrid.innerHTML = products.shot.map(createProductCard).join("");
   }
 
   if (snacksGrid) {
-    snacksGrid.innerHTML = defaultProducts.snacks.map(createProductCard).join("");
+    snacksGrid.innerHTML = products.snacks.map(createProductCard).join("");
   }
 
   if (waterGrid) {
-    waterGrid.innerHTML = defaultProducts.water.map(createProductCard).join("");
+    waterGrid.innerHTML = products.water.map(createProductCard).join("");
   }
 
   if (extrasList) {
-    extrasList.innerHTML = defaultProducts.extra.map(createExtraRow).join("");
+    extrasList.innerHTML = products.extra.map(createExtraRow).join("");
   }
 }
 
