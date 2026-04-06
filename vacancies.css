@@ -148,3 +148,10 @@ nav a{
   text-decoration:none;
   font-weight:bold;
 }
+/* 🔥 ЖУРНАЛЬНИЙ СТИЛЬ ТЕКСТУ */
+p {
+  text-align: justify;      /* рівний зліва і справа */
+  text-indent: 25px;        /* відступ першого рядка */
+  line-height: 1.7;         /* повітря між рядками */
+  margin-bottom: 12px;      /* відступ між абзацами */
+}
