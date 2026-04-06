@@ -136,3 +136,26 @@ loadTrainers();
           </div>
         `;
       }
+const popup = document.getElementById("promoPopup");
+const closeBtn = document.querySelector(".close-btn");
+
+// показ тільки 1 раз
+if (!localStorage.getItem("promoShown")) {
+  setTimeout(() => {
+    popup.classList.add("active");
+  }, 1500);
+}
+
+// закриття
+closeBtn.onclick = () => {
+  popup.classList.remove("active");
+  localStorage.setItem("promoShown", "true");
+};
+
+// клік поза вікном
+popup.onclick = (e) => {
+  if (e.target === popup) {
+    popup.classList.remove("active");
+    localStorage.setItem("promoShown", "true");
+  }
+};
