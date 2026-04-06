@@ -13,7 +13,7 @@
     <img src="Logo BG.svg" alt="Beast Gym">
   </div>
 
-  <div class="burger" onclick="toggleMenu()">☰</div>
+  <button class="burger" onclick="toggleMenu()" aria-label="Відкрити меню">☰</button>
 
   <nav id="menu">
     <a href="index.html">Головна</a>
@@ -38,6 +38,13 @@
         src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80"
         alt="Beast Gym"
       >
+      <div class="hero-text">
+        <h1>Beast Gym</h1>
+        <p>
+          Сучасний зал у Черкасах для силових і кардіотренувань,
+          персональної роботи з тренером та комфортного прогресу.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -50,10 +57,47 @@
 
     <section class="card section-card">
       <h2>АБОНЕМЕНТИ</h2>
-      <p>Карта повного дня — 900 грн</p>
-      <p>Студент карта — 850 грн</p>
-      <p>Сімейна карта — 800 грн</p>
-      <p>Разове відвідування — 250 грн</p>
+      <div class="price-list">
+        <div class="price-row">
+          <span>Карта повного дня</span>
+          <strong>900 грн</strong>
+        </div>
+        <div class="price-row">
+          <span>Студент карта</span>
+          <strong>850 грн</strong>
+        </div>
+        <div class="price-row">
+          <span>Сімейна карта</span>
+          <strong>800 грн</strong>
+        </div>
+        <div class="price-row">
+          <span>Разове відвідування</span>
+          <strong>250 грн</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card full-width">
+      <h2>Про Beast Gym</h2>
+      <div class="about-text">
+        <p>
+          У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових
+          та кардіотренувань. Зал обладнаний усім необхідним як для початківців,
+          так і для досвідчених спортсменів.
+        </p>
+
+        <p>
+          Команда Beast Gym складається з досвідчених тренерів, які допоможуть
+          скласти індивідуальну програму тренувань, навчать правильної техніки
+          та підтримуватимуть на кожному етапі твого прогресу.
+        </p>
+
+        <p>
+          У Beast Gym регулярно проводяться акції та спеціальні пропозиції
+          для нових і постійних клієнтів. Зал розташований у зручному місці,
+          до якого легко дістатися як громадським транспортом, так і власним автомобілем.
+        </p>
+      </div>
     </section>
 
     <section class="card section-card map-card full-width">
@@ -65,28 +109,27 @@
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen>
         </iframe>
-
-        <!-- SMALL REMINDER біля карти -->
-        <a href="javascript:void(0)" id="promoReminder" class="promo-reminder map-reminder" aria-label="Показати акцію ще раз">
-          <img src="promo.jpg" alt="Акція Beast Gym">
-        </a>
       </div>
     </section>
 
   </section>
-
 </main>
 
 <footer class="footer">
   <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
 </footer>
 
-<!-- PROMO POPUP -->
+<!-- POPUP АКЦІЯ -->
 <div id="promoPopup" class="promo-popup-overlay">
   <div class="promo-popup-box">
     <button id="promoClose" class="promo-close-btn" aria-label="Закрити акцію">×</button>
     <img src="promo.jpg" alt="Акція Beast Gym" class="promo-popup-image">
   </div>
+</div>
+
+<!-- МАЛЕНЬКЕ НАГАДУВАННЯ -->
+<div id="promoReminder" class="promo-reminder-fixed" aria-label="Показати акцію ще раз">
+  <img src="promo.jpg" alt="Акція Beast Gym">
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
