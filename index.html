@@ -12,18 +12,19 @@
   <div class="logo">
     <img src="Logo BG.svg" alt="Beast Gym">
   </div>
-  
+
   <div class="burger" onclick="toggleMenu()">☰</div>
-<nav id="menu">
-      <a href="index.html">Головна</a>
-      <a href="about.html">Про нас</a>
-      <a href="price.html">Тарифи</a>
-      <a href="photos.html">Фото</a>
-      <a href="products.html">Продукція</a>
-      <a href="vacancies.html">Вакансії</a>
-      <a href="rules.html">Правила</a>
-      <a href="contacts.html">Контакти</a>
-</nav>
+
+  <nav id="menu">
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="price.html">Тарифи</a>
+    <a href="photos.html">Фото</a>
+    <a href="products.html">Продукція</a>
+    <a href="vacancies.html">Вакансії</a>
+    <a href="rules.html">Правила</a>
+    <a href="contacts.html">Контакти</a>
+  </nav>
 </header>
 
 <div id="menuOverlay" class="menu-overlay"></div>
@@ -38,9 +39,10 @@
         alt="Beast Gym"
       >
     </div>
-
+  </section>
 
   <section class="content-grid">
+
     <section class="card section-card">
       <h2>Тренери</h2>
       <div id="trainers" class="trainers-list"></div>
@@ -48,9 +50,9 @@
 
     <section class="card section-card">
       <h2>АБОНЕМЕНТИ</h2>
-      <p>Карта повного дня  — 900 грн</p>
-      <p>Студент карта - 850 грн</p> 
-      <p>Сімейна карта -800 грн</p> 
+      <p>Карта повного дня — 900 грн</p>
+      <p>Студент карта — 850 грн</p>
+      <p>Сімейна карта — 800 грн</p>
       <p>Разове відвідування — 250 грн</p>
     </section>
 
@@ -63,8 +65,14 @@
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen>
         </iframe>
+
+        <!-- SMALL REMINDER біля карти -->
+        <a href="javascript:void(0)" id="promoReminder" class="promo-reminder map-reminder" aria-label="Показати акцію ще раз">
+          <img src="promo.jpg" alt="Акція Beast Gym">
+        </a>
       </div>
     </section>
+
   </section>
 
 </main>
@@ -73,11 +81,6 @@
   <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
 </footer>
 
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="script.js"></script>
-  
 <!-- PROMO POPUP -->
 <div id="promoPopup" class="promo-popup-overlay">
   <div class="promo-popup-box">
@@ -86,9 +89,9 @@
   </div>
 </div>
 
-<!-- SMALL REMINDER -->
-<a href="javascript:void(0)" id="promoReminder" class="promo-reminder" aria-label="Показати акцію ще раз">
-  <img src="promo.jpg" alt="Акція Beast Gym">
-</a>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
