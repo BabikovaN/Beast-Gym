@@ -182,12 +182,12 @@ if (promoPopup && promoClose && promoReminder) {
 /* =========================
    SECRET ADMIN
 ========================= */
-let clickCount = 0;
-let clickTimer;
-
 const logo = document.getElementById("logoAdmin");
 
 if (logo) {
+  let clickCount = 0;
+  let clickTimer;
+
   logo.addEventListener("click", () => {
     clickCount++;
 
@@ -198,9 +198,15 @@ if (logo) {
     }, 800);
 
     if (clickCount === 3) {
-      const password = prompt("Введи пароль адміністратора");
+      const login = prompt("Введи логін адміністратора");
+      if (login !== "admin") {
+        alert("Невірний логін ❌");
+        clickCount = 0;
+        return;
+      }
 
-      if (password === "babikova1306") {
+      const password = prompt("Введи пароль адміністратора");
+      if (password === "1234") {
         window.location.href = "admin.html";
       } else {
         alert("Невірний пароль ❌");
