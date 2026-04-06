@@ -71,6 +71,7 @@ nav a{
   opacity:0;
   visibility:hidden;
   transition:0.3s;
+  z-index:998;
 }
 
 .menu-overlay.active{
@@ -116,8 +117,44 @@ nav a{
   line-height:1.5;
 }
 
-.catalog-section{
+/* КНОПКИ КАТЕГОРІЙ */
+.tabs-card{
+  margin-top:18px;
+}
+
+.product-tabs{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.product-tab{
+  min-width:100px;
+  padding:14px 22px;
+  border-radius:18px;
+  border:1px solid rgba(214,255,0,0.12);
+  background:#111;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.product-tab.active{
+  background:#d6ff00;
+  color:#000;
+  box-shadow:0 0 18px rgba(214,255,0,0.25);
+}
+
+/* ПАНЕЛІ */
+.catalog-panel{
+  display:none;
   margin-top:22px;
+}
+
+.catalog-panel.active{
+  display:block;
 }
 
 .section-title{
@@ -133,16 +170,7 @@ nav a{
   color:#d6ff00;
   text-align:left;
   text-indent:0;
-}
-
-.brand-block{
-  margin-bottom:18px;
-}
-
-.brand-title{
-  font-size:22px;
-  margin-bottom:14px;
-  color:#fff;
+  margin-bottom:0;
 }
 
 .products-grid{
@@ -274,21 +302,22 @@ nav a{
   }
 }
 
-/* 🔥 ЖУРНАЛЬНИЙ СТИЛЬ ТІЛЬКИ ДЛЯ ТЕКСТУ */
+/* ЖУРНАЛЬНИЙ СТИЛЬ */
 .info-grid p,
-.card p {
-  text-align: justify;
-  text-indent: 25px;
-  line-height: 1.7;
-  margin-bottom: 12px;
+.card p{
+  text-align:justify;
+  text-indent:25px;
+  line-height:1.7;
+  margin-bottom:12px;
 }
 
-/* ЩОБ НЕ ЛАМАЛИСЬ КОРОТКІ РЯДКИ */
+/* ВИНЯТКИ */
 .section-title p,
 .footer p,
 .extra-row span,
 .extra-row strong,
-.product-price{
+.product-price,
+.product-tab{
   text-align:left;
   text-indent:0;
   margin-bottom:0;
