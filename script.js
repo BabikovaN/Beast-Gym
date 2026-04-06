@@ -30,11 +30,12 @@ if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
     closeMenu();
-    if (popup) {
-      popup.classList.remove("active");
+
+    if (promoPopup && promoPopup.classList.contains("active")) {
+      closePromo();
     }
   }
 });
@@ -155,40 +156,26 @@ function closePromo() {
   localStorage.setItem("promoClosed", "true");
 }
 
-if (promoPopup && promoClose) {
-  // показ popup при заході
+if (promoPopup && promoClose && promoReminder) {
   window.addEventListener("load", () => {
-    setTimeout(() => {
-      openPromo();
-
-      if (localStorage.getItem("promoClosed") === "true" && promoReminder) {
-        promoReminder.classList.add("show");
-      }
-    }, 1200);
+    if (!localStorage.getItem("promoClosed")) {
+      setTimeout(() => {
+        openPromo();
+      }, 400);
+    } else {
+      promoReminder.classList.add("show");
+    }
   });
 
-  // закрити по хрестику
   promoClose.addEventListener("click", closePromo);
 
-  // закрити по кліку на затемнення
   promoPopup.addEventListener("click", (e) => {
     if (e.target === promoPopup) {
       closePromo();
     }
   });
 
-  // відкрити ще раз по маленькому нагадуванню
-  if (promoReminder) {
-    promoReminder.addEventListener("click", () => {
-      promoPopup.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
-  }
-
-  // Esc
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && promoPopup.classList.contains("active")) {
-      closePromo();
-    }
+  promoReminder.addEventListener("click", () => {
+    openPromo();
   });
 }
