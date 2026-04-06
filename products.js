@@ -85,7 +85,6 @@ const defaultProducts = {
   price: "80 грн",
   image: "bcaa_classic.jpg",
   description: "Класичний BCAA-шот 60 мл для підтримки сили та активності."
-}
     },
     {
       name: "Pump Apple Pear",
