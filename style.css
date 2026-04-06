@@ -223,10 +223,11 @@ p{color:#ccc;}
   grid-template-columns: 1fr auto;
   padding: 8px 0;
 }
-/* 🔥 ЖУРНАЛЬНИЙ СТИЛЬ ТЕКСТУ */
-p {
-  text-align: justify;      /* рівний зліва і справа */
-  text-indent: 25px;        /* відступ першого рядка */
-  line-height: 1.7;         /* повітря між рядками */
-  margin-bottom: 12px;      /* відступ між абзацами */
+/* 🔥 ЖУРНАЛЬНИЙ СТИЛЬ ТІЛЬКИ ДЛЯ ТЕКСТУ */
+.info-grid p,
+.card p {
+  text-align: justify;
+  text-indent: 25px;
+  line-height: 1.7;
+  margin-bottom: 12px;
 }
