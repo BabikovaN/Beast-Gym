@@ -71,7 +71,7 @@ const defaultProducts = {
     {
       name: "AMIX BCAA Shot 3000",
       price: "80 грн",
-      image: "promo.jpg",
+      image: "",
       description: "BCAA-шот 60 мл для підтримки відновлення та активності під час тренувань."
     },
     {
