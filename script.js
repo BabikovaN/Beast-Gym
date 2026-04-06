@@ -30,9 +30,12 @@ if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeMenu();
+    if (popup) {
+      popup.classList.remove("active");
+    }
   }
 });
 
@@ -127,35 +130,34 @@ function loadTrainers() {
 
 loadTrainers();
 
-      (error) => {
-        console.error("Помилка завантаження тренерів:", error);
-        trainersEl.innerHTML = `
-          <div class="trainer-item">
-            <div class="trainer-name">Не вдалося завантажити тренерів</div>
-            <div class="trainer-role">Перевір Firebase config і Firestore rules</div>
-          </div>
-        `;
-      }
+// =========================
+// PROMO POPUP
+// =========================
 const popup = document.getElementById("promoPopup");
 const closeBtn = document.querySelector(".close-btn");
 
-// показ тільки 1 раз
-if (!localStorage.getItem("promoShown")) {
-  setTimeout(() => {
-    popup.classList.add("active");
-  }, 1500);
-}
+if (popup && closeBtn) {
+  // показ тільки 1 раз
+  if (!localStorage.getItem("promoShown")) {
+    setTimeout(() => {
+      popup.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }, 1500);
+  }
 
-// закриття
-closeBtn.onclick = () => {
-  popup.classList.remove("active");
-  localStorage.setItem("promoShown", "true");
-};
-
-// клік поза вікном
-popup.onclick = (e) => {
-  if (e.target === popup) {
+  // закриття по кнопці
+  closeBtn.addEventListener("click", () => {
     popup.classList.remove("active");
     localStorage.setItem("promoShown", "true");
-  }
-};
+    document.body.style.overflow = "";
+  });
+
+  // закриття по кліку поза вікном
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.remove("active");
+      localStorage.setItem("promoShown", "true");
+      document.body.style.overflow = "";
+    }
+  });
+}
