@@ -136,6 +136,9 @@ loadTrainers();
 // =========================
 // PROMO POPUP
 // =========================
+// =========================
+// PROMO POPUP
+// =========================
 const promoPopup = document.getElementById("promoPopup");
 const promoClose = document.getElementById("promoClose");
 const promoReminder = document.getElementById("promoReminder");
@@ -154,21 +157,11 @@ function closePromo() {
   if (promoReminder) {
     promoReminder.classList.add("show");
   }
-
-  localStorage.setItem("promoClosed", "true");
 }
 
 if (promoPopup) {
   window.addEventListener("load", () => {
-    if (!localStorage.getItem("promoClosed")) {
-      setTimeout(() => {
-        openPromo();
-      }, 400);
-    } else {
-      if (promoReminder) {
-        promoReminder.classList.add("show");
-      }
-    }
+    openPromo();
   });
 
   if (promoClose) {
