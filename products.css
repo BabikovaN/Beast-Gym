@@ -15,6 +15,10 @@
   --glow:rgba(170,255,120,0.14);
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:radial-gradient(circle at top, #0a0a0a, #000);
   color:var(--text);
@@ -22,6 +26,7 @@ body{
   overflow-x:hidden;
 }
 
+/* HEADER */
 header{
   position:fixed;
   top:0;
@@ -52,6 +57,7 @@ header{
   line-height:1;
 }
 
+/* MENU */
 nav{
   position:fixed;
   top:0;
@@ -60,8 +66,9 @@ nav{
   height:100vh;
   background:#111;
   padding-top:80px;
-  transition:0.3s;
-  z-index:999;
+  transition:0.3s ease;
+  z-index:1001;
+  box-shadow:-10px 0 30px rgba(0,0,0,0.5);
 }
 
 nav.active{
@@ -73,6 +80,7 @@ nav a{
   padding:15px 20px;
   color:var(--yellow);
   text-decoration:none;
+  border-bottom:1px solid rgba(214,255,0,0.08);
 }
 
 .menu-overlay{
@@ -82,7 +90,7 @@ nav a{
   opacity:0;
   visibility:hidden;
   transition:0.3s;
-  z-index:998;
+  z-index:999;
 }
 
 .menu-overlay.active{
@@ -90,6 +98,7 @@ nav a{
   visibility:visible;
 }
 
+/* PAGE */
 .page{
   padding-top:85px;
   max-width:1200px;
@@ -129,9 +138,10 @@ nav a{
   line-height:1.6;
   text-align:justify;
   text-indent:24px;
+  margin-bottom:0;
 }
 
-/* КАТЕГОРІЇ ЯК У ФОТО */
+/* CATEGORY TABS */
 .category-card{
   padding:18px;
 }
@@ -143,9 +153,12 @@ nav a{
 }
 
 .category-tab{
+  appearance:none;
+  -webkit-appearance:none;
   border:1px solid rgba(214,255,0,0.14);
   background:#111;
   color:#fff;
+  font-family:inherit;
   min-width:90px;
   padding:14px 18px;
   border-radius:18px;
@@ -153,6 +166,12 @@ nav a{
   font-weight:700;
   cursor:pointer;
   transition:0.25s ease;
+  outline:none;
+}
+
+.category-tab:hover{
+  border-color:rgba(214,255,0,0.35);
+  box-shadow:0 0 14px rgba(214,255,0,0.14);
 }
 
 .category-tab.active{
@@ -161,6 +180,7 @@ nav a{
   box-shadow:0 0 18px rgba(214,255,0,0.22);
 }
 
+/* BLOCKS */
 .catalog-block{
   display:none;
   margin-top:18px;
@@ -184,12 +204,13 @@ nav a{
   text-align:left;
   text-indent:0;
   line-height:1.5;
+  margin-bottom:0;
 }
 
-/* КАРТКИ */
+/* PRODUCTS */
 .products-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr;
   gap:14px;
 }
 
@@ -236,7 +257,7 @@ nav a{
   text-indent:18px;
 }
 
-/* ДОДАТКОВО */
+/* EXTRA */
 .extras-card{
   padding:18px;
 }
@@ -270,6 +291,7 @@ nav a{
   white-space:nowrap;
 }
 
+/* FOOTER */
 .footer{
   text-align:center;
   padding:16px 10px 30px;
@@ -279,14 +301,18 @@ nav a{
   color:#ccc;
   text-align:center;
   text-indent:0;
+  margin-bottom:0;
 }
 
-@media(max-width:767px){
+/* MOBILE */
+@media(min-width:560px){
   .products-grid{
     grid-template-columns:1fr 1fr;
     gap:12px;
   }
+}
 
+@media(max-width:767px){
   .hero h1{
     font-size:24px;
   }
@@ -314,6 +340,7 @@ nav a{
   }
 }
 
+/* DESKTOP */
 @media(min-width:768px){
   .products-grid{
     grid-template-columns:repeat(3,1fr);
