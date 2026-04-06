@@ -133,31 +133,62 @@ loadTrainers();
 // =========================
 // PROMO POPUP
 // =========================
-const popup = document.getElementById("promoPopup");
-const closeBtn = document.querySelector(".close-btn");
+const promoPopup = document.getElementById("promoPopup");
+const promoClose = document.getElementById("promoClose");
+const promoReminder = document.getElementById("promoReminder");
 
-if (popup && closeBtn) {
-  // показ тільки 1 раз
-  if (!localStorage.getItem("promoShown")) {
-    setTimeout(() => {
-      popup.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }, 1500);
+function openPromo() {
+  if (!promoPopup) return;
+  promoPopup.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closePromo() {
+  if (!promoPopup) return;
+  promoPopup.classList.remove("active");
+  document.body.style.overflow = "";
+
+  if (promoReminder) {
+    promoReminder.classList.add("show");
   }
 
-  // закриття по кнопці
-  closeBtn.addEventListener("click", () => {
-    popup.classList.remove("active");
-    localStorage.setItem("promoShown", "true");
-    document.body.style.overflow = "";
+  localStorage.setItem("promoClosed", "true");
+}
+
+if (promoPopup && promoClose) {
+  // показ popup при заході
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      openPromo();
+
+      if (localStorage.getItem("promoClosed") === "true" && promoReminder) {
+        promoReminder.classList.add("show");
+      }
+    }, 1200);
   });
 
-  // закриття по кліку поза вікном
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.classList.remove("active");
-      localStorage.setItem("promoShown", "true");
-      document.body.style.overflow = "";
+  // закрити по хрестику
+  promoClose.addEventListener("click", closePromo);
+
+  // закрити по кліку на затемнення
+  promoPopup.addEventListener("click", (e) => {
+    if (e.target === promoPopup) {
+      closePromo();
+    }
+  });
+
+  // відкрити ще раз по маленькому нагадуванню
+  if (promoReminder) {
+    promoReminder.addEventListener("click", () => {
+      promoPopup.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  }
+
+  // Esc
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && promoPopup.classList.contains("active")) {
+      closePromo();
     }
   });
 }
