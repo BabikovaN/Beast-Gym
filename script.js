@@ -30,7 +30,7 @@ if (menuOverlay) {
   menuOverlay.addEventListener("click", closeMenu);
 }
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeMenu();
 
@@ -60,7 +60,9 @@ let db = null;
 
 try {
   if (typeof firebase !== "undefined") {
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     db = firebase.firestore();
   }
 } catch (error) {
@@ -156,18 +158,22 @@ function closePromo() {
   localStorage.setItem("promoClosed", "true");
 }
 
-if (promoPopup && promoClose && promoReminder) {
+if (promoPopup) {
   window.addEventListener("load", () => {
     if (!localStorage.getItem("promoClosed")) {
       setTimeout(() => {
         openPromo();
       }, 400);
     } else {
-      promoReminder.classList.add("show");
+      if (promoReminder) {
+        promoReminder.classList.add("show");
+      }
     }
   });
 
-  promoClose.addEventListener("click", closePromo);
+  if (promoClose) {
+    promoClose.addEventListener("click", closePromo);
+  }
 
   promoPopup.addEventListener("click", (e) => {
     if (e.target === promoPopup) {
@@ -175,13 +181,16 @@ if (promoPopup && promoClose && promoReminder) {
     }
   });
 
-  promoReminder.addEventListener("click", () => {
-    openPromo();
-  });
+  if (promoReminder) {
+    promoReminder.addEventListener("click", () => {
+      openPromo();
+    });
+  }
 }
-/* =========================
-   SECRET ADMIN
-========================= */
+
+// =========================
+// SECRET ADMIN
+// =========================
 const logo = document.getElementById("logoAdmin");
 
 if (logo) {
