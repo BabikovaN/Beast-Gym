@@ -1,140 +1,23 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beast Gym</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELITH Fitness Club — преміальний фітнес-клуб</title>
+<meta name="description" content="AURELITH — преміальний фітнес-клуб: зона вільних ваг, кардіо, функціональна студія, персональні тренування. Абонементи від 250 грн. Запишіться на пробне тренування.">
+<meta property="og:title" content="AURELITH Fitness Club">
+<meta property="og:description" content="Сила у деталях. Результат — у звичці. Запишіться на пробне тренування.">
+<meta property="og:image" content="assets/img/hero.webp">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<header>
-  <div class="logo" id="logoAdmin">
-  <img src="Logo BG.svg" alt="Beast Gym">
-</div>
-
-  <button class="burger" onclick="toggleMenu()" aria-label="Відкрити меню">☰</button>
-
-  <nav id="menu">
-    <a href="index.html">Головна</a>
-    <a href="about.html">Про нас</a>
-    <a href="price.html">Тарифи</a>
-    <a href="photos.html">Фото</a>
-    <a href="products.html">Продукція</a>
-    <a href="vacancies.html">Вакансії</a>
-    <a href="rules.html">Правила</a>
-    <a href="contacts.html">Контакти</a>
-  </nav>
-</header>
-
-<div id="menuOverlay" class="menu-overlay"></div>
-
-<main class="page">
-
-  <section class="hero-grid">
-    <div class="hero-image-wrap">
-      <img
-        class="hero-image"
-        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80"
-        alt="Beast Gym"
-      >
-      <div class="hero-text">
-        <h1>Beast Gym</h1>
-        <p>
-          Сучасний зал у Черкасах для силових і кардіотренувань,
-          персональної роботи з тренером та комфортного прогресу.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-grid">
-
-    <section class="card section-card">
-      <h2>ТРЕНЕРИ</h2>
-      <div id="trainers" class="trainers-list"></div>
-    </section>
-
-    <section class="card section-card">
-      <h2>АБОНЕМЕНТИ</h2>
-      <div class="price-list">
-        <div class="price-row">
-          <span>Карта повного дня</span>
-          <strong>900 грн</strong>
-        </div>
-        <div class="price-row">
-          <span>Студент карта</span>
-          <strong>850 грн</strong>
-        </div>
-        <div class="price-row">
-          <span>Сімейна карта</span>
-          <strong>800 грн</strong>
-        </div>
-        <div class="price-row">
-          <span>Разове відвідування</span>
-          <strong>250 грн</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="card section-card full-width">
-      <h2>Про Beast Gym</h2>
-      <div class="about-text">
-        <p>
-          У Beast Gym ти знайдеш широкий вибір сучасних тренажерів для силових
-          та кардіотренувань. Зал обладнаний усім необхідним як для початківців,
-          так і для досвідчених спортсменів.
-        </p>
-
-        <p>
-          Команда Beast Gym складається з досвідчених тренерів, які допоможуть
-          скласти індивідуальну програму тренувань, навчать правильної техніки
-          та підтримуватимуть на кожному етапі твого прогресу.
-        </p>
-
-        <p>
-          У Beast Gym регулярно проводяться акції та спеціальні пропозиції
-          для нових і постійних клієнтів. Зал розташований у зручному місці,
-          до якого легко дістатися як громадським транспортом, так і власним автомобілем.
-        </p>
-      </div>
-    </section>
-
-    <section class="card section-card map-card full-width">
-      <h2>Ми на карті</h2>
-      <div class="map-wrap">
-        <iframe
-          src="https://maps.google.com/maps?q=49.4469666,32.0508936&z=17&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
-
-  </section>
-</main>
-
-<footer class="footer">
-  <p>Beast Gym • Черкаси, вул. Грушевського 110</p>
-</footer>
-
-<!-- POPUP АКЦІЯ -->
-<div id="promoPopup" class="promo-popup-overlay">
-  <div class="promo-popup-box">
-    <button id="promoClose" class="promo-close-btn" aria-label="Закрити акцію">×</button>
-    <img src="promo.jpg" alt="Акція Beast Gym" class="promo-popup-image">
-  </div>
-</div>
-
-<!-- МАЛЕНЬКЕ НАГАДУВАННЯ -->
-<div id="promoReminder" class="promo-reminder-fixed" aria-label="Показати акцію ще раз">
-  <img src="promo.jpg" alt="Акція Beast Gym">
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="script.js"></script>
-
+<div id="app"></div>
+<noscript><p style="padding:24px;font-family:sans-serif">Увімкніть JavaScript, щоб переглянути сайт.</p></noscript>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
